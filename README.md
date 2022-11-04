@@ -1,3 +1,4 @@
-# oop-ban-dien-thoai
+# PROJECT QUẢN LÝ CỬA HÀNG BÁN ĐIỆN THOẠI
 
-ngu như chó z
+## nhóm 7 
+
