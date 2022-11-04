@@ -1,3 +1,3 @@
 # oop-ban-dien-thoai
 
-con chó tuấn ngu
+ngu như chó z
