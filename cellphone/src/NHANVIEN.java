@@ -1,4 +1,3 @@
-package DOAN;
 import java.util.Scanner;
 
 public class NHANVIEN {
@@ -8,7 +7,7 @@ public class NHANVIEN {
     private String sdt;
     private String chucvu;
     Scanner sc = new Scanner(System.in);
-    
+
     // HAM KHOI TAO
     public NHANVIEN() {
         manv = null;
@@ -17,13 +16,15 @@ public class NHANVIEN {
         sdt = null;
         chucvu = null;
     }
-    public NHANVIEN (String manv,String hoten,String namsinh,String sdt,String chucvu) {
+
+    public NHANVIEN(String manv, String hoten, String namsinh, String sdt, String chucvu) {
         this.manv = manv;
         this.hoten = hoten;
         this.namsinh = namsinh;
         this.sdt = sdt;
         this.chucvu = chucvu;
     }
+
     public NHANVIEN(NHANVIEN obj) {
         this.manv = obj.manv;
         this.hoten = obj.hoten;
@@ -36,30 +37,39 @@ public class NHANVIEN {
     public void setManv(String manv) {
         this.manv = manv;
     }
+
     public String getManv() {
         return manv;
     }
+
     public void setHoten(String hoten) {
         this.hoten = hoten;
     }
+
     public String getHoten() {
         return hoten;
     }
+
     public void setNamsinh(String namsinh) {
         this.namsinh = namsinh;
     }
+
     public String getNamsinh() {
         return namsinh;
     }
+
     public void setSdt(String sdt) {
         this.sdt = sdt;
     }
+
     public String getSdt() {
         return sdt;
     }
+
     public void setChucvu(String chucvu) {
         this.chucvu = chucvu;
     }
+
     public String getChucvu() {
         return chucvu;
     }
@@ -78,18 +88,25 @@ public class NHANVIEN {
         chucvu = sc.nextLine();
         System.out.println("---------------------------");
     }
+
     public String XuatNhanVien() {
-        return String.format("%-20s%-25s%-15s%-20s%-20s",manv,hoten,namsinh,sdt,chucvu);
+        return String.format("%-20s%-25s%-15s%-20s%-20s", manv, hoten, namsinh, sdt, chucvu);
     }
+
     public void XuatNhanVien_1() {
-        System.out.println("============================================================================================");
-        System.out.printf("%-20s%-25s%-15s%-20s%-20s\n","MA NHAN VIEN","HO TEN","NAM SINH","SO DIEN THOAI","CHUC VU");
-        System.out.println("============================================================================================");
-        System.out.printf("%-20s%-25s%-15s%-20s%-20s\n",manv,hoten,namsinh,sdt,chucvu);
+        System.out.println(
+                "============================================================================================");
+        System.out.printf("%-20s%-25s%-15s%-20s%-20s\n", "MA NHAN VIEN", "HO TEN", "NAM SINH", "SO DIEN THOAI",
+                "CHUC VU");
+        System.out.println(
+                "============================================================================================");
+        System.out.printf("%-20s%-25s%-15s%-20s%-20s\n", manv, hoten, namsinh, sdt, chucvu);
     }
-    /* public static void main(String[] args) {
-        NHANVIEN a = new NHANVIEN();
-        a.NhapNhanVien();
-        System.out.println(a.XuatNhanVien()); 
-    } */
+    /*
+     * public static void main(String[] args) {
+     * NHANVIEN a = new NHANVIEN();
+     * a.NhapNhanVien();
+     * System.out.println(a.XuatNhanVien());
+     * }
+     */
 }
