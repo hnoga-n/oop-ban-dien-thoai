@@ -1,4 +1,3 @@
-package DOAN;
 import java.util.Scanner;
 public class KHACHHANG {
     private String makh;
@@ -65,14 +64,15 @@ public class KHACHHANG {
 
     // HAM NHAP XUAT
     public void NhapKhachHang() {
+        kiemtra kt = new kiemtra();
         System.out.print("Nhap ma khach hang: ");
-        makh = sc.nextLine();
+        makh = kt.KiemTraNhapMa();
         System.out.print("Nhap ho ten khach hang: ");
         hoten = sc.nextLine();
         System.out.print("Nhap nam sinh khach hang: ");
-        namsinh = sc.nextLine();
+        namsinh = kt.KiemTraNamSinh();
         System.out.print("Nhap so dien thoai khach hang: ");
-        sdt = sc.nextLine();
+        sdt = kt.KiemTraNhapSDT();
         System.out.print("Nhap ma tai khoan khach hang: ");
         matk = sc.nextLine();
         System.out.println("---------------------------");

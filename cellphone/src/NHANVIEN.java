@@ -1,4 +1,3 @@
-package DOAN;
 import java.util.Scanner;
 
 public class NHANVIEN {
@@ -66,14 +65,15 @@ public class NHANVIEN {
 
     // HAM NHAP XUAT
     public void NhapNhanVien() {
+        kiemtra kt = new kiemtra();
         System.out.print("Nhap ma nhan vien: ");
-        manv = sc.nextLine();
+        manv = kt.KiemTraNhapMa();
         System.out.print("Nhap ho ten nhan vien: ");
         hoten = sc.nextLine();
         System.out.print("Nhap nam sinh nhan vien: ");
-        namsinh = sc.nextLine();
+        namsinh = kt.KiemTraNamSinh();
         System.out.print("Nhap so dien thoai nhan vien: ");
-        sdt = sc.nextLine();
+        sdt = kt.KiemTraNhapSDT();
         System.out.print("Nhap chuc vu nhan vien: ");
         chucvu = sc.nextLine();
         System.out.println("---------------------------");
