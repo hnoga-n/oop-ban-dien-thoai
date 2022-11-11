@@ -40,4 +40,17 @@ public class kiemtra {
             System.out.print("Moi nhap lai: ");
         }
     }
+    public String KiemTraNhapChucVu() {
+        String chucvu;
+        while(true) {
+            chucvu = sc.nextLine();
+            if(chucvu.equalsIgnoreCase("quan ly") || chucvu.equalsIgnoreCase("nhan vien")) {
+                return chucvu;
+            }
+            else {
+                System.out.println("Sai chuc vu ! Chi nhap 'quan ly' hoac 'nhan vien' ");
+            }
+            System.out.print("Moi nhap lai: ");
+        }
+    }
 }
