@@ -1,11 +1,16 @@
 import java.util.Scanner;
 
-public class taikhoan {
+public abstract class taikhoan {
   private String matk;
   private String tentk;
   private String passwd;
-
   Scanner sc = new Scanner(System.in);
+
+  abstract String getMakhOrNv();
+
+  abstract void parseAccount(String line);
+
+  abstract void xuatThongTinTaiKhoan();
 
   public static void main(String[] args) {
 
@@ -25,7 +30,7 @@ public class taikhoan {
   }
 
   public void setMatk() {
-    System.out.println("moi nhap ma tk: ");
+    System.out.println("moi nhap ma tai khoan: ");
     this.matk = sc.nextLine();
   }
 
@@ -38,7 +43,7 @@ public class taikhoan {
   }
 
   public void setPasswd() {
-    System.out.println("moi nhap ma tk: ");
+    System.out.println("moi nhap mat khau: ");
     this.passwd = sc.nextLine();
   }
 
@@ -51,16 +56,21 @@ public class taikhoan {
   }
 
   public void setTentk() {
-    System.out.println("moi nhap ma tk: ");
+    System.out.println("moi nhap ten tai khoan: ");
     this.tentk = sc.nextLine();
   }
 
-  public void setTentk(String passwd) {
-    this.tentk = passwd;
+  public void setTentk(String tentk) {
+    this.tentk = tentk;
   }
 
   public String getTentk() {
     return this.tentk;
+  }
+
+  public void nhapTaikhoan() {
+    this.setTentk();
+    this.setPasswd();
   }
 
 }
