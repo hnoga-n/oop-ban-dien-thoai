@@ -1,3 +1,4 @@
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -9,6 +10,7 @@ import java.io.InputStreamReader;
 //import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -19,6 +21,7 @@ public class DANHSACHNHANVIEN {
     Scanner sc = new Scanner(System.in);
     kiemtra kt = new kiemtra();
 
+
     public void XuatDanhSachNV() {
         System.out.println("============================================================================================");
         System.out.printf("%-20s%-25s%-15s%-20s%-20s\n","MA NHAN VIEN","HO TEN","NAM SINH","SO DIEN THOAI","CHUC VU");
@@ -27,22 +30,30 @@ public class DANHSACHNHANVIEN {
             System.out.println(obj.XuatNhanVien());
             System.out.println("--------------------------------------------------------------------------------------------");
         }      
+    public ArrayList<NHANVIEN> getArray() {
+        return arrnv;
+    
+
     }
+
     public void ThemNhanVien() {
         NHANVIEN a = new NHANVIEN();
         a.NhapNhanVien();
         arrnv.add(a);
+
     }
+
     public NHANVIEN TimKiemNhanVienTheoMaNV(String manv) {
         NHANVIEN nv = null;
-        for(NHANVIEN obj : arrnv) {
-            if(obj.getManv().equalsIgnoreCase(manv)) {
+        for (NHANVIEN obj : arrnv) {
+            if (obj.getManv().equalsIgnoreCase(manv)) {
                 nv = obj;
-                break;
+                return nv;
             }
         }
-        return nv;
+        return null;
     }
+
     public void TimKiemNhanVien() {
         System.out.print("Nhap ma nhan vien can tim: ");
         String manv = kt.KiemTraNhapMa();
@@ -50,35 +61,36 @@ public class DANHSACHNHANVIEN {
         nv = TimKiemNhanVienTheoMaNV(manv);
         if (nv != null)
             nv.XuatNhanVien_1();
-        else  
+        else
             System.out.println("Khong tim thay nhan vien !");
     }
+
     public void XoaNhanVien() {
         System.out.print("Nhap ma nhan vien can xoa: ");
         String manv = kt.KiemTraNhapMa();
         NHANVIEN nv = null;
         nv = TimKiemNhanVienTheoMaNV(manv);
-        if(nv != null) {
-            for(NHANVIEN obj : arrnv) {
-                if(obj == nv) {
+        if (nv != null) {
+            for (NHANVIEN obj : arrnv) {
+                if (obj == nv) {
                     arrnv.remove(obj);
                     System.out.println("Xoa thanh cong nhan vien!");
                     break;
                 }
             }
-        }
-        else
+        } else
             System.out.println("Khong tim thay nhan vien !");
-    } 
+    }
+
     public void SuaNhanVien() {
         System.out.print("Nhap ma nhan vien can sua: ");
         String manv = kt.KiemTraNhapMa();
         NHANVIEN nv = null;
         nv = TimKiemNhanVienTheoMaNV(manv);
-        if(nv != null) {
-            for(NHANVIEN obj : arrnv) {
-                if(obj == nv) { 
-                    while(true) {
+        if (nv != null) {
+            for (NHANVIEN obj : arrnv) {
+                if (obj == nv) {
+                    while (true) {
                         System.out.println("\n");
                         System.out.println("--------------------------------");
                         System.out.println("======    SUA THONG TIN   ======");
@@ -89,10 +101,11 @@ public class DANHSACHNHANVIEN {
                         System.out.println("4. Sua so dien thoai");
                         System.out.println("5. Sua chuc vu");
                         System.out.println("6. Thoat");
-                        System.out.println("--------------------------------");;
+                        System.out.println("--------------------------------");
+                        ;
                         System.out.print("Chon: ");
                         String key = sc.nextLine();
-                        if(Integer.parseInt(key) <1 || Integer.parseInt(key) > 6)
+                        if (Integer.parseInt(key) < 1 || Integer.parseInt(key) > 6)
                             System.out.println("Vui long chon so tu 1 den 6 !");
                         else {
                             switch (key) {
@@ -123,18 +136,19 @@ public class DANHSACHNHANVIEN {
                                     break;
                             }
                         }
-                        if(Integer.parseInt(key) == 6) break;
+                        if (Integer.parseInt(key) == 6)
+                            break;
                     }
                 }
-            } 
-        }
-        else
+            }
+        } else
             System.out.println("Khong tim thay nhan vien !");
     }
 
     public void MenuDanhSachNhanVien(DANHSACHNHANVIEN list) throws IOException {
         list.docfile();
         while(true) {
+
             System.out.println("\n");
             System.out.println("------------------------------------");
             System.out.println("==========    * MENU *    ==========");
@@ -252,7 +266,18 @@ public class DANHSACHNHANVIEN {
     }
     
     public static void main(String[] args) throws IOException{
+
+
         DANHSACHNHANVIEN list = new DANHSACHNHANVIEN();
-        list.MenuDanhSachNhanVien(list);
+        NHANVIEN a = new NHANVIEN("123", "hha", "1996", "096", "admin");
+        NHANVIEN b = new NHANVIEN("124", "hha", "1996", "096", "admin");
+        NHANVIEN c = new NHANVIEN("125", "hha", "1996", "096", "admin");
+        list.arrnv.add(a);
+        list.arrnv.add(b);
+        list.arrnv.add(c);
+        list.XuatDanhSachNV();
+        list.XoaNhanVien();
+        list.XuatDanhSachNV();
+
     }
 }
