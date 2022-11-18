@@ -6,6 +6,10 @@ public class DANHSACHNHANVIEN {
     private int soluongnv;
     Scanner sc = new Scanner(System.in);
 
+    public ArrayList<NHANVIEN> getArray() {
+        return arrnv;
+    }
+
     public void NhapDanhSachNV() {
         System.out.print("So luong nhan vien: ");
         soluongnv = Integer.parseInt(sc.nextLine());
@@ -52,10 +56,10 @@ public class DANHSACHNHANVIEN {
         for (NHANVIEN obj : arrnv) {
             if (obj.getManv().equalsIgnoreCase(manv)) {
                 nv = obj;
-                break;
+                return nv;
             }
         }
-        return nv;
+        return null;
     }
 
     public void TimKiemNhanVien() {
@@ -198,6 +202,15 @@ public class DANHSACHNHANVIEN {
 
     public static void main(String[] args) {
         DANHSACHNHANVIEN list = new DANHSACHNHANVIEN();
-        list.MenuDanhSachNhanVien(list);
+        NHANVIEN a = new NHANVIEN("123", "hha", "1996", "096", "admin");
+        NHANVIEN b = new NHANVIEN("124", "hha", "1996", "096", "admin");
+        NHANVIEN c = new NHANVIEN("125", "hha", "1996", "096", "admin");
+        list.arrnv.add(a);
+        list.arrnv.add(b);
+        list.arrnv.add(c);
+        list.XuatDanhSachNV();
+        list.XoaNhanVien();
+        list.XuatDanhSachNV();
+
     }
 }

@@ -7,6 +7,10 @@ public class DANHSACHKHACHHANG {
     private int soluongkh;
     Scanner sc = new Scanner(System.in);
 
+    public ArrayList<KHACHHANG> getArray() {
+        return arrkh;
+    }
+
     public void NhapDanhSachKH() {
         System.out.print("So luong khach hang: ");
         soluongkh = Integer.parseInt(sc.nextLine());

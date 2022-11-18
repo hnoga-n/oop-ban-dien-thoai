@@ -17,6 +17,11 @@ public class KHACHHANG {
         matk = null;
     }
 
+    public KHACHHANG(String makh, String matk) {
+        this.makh = makh;
+        this.matk = matk;
+    }
+
     public KHACHHANG(String makh, String hoten, String namsinh, String sdt, String matk) {
         this.makh = makh;
         this.hoten = hoten;
@@ -75,6 +80,7 @@ public class KHACHHANG {
     }
 
     // HAM NHAP XUAT
+    // cua admin
     public void NhapKhachHang() {
         System.out.print("Nhap ma khach hang: ");
         makh = sc.nextLine();
@@ -86,6 +92,18 @@ public class KHACHHANG {
         sdt = sc.nextLine();
         System.out.print("Nhap ma tai khoan khach hang: ");
         matk = sc.nextLine();
+        System.out.println("---------------------------");
+    }
+
+    // cua user
+    public void NhapKhachHang(String makh) {
+        this.makh = makh;
+        System.out.print("Nhap ho ten khach hang: ");
+        hoten = sc.nextLine();
+        System.out.print("Nhap nam sinh khach hang: ");
+        namsinh = sc.nextLine();
+        System.out.print("Nhap so dien thoai khach hang: ");
+        sdt = sc.nextLine();
         System.out.println("---------------------------");
     }
 
