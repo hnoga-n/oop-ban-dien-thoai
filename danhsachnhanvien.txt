@@ -1,0 +1,5 @@
+01,Mach Hao Tuan,2003,0938446903,quan ly
+02,Nguyen Van B,2000,0985632147,nhan vien
+03,Tran Van E,1999,0742563189,nhan vien
+04,Nguyen Van D,1989,0923456781,nhan vien
+05,Nguyen Van F,1991,0931245378,nhan vien

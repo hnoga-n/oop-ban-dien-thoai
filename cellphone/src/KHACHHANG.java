@@ -5,7 +5,6 @@ public class KHACHHANG {
     private String hoten;
     private String namsinh;
     private String sdt;
-    private String matk;
     Scanner sc = new Scanner(System.in);
 
     // HAM KHOI TAO
@@ -14,20 +13,13 @@ public class KHACHHANG {
         hoten = null;
         namsinh = null;
         sdt = null;
-        matk = null;
     }
+    public KHACHHANG (String makh,String hoten,String namsinh,String sdt) {
 
-    public KHACHHANG(String makh, String matk) {
-        this.makh = makh;
-        this.matk = matk;
-    }
-
-    public KHACHHANG(String makh, String hoten, String namsinh, String sdt, String matk) {
         this.makh = makh;
         this.hoten = hoten;
         this.namsinh = namsinh;
         this.sdt = sdt;
-        this.matk = matk;
     }
 
     public KHACHHANG(KHACHHANG obj) {
@@ -35,7 +27,6 @@ public class KHACHHANG {
         this.hoten = obj.hoten;
         this.namsinh = obj.namsinh;
         this.sdt = obj.sdt;
-        this.matk = obj.matk;
     }
 
     // PHUONG THUC SET/GET
@@ -71,6 +62,7 @@ public class KHACHHANG {
         return sdt;
     }
 
+
     public void setMatk(String matk) {
         this.matk = matk;
     }
@@ -82,16 +74,15 @@ public class KHACHHANG {
     // HAM NHAP XUAT
     // cua admin
     public void NhapKhachHang() {
+        kiemtra kt = new kiemtra();
         System.out.print("Nhap ma khach hang: ");
-        makh = sc.nextLine();
+        makh = kt.KiemTraNhapMa();
         System.out.print("Nhap ho ten khach hang: ");
         hoten = sc.nextLine();
         System.out.print("Nhap nam sinh khach hang: ");
-        namsinh = sc.nextLine();
+        namsinh = kt.KiemTraNamSinh();
         System.out.print("Nhap so dien thoai khach hang: ");
-        sdt = sc.nextLine();
-        System.out.print("Nhap ma tai khoan khach hang: ");
-        matk = sc.nextLine();
+        sdt = kt.KiemTraNhapSDT();
         System.out.println("---------------------------");
     }
 
@@ -108,16 +99,30 @@ public class KHACHHANG {
     }
 
     public String XuatKhachHang() {
-        return String.format("%-20s%-25s%-15s%-20s%-20s", makh, hoten, namsinh, sdt, matk);
+        return String.format("%-20s%-25s%-15s%-20s",makh,hoten,namsinh,sdt);
+
     }
 
     public void XuatKhachHang_1() {
-        System.out.println(
-                "===============================================================================================");
-        System.out.printf("%-20s%-25s%-15s%-20s%-20s\n", "MA KHACH HANG", "HO TEN", "NAM SINH", "SO DIEN THOAI",
-                "MA TAI KHOAN");
-        System.out.println(
-                "===============================================================================================");
-        System.out.printf("%-20s%-25s%-15s%-20s%-20s\n", makh, hoten, namsinh, sdt, matk);
+        System.out.println("==============================================================================");
+        System.out.printf("%-20s%-25s%-15s%-20s\n","MA KHACH HANG","HO TEN","NAM SINH","SO DIEN THOAI");
+        System.out.println("==============================================================================");
+        System.out.printf("%-20s%-25s%-15s%-20s%-20s\n",makh,hoten,namsinh,sdt);
+    }
+    //HAM FILE
+    public String getFileLine() {
+        return makh + "," + hoten + "," + namsinh + "," + sdt + "\n";
+    }
+    public void parseKhachHang(String line) {
+        String [] params = line.split(",");
+        try {
+            this.makh = params[0];
+            this.hoten = params[1];
+            this.namsinh = params[2];
+            this.sdt = params[3];
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            System.out.println(ex.toString());
+        }
+
     }
 }

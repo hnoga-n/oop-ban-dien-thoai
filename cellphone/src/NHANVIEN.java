@@ -1,13 +1,13 @@
 import java.util.Scanner;
-
-public class NHANVIEN {
+import java.io.Serializable;
+public class NHANVIEN implements Serializable{
     private String manv;
     private String hoten;
     private String namsinh;
     private String sdt;
     private String chucvu;
-    Scanner sc = new Scanner(System.in);
-
+    transient Scanner sc = new Scanner(System.in);
+    
     // HAM KHOI TAO
     public NHANVIEN() {
         manv = null;
@@ -76,16 +76,17 @@ public class NHANVIEN {
 
     // HAM NHAP XUAT
     public void NhapNhanVien() {
+        kiemtra kt = new kiemtra();
         System.out.print("Nhap ma nhan vien: ");
-        manv = sc.nextLine();
+        manv = kt.KiemTraNhapMa();
         System.out.print("Nhap ho ten nhan vien: ");
         hoten = sc.nextLine();
         System.out.print("Nhap nam sinh nhan vien: ");
-        namsinh = sc.nextLine();
+        namsinh = kt.KiemTraNamSinh();
         System.out.print("Nhap so dien thoai nhan vien: ");
-        sdt = sc.nextLine();
+        sdt = kt.KiemTraNhapSDT();
         System.out.print("Nhap chuc vu nhan vien: ");
-        chucvu = sc.nextLine();
+        chucvu = kt.KiemTraNhapChucVu();
         System.out.println("---------------------------");
     }
 
@@ -94,19 +95,31 @@ public class NHANVIEN {
     }
 
     public void XuatNhanVien_1() {
-        System.out.println(
-                "============================================================================================");
-        System.out.printf("%-20s%-25s%-15s%-20s%-20s\n", "MA NHAN VIEN", "HO TEN", "NAM SINH", "SO DIEN THOAI",
-                "CHUC VU");
-        System.out.println(
-                "============================================================================================");
-        System.out.printf("%-20s%-25s%-15s%-20s%-20s\n", manv, hoten, namsinh, sdt, chucvu);
+
+        System.out.println("============================================================================================");
+        System.out.printf("%-20s%-25s%-15s%-20s%-20s\n","MA NHAN VIEN","HO TEN","NAM SINH","SO DIEN THOAI","CHUC VU");
+        System.out.println("============================================================================================");
+        System.out.printf("%-20s%-25s%-15s%-20s%-20s\n",manv,hoten,namsinh,sdt,chucvu);
     }
-    /*
-     * public static void main(String[] args) {
-     * NHANVIEN a = new NHANVIEN();
-     * a.NhapNhanVien();
-     * System.out.println(a.XuatNhanVien());
-     * }
-     */
+    //FILE FUNCTION
+
+    //ghi
+    public String getFileLine() {
+        return manv + "," + hoten + "," + namsinh + "," + sdt + "," + chucvu + "\n";
+    }
+    
+    //đọc
+    public void parseNhanVien(String line) {
+        String [] params = line.split(",");
+        try {
+            this.manv = params[0];
+            this.hoten = params[1];
+            this.namsinh = params[2];
+            this.sdt = params[3];
+            this.chucvu = params[4];
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            System.out.println(ex.toString());
+        }
+    }
+
 }
