@@ -21,13 +21,13 @@ public class DANHSACHKHACHHANG {
 
     public void XuatDanhSachKH() {
         if(arrkh != null) {
-            System.out.println("===============================================================================================");
-            System.out.printf("%-20s%-25s%-15s%-20s%-20s\n","MA KHACH HANG","HO TEN","NAM SINH","SO DIEN THOAI","MA TAI KHOAN");
-            System.out.println("===============================================================================================");
+            System.out.println("==============================================================================");
+            System.out.printf("%-20s%-25s%-15s%-20s\n","MA KHACH HANG","HO TEN","NAM SINH","SO DIEN THOAI");
+            System.out.println("==============================================================================");
             
             for(KHACHHANG obj : arrkh) {
                 System.out.println(obj.XuatKhachHang());
-                System.out.println("-----------------------------------------------------------------------------------------------");
+                System.out.println("------------------------------------------------------------------------------");
             }      
         }
         else {
@@ -52,10 +52,10 @@ public class DANHSACHKHACHHANG {
     public void TimKiemKhachHang() {
         System.out.print("Nhap ma khach hang can tim: ");
         String makh = kt.KiemTraNhapMa();
-        KHACHHANG nv = null;
-        nv = TimKiemKhachHangTheoMaKH(makh);
-        if (nv != null)
-            nv.XuatKhachHang_1();
+        KHACHHANG kh = null;
+        kh = TimKiemKhachHangTheoMaKH(makh);
+        if (kh != null)
+            kh.XuatKhachHang_1();
         else  
             System.out.println("Khong tim thay khach hang !");
     }
@@ -164,10 +164,10 @@ public class DANHSACHKHACHHANG {
                    list.TimKiemKhachHang();
                    break;
                 case "4":
-                   list.SuaKhachHang();;
+                   list.SuaKhachHang();
                    break;
                 case "5":
-                    list.XuatDanhSachKH();;
+                    list.XuatDanhSachKH();
                     break;
                 }
             }

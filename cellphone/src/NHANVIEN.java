@@ -87,10 +87,14 @@ public class NHANVIEN implements Serializable{
         System.out.println("============================================================================================");
         System.out.printf("%-20s%-25s%-15s%-20s%-20s\n",manv,hoten,namsinh,sdt,chucvu);
     }
-    //HAM FILE
+    //FILE FUNCTION
+
+    //ghi
     public String getFileLine() {
         return manv + "," + hoten + "," + namsinh + "," + sdt + "," + chucvu + "\n";
     }
+    
+    //đọc
     public void parseNhanVien(String line) {
         String [] params = line.split(",");
         try {

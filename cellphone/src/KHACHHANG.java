@@ -68,9 +68,9 @@ public class KHACHHANG {
         return String.format("%-20s%-25s%-15s%-20s",makh,hoten,namsinh,sdt);
     }
     public void XuatKhachHang_1() {
-        System.out.println("===============================================================================================");
-        System.out.printf("%-20s%-25s%-15s%-20s%-20s\n","MA KHACH HANG","HO TEN","NAM SINH","SO DIEN THOAI");
-        System.out.println("===============================================================================================");
+        System.out.println("==============================================================================");
+        System.out.printf("%-20s%-25s%-15s%-20s\n","MA KHACH HANG","HO TEN","NAM SINH","SO DIEN THOAI");
+        System.out.println("==============================================================================");
         System.out.printf("%-20s%-25s%-15s%-20s%-20s\n",makh,hoten,namsinh,sdt);
     }
     //HAM FILE
