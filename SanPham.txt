@@ -1,0 +1,3 @@
+1231, Samsung Galaxy Z Flip4, Samsung, 20900000, 12 th�ng, Dynamic AMOLED 2X, Snapdragon 8+ Gen 1, 10 MP, 3700 mAh, 128 GB
+1232, iPhone 11, Iphone, 11900000, 12 th�ng, IPS LCD6.1"Liquid Retina, Apple A13 Bionic, 12 MP, 3110 mAh, 64 GB
+1233, Xiaomi Redmi Note 11, Xiaomi, 4490000, 12 th�ng, AMOLED6.43"Full HD+, Snapdragon 680, 13 MP, 5000 mAh, 64 GB

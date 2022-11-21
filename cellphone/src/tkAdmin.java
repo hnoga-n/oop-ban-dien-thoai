@@ -44,7 +44,7 @@ public class tkAdmin extends taikhoan {
   }
 
   public void xuatThongTinTaiKhoan() {
-    System.out.printf("%-15s%-15s%-15s%-15s%-15s", getMatk(), getTentk(), getPasswd(), this.manv, null);
+    System.out.printf("%-15s%-15s%-15s%-15s%-15s\n", getMatk(), getTentk(), getPasswd(), this.manv, null);
   }
 
   public void menu() {

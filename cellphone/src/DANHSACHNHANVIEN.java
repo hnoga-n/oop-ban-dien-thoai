@@ -21,19 +21,22 @@ public class DANHSACHNHANVIEN {
     Scanner sc = new Scanner(System.in);
     kiemtra kt = new kiemtra();
 
-
     public void XuatDanhSachNV() {
-        System.out.println("============================================================================================");
-        System.out.printf("%-20s%-25s%-15s%-20s%-20s\n","MA NHAN VIEN","HO TEN","NAM SINH","SO DIEN THOAI","CHUC VU");
-        System.out.println("============================================================================================");
-        for(NHANVIEN obj : arrnv) {
+        System.out.println(
+                "============================================================================================");
+        System.out.printf("%-20s%-25s%-15s%-20s%-20s\n", "MA NHAN VIEN", "HO TEN", "NAM SINH", "SO DIEN THOAI",
+                "CHUC VU");
+        System.out.println(
+                "============================================================================================");
+        for (NHANVIEN obj : arrnv) {
             System.out.println(obj.XuatNhanVien());
-            System.out.println("--------------------------------------------------------------------------------------------");
-        }      
+            System.out.println(
+                    "--------------------------------------------------------------------------------------------");
+        }
+    }
+
     public ArrayList<NHANVIEN> getArray() {
         return arrnv;
-    
-
     }
 
     public void ThemNhanVien() {
@@ -147,7 +150,7 @@ public class DANHSACHNHANVIEN {
 
     public void MenuDanhSachNhanVien(DANHSACHNHANVIEN list) throws IOException {
         list.docfile();
-        while(true) {
+        while (true) {
 
             System.out.println("\n");
             System.out.println("------------------------------------");
@@ -162,55 +165,54 @@ public class DANHSACHNHANVIEN {
             System.out.println("------------------------------------");
             System.out.print("Chon: ");
             String key = sc.nextLine();
-            if(Integer.parseInt(key) <1 || Integer.parseInt(key) > 6)
+            if (Integer.parseInt(key) < 1 || Integer.parseInt(key) > 6)
                 System.out.println("Vui long chon so tu 1 den 6 !");
             else {
                 switch (key) {
-                case "1":
-                   list.ThemNhanVien();
-                   break;
-                case "2":
-                   list.XoaNhanVien();;
-                   break;
-                case "3":
-                   list.TimKiemNhanVien();
-                   break;
-                case "4":
-                   list.SuaNhanVien();;
-                   break;
-                case "5":
-                    list.XuatDanhSachNV();;
-                    break;
+                    case "1":
+                        list.ThemNhanVien();
+                        break;
+                    case "2":
+                        list.XoaNhanVien();
+                        ;
+                        break;
+                    case "3":
+                        list.TimKiemNhanVien();
+                        break;
+                    case "4":
+                        list.SuaNhanVien();
+                        ;
+                        break;
+                    case "5":
+                        list.XuatDanhSachNV();
+                        ;
+                        break;
                 }
             }
-            if(Integer.parseInt(key) == 6) {
+            if (Integer.parseInt(key) == 6) {
                 list.ghiFile();
                 break;
-            } 
+            }
         }
     }
-    
+
     public void ghiFile() {
         FileOutputStream f = null;
         try {
-            f = new FileOutputStream("danhsachnhanvien.txt",false);
-            for(NHANVIEN obj : arrnv) {
+            f = new FileOutputStream("danhsachnhanvien.txt", false);
+            for (NHANVIEN obj : arrnv) {
                 String line = obj.getFileLine();
                 byte[] b = line.getBytes("utf8");
                 f.write(b);
             }
-        } 
-        catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException ex) {
             Logger.getLogger(DANHSACHNHANVIEN.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        catch (UnsupportedEncodingException ex) {
+        } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(DANHSACHNHANVIEN.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             Logger.getLogger(DANHSACHNHANVIEN.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        finally {
-            if(f != null) {
+        } finally {
+            if (f != null) {
                 try {
                     f.close();
                 } catch (Exception ex) {
@@ -220,53 +222,50 @@ public class DANHSACHNHANVIEN {
         }
     }
 
-    public void docfile() throws IOException{   
+    public void docfile() throws IOException {
         FileInputStream f = null;
         InputStreamReader reader = null;
         BufferedReader bufferedReader = null;
         try {
             f = new FileInputStream("danhsachnhanvien.txt");
-            reader = new InputStreamReader(f,StandardCharsets.UTF_8);
+            reader = new InputStreamReader(f, StandardCharsets.UTF_8);
             bufferedReader = new BufferedReader(reader);
             String line = null;
             while ((line = bufferedReader.readLine()) != null) {
-                if(line.isEmpty()) 
+                if (line.isEmpty())
                     continue;
                 NHANVIEN nv = new NHANVIEN();
                 nv.parseNhanVien(line);
                 arrnv.add(nv);
             }
-        }
-        catch(FileNotFoundException ex) {
+        } catch (FileNotFoundException ex) {
             Logger.getLogger(DANHSACHNHANVIEN.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        finally {
-            if(f != null) {
+        } finally {
+            if (f != null) {
                 try {
-                     f.close();
+                    f.close();
                 } catch (IOException ex) {
                     Logger.getLogger(DANHSACHNHANVIEN.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            if(reader != null) {
+            if (reader != null) {
                 try {
-                   reader.close();
-               } catch (IOException ex) {
-                   Logger.getLogger(DANHSACHNHANVIEN.class.getName()).log(Level.SEVERE, null, ex);
-               }
+                    reader.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(DANHSACHNHANVIEN.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-            if(bufferedReader != null) {
+            if (bufferedReader != null) {
                 try {
                     bufferedReader.close();
-               } catch (IOException ex) {
-                   Logger.getLogger(DANHSACHNHANVIEN.class.getName()).log(Level.SEVERE, null, ex);
-               }
+                } catch (IOException ex) {
+                    Logger.getLogger(DANHSACHNHANVIEN.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
     }
-    
-    public static void main(String[] args) throws IOException{
 
+    public static void main(String[] args) throws IOException {
 
         DANHSACHNHANVIEN list = new DANHSACHNHANVIEN();
         NHANVIEN a = new NHANVIEN("123", "hha", "1996", "096", "admin");

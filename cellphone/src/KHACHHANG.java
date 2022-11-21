@@ -14,7 +14,8 @@ public class KHACHHANG {
         namsinh = null;
         sdt = null;
     }
-    public KHACHHANG (String makh,String hoten,String namsinh,String sdt) {
+
+    public KHACHHANG(String makh, String hoten, String namsinh, String sdt) {
 
         this.makh = makh;
         this.hoten = hoten;
@@ -62,15 +63,6 @@ public class KHACHHANG {
         return sdt;
     }
 
-
-    public void setMatk(String matk) {
-        this.matk = matk;
-    }
-
-    public String getMatk() {
-        return matk;
-    }
-
     // HAM NHAP XUAT
     // cua admin
     public void NhapKhachHang() {
@@ -99,22 +91,24 @@ public class KHACHHANG {
     }
 
     public String XuatKhachHang() {
-        return String.format("%-20s%-25s%-15s%-20s",makh,hoten,namsinh,sdt);
+        return String.format("%-20s%-25s%-15s%-20s", makh, hoten, namsinh, sdt);
 
     }
 
     public void XuatKhachHang_1() {
         System.out.println("==============================================================================");
-        System.out.printf("%-20s%-25s%-15s%-20s\n","MA KHACH HANG","HO TEN","NAM SINH","SO DIEN THOAI");
+        System.out.printf("%-20s%-25s%-15s%-20s\n", "MA KHACH HANG", "HO TEN", "NAM SINH", "SO DIEN THOAI");
         System.out.println("==============================================================================");
-        System.out.printf("%-20s%-25s%-15s%-20s%-20s\n",makh,hoten,namsinh,sdt);
+        System.out.printf("%-20s%-25s%-15s%-20s%-20s\n", makh, hoten, namsinh, sdt);
     }
-    //HAM FILE
+
+    // HAM FILE
     public String getFileLine() {
         return makh + "," + hoten + "," + namsinh + "," + sdt + "\n";
     }
+
     public void parseKhachHang(String line) {
-        String [] params = line.split(",");
+        String[] params = line.split(",");
         try {
             this.makh = params[0];
             this.hoten = params[1];
