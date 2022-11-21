@@ -13,31 +13,29 @@ public class tk_list {
 
   public static void main(String[] args) {
     tk_list list = new tk_list();
-    list.readAccountListFromFile();
+    list.MenuDanhSachTaiKhoan();
 
   }
 
-  public int dangKi()// truyền vào 2 biến mảng nhân viên và mảng khách hàng để thao tác
-  {
+  public int dangKi() throws IOException {
     tk_list list = new tk_list();
     DANHSACHKHACHHANG kh = new DANHSACHKHACHHANG();
-
+    kh.docfile(); // đọc file dskh
     list.readAccountListFromFile();
 
     // tạo tài khoản khách hàng
 
     KHACHHANG khtmp = new KHACHHANG();
     String makhtmp;
-    makhtmp = "KH" + b.getArray().size();
+    makhtmp = "KH" + kh.getArray().size();
     khtmp.NhapKhachHang(makhtmp);
-    khtmp.setMatk("TK" + list.listAccount.size());
 
     taikhoan tktmp = new tkKhachHang(makhtmp);
     tktmp.nhapTaikhoan();
     tktmp.setMatk("TK" + list.listAccount.size());
 
     listAccount.add(tktmp);
-    writeAccountListToFile(list.listAccount);
+    list.writeAccountListToFile();
     return 1;
 
   }
@@ -61,23 +59,26 @@ public class tk_list {
   public void xoaTaiKhoan() {
     String matktmp;
     taikhoan tktmp = null;
-    System.out.println("Nhap ma tk can xoa: ");
+
+    System.out.println("Nhap ma tai khoan can xoa: ");
     matktmp = sc.nextLine();
-    for (int i = 0; i < listAccount.size(); i++) {
-      if (listAccount.get(i).getMatk() == matktmp) {
-        listAccount.remove(listAccount.get(i));
+    for (int i = 0; i < this.listAccount.size(); i++) {
+      if (this.listAccount.get(i).getMatk() == matktmp) {
+        this.listAccount.remove(listAccount.get(i));
+        System.out.println("\nXoa tai khoan thanh cong!\n");
+        break;
       }
     }
 
   }
 
-  public void writeAccountListToFile(ArrayList<taikhoan> accountList) {
+  public void writeAccountListToFile() {
     try {
       BufferedWriter writerAdmin = new BufferedWriter(new FileWriter("adminAccount.txt"));
       BufferedWriter writerUser = new BufferedWriter(new FileWriter("userAccount.txt"));
       BufferedWriter writerEmployee = new BufferedWriter(new FileWriter("employeeAccount.txt"));
 
-      for (taikhoan tk : accountList) {
+      for (taikhoan tk : this.listAccount) {
         if (tk instanceof tkAdmin) {
           writerAdmin.write(tk.getMatk() + "," + tk.getTentk() + "," + tk.getPasswd() + "," + tk.getMakhOrNv());
           writerAdmin.close();
@@ -131,13 +132,83 @@ public class tk_list {
   // TODO: viết hàm show tài khoản
 
   public void show_List_Account() {
-    System.out.printf("%-15s%-15s%-15s%-15s%-15s", "Ma tai khoan", "Ten tai khoan", "Mat khau", "Ma nhan vien",
+    System.out.printf("%-15s%-15s%-15s%-15s%-15s\n", "Ma tai khoan", "Ten tai khoan", "Mat khau", "Ma nhan vien",
         "Ma khach hang");
-    for (taikhoan tk : listAccount) {
+    for (taikhoan tk : this.listAccount) {
       tk.xuatThongTinTaiKhoan();
     }
   }
-  // TODO: chỉnh sửa hàm xóa tài khoản
-  // TODO: viết hàm chỉnh sửa tài khoản
 
+  // TODO: viết hàm chỉnh sửa tài khoản
+  public void editAcoountForAdmin() {
+    String matktmp; // mã tài khoản cần chỉnh sửa
+    taikhoan tktmp; // tài khoản cần chỉnh sửa
+    int mode; // lựa chọn thông số cần chỉnh sửa
+
+    System.out.println("Moi nhap ma tai khoan can chinh sua: ");
+    matktmp = sc.next();
+    for (taikhoan tk : this.listAccount) {
+      if (tk.getMatk().equalsIgnoreCase(matktmp)) {
+        while (true) {
+          System.out.println("1. Chinh sua ten tai khoan.");
+          System.out.println("2. Chinh sua mat khau.");
+          System.out.println("3. Chinh sua ma tai khoan.");
+          System.out.println("4. Thoat");
+          System.out.println("Vui long chon: ");
+          mode = sc.nextInt();
+          switch (mode) {
+            case 1:
+              tk.setTentk();
+              System.out.println("\nChinh sua ten tai khoan thanh cong!\n");
+              break;
+            case 2:
+              tk.setPasswd();
+              System.out.println("\nChinh sua mat khau tai khoan thanh cong!\n");
+              break;
+            case 3:
+              tk.setMatk();
+              System.out.println("\nChinh sua ma tai khoan thanh cong!\n");
+              break;
+          }
+
+          if (mode == 4) {
+            break;
+          }
+        }
+        break;
+      }
+
+    }
+  }
+
+  public void MenuDanhSachTaiKhoan() {
+    this.readAccountListFromFile();
+    int mode;
+    while (true) {
+      System.out.println("\n");
+      System.out.println("1.Hien thi danh sach tai khoan");
+      System.out.println("2.Chinh sua tai khoan");
+      System.out.println("3.Xoa tai khoan");
+      System.out.println("4.Thoat.");
+      mode = sc.nextInt();
+      switch (mode) {
+        case 1:
+          this.show_List_Account();
+          break;
+        case 2:
+          this.editAcoountForAdmin();
+          break;
+        case 3:
+          this.xoaTaiKhoan();
+          break;
+      }
+
+      if (mode == 4) {
+        this.writeAccountListToFile();
+        this.show_List_Account();
+        break;
+      }
+
+    }
+  }
 }

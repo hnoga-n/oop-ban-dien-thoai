@@ -37,7 +37,7 @@ public class tkKhachHang extends taikhoan {
   }
 
   public void xuatThongTinTaiKhoan() {
-    System.out.printf("%-15s%-15s%-15s%-15s%-15s", getMatk(), getTentk(), getPasswd(), null, this.makh);
+    System.out.printf("%-15s%-15s%-15s%-15s%-15s\n", getMatk(), getTentk(), getPasswd(), null, this.makh);
   }
 
   public void parseAccount(String line) {
