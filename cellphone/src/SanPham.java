@@ -1,8 +1,9 @@
+import java.util.Scanner;
 
 //import java.util.Scanner;
 
 public class SanPham implements Comparable<SanPham> {
-
+    Scanner sc=new Scanner(System.in);
     public SanPham() {
     }
 

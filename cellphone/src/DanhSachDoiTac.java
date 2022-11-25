@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
@@ -116,10 +115,10 @@ public class DanhSachDoiTac
         FileOutputStream f=null;
         try
         {
-            f=new FileOutputStream("DSDT.txt",false);
+            f=new FileOutputStream("danhsachdoitac.txt",false);
             for(DoiTac dt: arrDT)
             {
-                String line=dt.getFileLine();
+                String line=dt.toString();
                 byte[] b=line.getBytes("utf8");
                 f.write(b);
             }
@@ -155,7 +154,7 @@ public class DanhSachDoiTac
         BufferedReader bfReader = null;
         try
         {
-            f=new FileInputStream("DSDT.txt");
+            f=new FileInputStream("danhsachdoitac.txt");
             reader=new InputStreamReader(f,StandardCharsets.UTF_8);
             bfReader=new BufferedReader(reader);
             String line =null;
