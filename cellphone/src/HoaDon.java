@@ -3,7 +3,7 @@ public class HoaDon {
 
     @Override
     public String toString() {
-        return "Order [Mã hóa đơn=" + mahd + ", Mã tài khản=" + matk + ", Ngày=" + ngay;
+        return "Order [Mã hóa đơn=" + mahd + ", Mã tài khoản=" + matk + ", Ngày=" + ngay;
     }
 
     private String mahd;

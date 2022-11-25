@@ -5,12 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-//import java.io.ObjectInputStream;
-//import java.io.ObjectOutputStream;
-//import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -50,6 +46,13 @@ public class DANHSACHKHACHHANG {
         a.NhapKhachHang();
         arrkh.add(a);
 
+    }
+
+    public void ThemKhachHangDangKi(String makh) throws IOException {
+        KHACHHANG a = new KHACHHANG();
+        a.NhapKhachHang(makh);
+        arrkh.add(a);
+        this.ghiFile();
     }
 
     public KHACHHANG TimKiemKhachHangTheoMaKH(String makh) {
@@ -270,6 +273,5 @@ public class DANHSACHKHACHHANG {
     public static void main(String[] args) throws IOException {
 
         DANHSACHKHACHHANG list = new DANHSACHKHACHHANG();
-        list.MenuDanhSachKhachHang();
     }
 }
