@@ -148,8 +148,8 @@ public class DANHSACHNHANVIEN {
             System.out.println("Khong tim thay nhan vien !");
     }
 
-    public void MenuDanhSachNhanVien(DANHSACHNHANVIEN list) throws IOException {
-        list.docfile();
+    public void MenuDanhSachNhanVien() throws IOException {
+        docfile();
         while (true) {
 
             System.out.println("\n");
@@ -170,27 +170,27 @@ public class DANHSACHNHANVIEN {
             else {
                 switch (key) {
                     case "1":
-                        list.ThemNhanVien();
+                        ThemNhanVien();
                         break;
                     case "2":
-                        list.XoaNhanVien();
+                        XoaNhanVien();
                         ;
                         break;
                     case "3":
-                        list.TimKiemNhanVien();
+                        TimKiemNhanVien();
                         break;
                     case "4":
-                        list.SuaNhanVien();
+                        SuaNhanVien();
                         ;
                         break;
                     case "5":
-                        list.XuatDanhSachNV();
+                        XuatDanhSachNV();
                         ;
                         break;
                 }
             }
             if (Integer.parseInt(key) == 6) {
-                list.ghiFile();
+                ghiFile();
                 break;
             }
         }
@@ -266,17 +266,7 @@ public class DANHSACHNHANVIEN {
     }
 
     public static void main(String[] args) throws IOException {
-
         DANHSACHNHANVIEN list = new DANHSACHNHANVIEN();
-        NHANVIEN a = new NHANVIEN("123", "hha", "1996", "096", "admin");
-        NHANVIEN b = new NHANVIEN("124", "hha", "1996", "096", "admin");
-        NHANVIEN c = new NHANVIEN("125", "hha", "1996", "096", "admin");
-        list.arrnv.add(a);
-        list.arrnv.add(b);
-        list.arrnv.add(c);
-        list.XuatDanhSachNV();
-        list.XoaNhanVien();
-        list.XuatDanhSachNV();
-
+        list.MenuDanhSachNhanVien();
     }
 }

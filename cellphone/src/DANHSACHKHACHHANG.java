@@ -152,7 +152,7 @@ public class DANHSACHKHACHHANG {
             System.out.println("Khong tim thay khach hang !");
     }
 
-    public void MenuDanhSachKhachHang(DANHSACHKHACHHANG list) throws IOException {
+    public void MenuDanhSachKhachHang() throws IOException {
         docfile();
         while (true) {
 
@@ -175,19 +175,19 @@ public class DANHSACHKHACHHANG {
             else {
                 switch (key) {
                     case "1":
-                        list.ThemKhachHang();
+                        ThemKhachHang();
                         break;
                     case "2":
-                        list.XoaKhachHang();
+                        XoaKhachHang();
                         break;
                     case "3":
-                        list.TimKiemKhachHang();
+                        TimKiemKhachHang();
                         break;
                     case "4":
-                        list.SuaKhachHang();
+                        SuaKhachHang();
                         break;
                     case "5":
-                        list.XuatDanhSachKH();
+                        XuatDanhSachKH();
                         break;
                 }
             }
@@ -270,6 +270,6 @@ public class DANHSACHKHACHHANG {
     public static void main(String[] args) throws IOException {
 
         DANHSACHKHACHHANG list = new DANHSACHKHACHHANG();
-        list.MenuDanhSachKhachHang(list);
+        list.MenuDanhSachKhachHang();
     }
 }

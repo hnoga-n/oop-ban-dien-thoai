@@ -11,10 +11,10 @@ public class tk_list {
   private int soLuongtk;
   Scanner sc = new Scanner(System.in);
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException{
     tk_list list = new tk_list();
-    list.MenuDanhSachTaiKhoan();
-
+    //list.MenuDanhSachTaiKhoan();
+    list.dangKi();
   }
 
   public int dangKi() throws IOException {
@@ -35,12 +35,14 @@ public class tk_list {
     tktmp.setMatk("TK" + list.listAccount.size());
 
     listAccount.add(tktmp);
+    kh.ghiFile();
     list.writeAccountListToFile();
     return 1;
 
   }
 
   public taikhoan dangNhap() {
+    readAccountListFromFile();
     String tentktmp;
     String passwdtmp;
     taikhoan tmp = null;
