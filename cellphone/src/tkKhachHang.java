@@ -9,18 +9,18 @@ public class tkKhachHang extends taikhoan {
   public tkKhachHang() {
     super();
     makh = null;
-    cart = new giohang();
+    cart = new giohang(this.getMatk());
   }
 
   public tkKhachHang(String makh) {
     this.makh = makh;
-    cart = new giohang();
+    cart = new giohang(this.getMatk());
   }
 
   public tkKhachHang(String matk, String tentk, String passwd, String makh) {
     super(matk, tentk, passwd);
     this.makh = makh;
-    this.cart = new giohang();
+    this.cart = new giohang(this.getMatk());
   }
 
   public void setMaKh() {
@@ -47,6 +47,7 @@ public class tkKhachHang extends taikhoan {
     this.setTentk(userAttribute[1]);
     this.setPasswd(userAttribute[2]);
     this.setMaKh(userAttribute[3]);
+
   }
 
 }

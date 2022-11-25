@@ -5,12 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-//import java.io.ObjectInputStream;
-//import java.io.ObjectOutputStream;
-//import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -50,6 +46,13 @@ public class DANHSACHKHACHHANG {
         a.NhapKhachHang();
         arrkh.add(a);
 
+    }
+
+    public void ThemKhachHangDangKi(String makh) throws IOException {
+        KHACHHANG a = new KHACHHANG();
+        a.NhapKhachHang(makh);
+        arrkh.add(a);
+        this.ghiFile();
     }
 
     public KHACHHANG TimKiemKhachHangTheoMaKH(String makh) {
@@ -152,7 +155,7 @@ public class DANHSACHKHACHHANG {
             System.out.println("Khong tim thay khach hang !");
     }
 
-    public void MenuDanhSachKhachHang(DANHSACHKHACHHANG list) throws IOException {
+    public void MenuDanhSachKhachHang() throws IOException {
         docfile();
         while (true) {
 
@@ -175,19 +178,19 @@ public class DANHSACHKHACHHANG {
             else {
                 switch (key) {
                     case "1":
-                        list.ThemKhachHang();
+                        ThemKhachHang();
                         break;
                     case "2":
-                        list.XoaKhachHang();
+                        XoaKhachHang();
                         break;
                     case "3":
-                        list.TimKiemKhachHang();
+                        TimKiemKhachHang();
                         break;
                     case "4":
-                        list.SuaKhachHang();
+                        SuaKhachHang();
                         break;
                     case "5":
-                        list.XuatDanhSachKH();
+                        XuatDanhSachKH();
                         break;
                 }
             }
@@ -270,6 +273,5 @@ public class DANHSACHKHACHHANG {
     public static void main(String[] args) throws IOException {
 
         DANHSACHKHACHHANG list = new DANHSACHKHACHHANG();
-        list.MenuDanhSachKhachHang(list);
     }
 }

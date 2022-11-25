@@ -1,8 +1,10 @@
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.System.Logger;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,31 +13,35 @@ public class tk_list {
   private int soLuongtk;
   Scanner sc = new Scanner(System.in);
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
     tk_list list = new tk_list();
-    list.MenuDanhSachTaiKhoan();
+    list.readAccountListFromFile();
+    list.show_List_Account();
+    list.dangKi();
+    list.show_List_Account();
 
   }
 
   public int dangKi() throws IOException {
-    tk_list list = new tk_list();
     DANHSACHKHACHHANG kh = new DANHSACHKHACHHANG();
+
     kh.docfile(); // đọc file dskh
-    list.readAccountListFromFile();
+    this.readAccountListFromFile();
+
+    // tạo khách hàng
+
+    String makhtmp;
+    makhtmp = "KH" + kh.getArray().size();
+    kh.ThemKhachHangDangKi(makhtmp);
 
     // tạo tài khoản khách hàng
 
-    KHACHHANG khtmp = new KHACHHANG();
-    String makhtmp;
-    makhtmp = "KH" + kh.getArray().size();
-    khtmp.NhapKhachHang(makhtmp);
-
     taikhoan tktmp = new tkKhachHang(makhtmp);
     tktmp.nhapTaikhoan();
-    tktmp.setMatk("TK" + list.listAccount.size());
+    tktmp.setMatk("TK" + this.listAccount.size());
 
     listAccount.add(tktmp);
-    list.writeAccountListToFile();
+    this.writeAccountListToFile();
     return 1;
 
   }
@@ -44,11 +50,24 @@ public class tk_list {
     String tentktmp;
     String passwdtmp;
     taikhoan tmp = null;
-    System.out.println("Nhap ten tk:");
-    tentktmp = sc.nextLine();
-    passwdtmp = sc.nextLine();
+
+    System.out.println("Nhap ten tai khoan:");
+    tentktmp = sc.next();
+    System.out.println("Nhap mat khau:");
+    passwdtmp = sc.next();
     for (taikhoan obj : listAccount) {
       if (obj.getTentk().equalsIgnoreCase(tentktmp) && obj.getPasswd().equalsIgnoreCase(passwdtmp)) {
+        tmp = obj;
+        break;
+      }
+    }
+    return tmp;
+  }
+
+  public taikhoan dangNhap(String tentktmp, String passwdtmp) {
+    taikhoan tmp = null;
+    for (taikhoan obj : listAccount) {
+      if (obj.getTentk().equals(tentktmp) && obj.getPasswd().equals(passwdtmp)) {
         tmp = obj;
         break;
       }
@@ -73,49 +92,67 @@ public class tk_list {
   }
 
   public void writeAccountListToFile() {
+    FileOutputStream writerAdmin = null;
+    FileOutputStream writerUser = null;
+    FileOutputStream writerEmployee = null;
     try {
-      BufferedWriter writerAdmin = new BufferedWriter(new FileWriter("adminAccount.txt"));
-      BufferedWriter writerUser = new BufferedWriter(new FileWriter("userAccount.txt"));
-      BufferedWriter writerEmployee = new BufferedWriter(new FileWriter("employeeAccount.txt"));
-
-      for (taikhoan tk : this.listAccount) {
+      writerAdmin = new FileOutputStream("adminAccount.txt", true);
+      writerUser = new FileOutputStream("userAccount.txt", true);
+      writerEmployee = new FileOutputStream("employeeAccount.txt", true);
+      for (taikhoan tk : listAccount) {
         if (tk instanceof tkAdmin) {
-          writerAdmin.write(tk.getMatk() + "," + tk.getTentk() + "," + tk.getPasswd() + "," + tk.getMakhOrNv());
-          writerAdmin.close();
+          String line = tk.getMatk() + "," + tk.getTentk() + "," + tk.getPasswd() + "," + tk.getMakhOrNv() + "\n";
+          byte[] b = line.getBytes("utf8");
+          writerAdmin.write(b);
         }
         if (tk instanceof tkNhanvien) {
-          writerEmployee.write(tk.getMatk() + "," + tk.getTentk() + "," + tk.getPasswd() + "," + tk.getMakhOrNv());
-          writerEmployee.close();
+          String line = tk.getMatk() + "," + tk.getTentk() + "," + tk.getPasswd() + "," + tk.getMakhOrNv() + "\n";
+          byte[] b = line.getBytes("utf8");
+          writerEmployee.write(b);
         }
         if (tk instanceof tkKhachHang) {
-          writerUser.write(tk.getMatk() + "," + tk.getTentk() + "," + tk.getPasswd() + "," + tk.getMakhOrNv());
-          writerUser.close();
+          String line = tk.getMatk() + "," + tk.getTentk() + "," + tk.getPasswd() + "," + tk.getMakhOrNv() + "\n";
+          byte[] b = line.getBytes("utf8");
+          writerUser.write(b);
         }
       }
+
     } catch (IOException e) {
 
-      e.printStackTrace();
+      System.out.println("error: " + e);
+    } finally {
+      if (writerAdmin != null || writerEmployee != null || writerUser != null) {
+        try {
+          writerAdmin.close();
+          writerEmployee.close();
+          writerUser.close();
+        } catch (Exception e) {
+          // TODO: handle exception
+          System.out.println("error: " + e);
+        }
+      }
     }
   }
 
   public void readAccountListFromFile() {
     String line;
+    taikhoan tmp = null;
     try {
       BufferedReader readerAdmin = new BufferedReader(new FileReader("adminAccount.txt"));
       BufferedReader readerUser = new BufferedReader(new FileReader("userAccount.txt"));
       BufferedReader readerEmployee = new BufferedReader(new FileReader("employeeAccount.txt"));
       while ((line = readerAdmin.readLine()) != null) {
-        taikhoan tmp = new tkAdmin();
+        tmp = new tkAdmin();
         tmp.parseAccount(line);
         this.listAccount.add(tmp);
       }
       while ((line = readerUser.readLine()) != null) {
-        taikhoan tmp = new tkKhachHang();
+        tmp = new tkKhachHang();
         tmp.parseAccount(line);
         this.listAccount.add(tmp);
       }
       while ((line = readerEmployee.readLine()) != null) {
-        taikhoan tmp = new tkNhanvien();
+        tmp = new tkNhanvien();
         tmp.parseAccount(line);
         this.listAccount.add(tmp);
       }
@@ -125,7 +162,7 @@ public class tk_list {
       readerUser.close();
     } catch (IOException e) {
 
-      e.printStackTrace();
+      System.out.println("error: " + e);
     }
   }
 
@@ -140,7 +177,7 @@ public class tk_list {
   }
 
   // TODO: viết hàm chỉnh sửa tài khoản
-  public void editAcoountForAdmin() {
+  public void chinhSuaTaiKhoan() {
     String matktmp; // mã tài khoản cần chỉnh sửa
     taikhoan tktmp; // tài khoản cần chỉnh sửa
     int mode; // lựa chọn thông số cần chỉnh sửa
@@ -196,7 +233,7 @@ public class tk_list {
           this.show_List_Account();
           break;
         case 2:
-          this.editAcoountForAdmin();
+          this.chinhSuaTaiKhoan();
           break;
         case 3:
           this.xoaTaiKhoan();
