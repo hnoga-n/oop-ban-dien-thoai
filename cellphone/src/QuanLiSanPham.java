@@ -26,6 +26,10 @@ public class QuanLiSanPham {
         this.danhSach = danhSach;
     }
 
+    public ArrayList<SanPham> getList() {
+        return this.danhSach;
+    }
+
     // thêm
     public void them(SanPham sp) {
         this.danhSach.add(sp);
@@ -73,7 +77,7 @@ public class QuanLiSanPham {
         System.out.println(this.danhSach.size());
     }
 
-    // tìm kiếm
+    // tìm kiếm theo mã sản phẩm
     public void timKiem(String masp) {
 
         for (SanPham product : danhSach) {
@@ -169,7 +173,7 @@ public class QuanLiSanPham {
                     if (line == NULL) {
                         break;
                     }
-                    String txt[] = line.split(", ");
+                    String txt[] = line.split(",");
                     int gia = Integer.parseInt(txt[3]);
                     ChiTietSanPham ctsp = new ChiTietSanPham(txt[5], txt[6], txt[7], txt[8], txt[9]);
                     SanPham sp = new SanPham(txt[0], txt[1], txt[2], gia, txt[4], ctsp);
@@ -352,7 +356,7 @@ public class QuanLiSanPham {
                                 }
                                 StringTokenizer st = new StringTokenizer(line, ",");
 
-                                String txt[] = line.split(", ");
+                                String txt[] = line.split(",");
                                 int gia = Integer.parseInt(txt[3]);
                                 ChiTietSanPham ctsp = new ChiTietSanPham(txt[5], txt[6], txt[7], txt[8], txt[9]);
                                 this.danhSach.add(new SanPham(st.nextToken(), txt[1], txt[2], gia, txt[4], ctsp));

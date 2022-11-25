@@ -148,8 +148,8 @@ public class DANHSACHNHANVIEN {
             System.out.println("Khong tim thay nhan vien !");
     }
 
-    public void MenuDanhSachNhanVien(DANHSACHNHANVIEN list) throws IOException {
-        list.docfile();
+    public void MenuDanhSachNhanVien() throws IOException {
+        docfile();
         while (true) {
 
             System.out.println("\n");
@@ -170,27 +170,27 @@ public class DANHSACHNHANVIEN {
             else {
                 switch (key) {
                     case "1":
-                        list.ThemNhanVien();
+                        ThemNhanVien();
                         break;
                     case "2":
-                        list.XoaNhanVien();
+                        XoaNhanVien();
                         ;
                         break;
                     case "3":
-                        list.TimKiemNhanVien();
+                        TimKiemNhanVien();
                         break;
                     case "4":
-                        list.SuaNhanVien();
+                        SuaNhanVien();
                         ;
                         break;
                     case "5":
-                        list.XuatDanhSachNV();
+                        XuatDanhSachNV();
                         ;
                         break;
                 }
             }
             if (Integer.parseInt(key) == 6) {
-                list.ghiFile();
+                ghiFile();
                 break;
             }
         }
