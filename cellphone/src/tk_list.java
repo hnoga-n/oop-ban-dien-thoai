@@ -47,6 +47,7 @@ public class tk_list {
   }
 
   public taikhoan dangNhap() {
+    readAccountListFromFile();
     String tentktmp;
     String passwdtmp;
     taikhoan tmp = null;
