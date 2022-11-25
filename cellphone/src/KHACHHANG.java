@@ -80,13 +80,14 @@ public class KHACHHANG {
 
     // cua user
     public void NhapKhachHang(String makh) {
+        kiemtra kt = new kiemtra();
         this.makh = makh;
         System.out.print("Nhap ho ten khach hang: ");
         hoten = sc.nextLine();
         System.out.print("Nhap nam sinh khach hang: ");
-        namsinh = sc.nextLine();
+        namsinh = kt.KiemTraNamSinh();
         System.out.print("Nhap so dien thoai khach hang: ");
-        sdt = sc.nextLine();
+        sdt = kt.KiemTraNhapSDT();
         System.out.println("---------------------------");
     }
 

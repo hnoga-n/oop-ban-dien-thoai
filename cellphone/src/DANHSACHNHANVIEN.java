@@ -266,17 +266,7 @@ public class DANHSACHNHANVIEN {
     }
 
     public static void main(String[] args) throws IOException {
-
         DANHSACHNHANVIEN list = new DANHSACHNHANVIEN();
-        NHANVIEN a = new NHANVIEN("123", "hha", "1996", "096", "admin");
-        NHANVIEN b = new NHANVIEN("124", "hha", "1996", "096", "admin");
-        NHANVIEN c = new NHANVIEN("125", "hha", "1996", "096", "admin");
-        list.arrnv.add(a);
-        list.arrnv.add(b);
-        list.arrnv.add(c);
-        list.XuatDanhSachNV();
-        list.XoaNhanVien();
-        list.XuatDanhSachNV();
-
+        list.MenuDanhSachNhanVien();
     }
 }

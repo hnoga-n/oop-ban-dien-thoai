@@ -25,8 +25,7 @@ public class DANHSACHKHACHHANG {
         if (arrkh != null) {
             System.out.println(
                     "===============================================================================================");
-            System.out.printf("%-20s%-25s%-15s%-20s%-20s\n", "MA KHACH HANG", "HO TEN", "NAM SINH", "SO DIEN THOAI",
-                    "MA TAI KHOAN");
+            System.out.printf("%-20s%-25s%-15s%-20s\n", "MA KHACH HANG", "HO TEN", "NAM SINH", "SO DIEN THOAI");
             System.out.println(
                     "===============================================================================================");
 
