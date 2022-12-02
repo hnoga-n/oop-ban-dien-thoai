@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.BufferedReader;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
@@ -93,7 +92,6 @@ public class DanhSachDoiTac {
             System.out.print("\n");
         }
     }
-
     // FILE
     public void ghiFile() {
         FileOutputStream f = null;
@@ -102,6 +100,7 @@ public class DanhSachDoiTac {
             for (DoiTac dt : arrDT) {
                 String line = dt.getFileLine();
                 byte[] b = line.getBytes("utf8");
+
                 f.write(b);
             }
         } catch (FileNotFoundException ex) {
@@ -134,6 +133,7 @@ public class DanhSachDoiTac {
                 if (line.isEmpty())
                     continue;
                 DoiTac dt = new DoiTac();
+
                 dt.parseFile(line);
                 arrDT.add(dt);
             }

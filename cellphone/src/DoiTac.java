@@ -1,6 +1,4 @@
 import java.util.Scanner;
-import java.io.File;
-import java.io.FileNotFoundException;
 //import java.io.FileOutputStream;
 public class DoiTac
 {
@@ -62,59 +60,21 @@ public class DoiTac
         return Mail;
     }
 
+   
+
+
     //IO METHOD
-    public void loadInfoDoiTac()
-    {
-        File load =new File("DSDT.txt");
-        try 
-        {
-            
-            Scanner reader =new Scanner(load);
-            if(reader.hasNext())
-            {
-                String s="";
-                s=s+reader.next();
-                MADT=s;
-            }
-            if(reader.hasNext())
-            {
-                String s="";
-                s=s+reader.next();
-                tenDoiTac=s;
-            }
-            if(reader.hasNext())
-            {
-                String s="";
-                s=s+reader.next();
-                Tel=s;
-            }
-            if(reader.hasNext())
-            {
-                String s="";
-                s=s+reader.next();
-                Mail=s;
-            }
-            reader.close();
-        } 
-        catch (FileNotFoundException e) 
-        {
-            System.out.println("Loi");
-            e.printStackTrace();
-        }
-
-    }
-
     public void xuatDoiTac()
     {
         System.out.printf("%-10s%-20s%-15s%-30s",MADT,tenDoiTac,Tel,Mail);
     }
+    @Override
+    public String toString() {
+        return MADT + "," + tenDoiTac + "," + Tel +"," + Mail + "\n";
+    }
 
 
     //FILE
-    public String getFileLine()
-    {
-        return MADT + "," + tenDoiTac + "," + Tel +"," + Mail + "\n";
-    }
     public void parseFile(String line)
     {
         String [] params= line.split(",");
@@ -137,8 +97,8 @@ public class DoiTac
 
     public static void main(String[]args)
     {
-        DoiTac d1=new DoiTac();
-        d1.loadInfoDoiTac();
-        d1.xuatDoiTac();
+        
+
     }
+    
 }
