@@ -1,16 +1,16 @@
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
+
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.System.Logger;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class tk_list {
   private ArrayList<taikhoan> listAccount = new ArrayList<taikhoan>();
-  private int soLuongtk;
+
   Scanner sc = new Scanner(System.in);
 
   public static void main(String[] args) throws IOException {
@@ -81,7 +81,6 @@ public class tk_list {
 
   public void xoaTaiKhoan() {
     String matktmp;
-    taikhoan tktmp = null;
 
     System.out.println("Nhap ma tai khoan can xoa: ");
     matktmp = sc.nextLine();
@@ -183,7 +182,6 @@ public class tk_list {
   // TODO: viết hàm chỉnh sửa tài khoản
   public void chinhSuaTaiKhoan() {
     String matktmp; // mã tài khoản cần chỉnh sửa
-    taikhoan tktmp; // tài khoản cần chỉnh sửa
     int mode; // lựa chọn thông số cần chỉnh sửa
 
     System.out.println("Moi nhap ma tai khoan can chinh sua: ");
