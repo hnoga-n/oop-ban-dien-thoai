@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.System.Logger;
@@ -139,9 +140,9 @@ public class tk_list {
     String line;
     taikhoan tmp = null;
     try {
-      BufferedReader readerAdmin = new BufferedReader(new InputStreamReader("adminAccount.txt",StandardCharsets.UTF_8));
-      BufferedReader readerUser = new BufferedReader("userAccount.txt"));
-      BufferedReader readerEmployee = new BufferedReader("employeeAccount.txt");
+      BufferedReader readerAdmin = new BufferedReader(new FileReader("adminAccount.txt"));
+      BufferedReader readerUser = new BufferedReader(new FileReader("userAccount.txt"));
+      BufferedReader readerEmployee = new BufferedReader(new FileReader("employeeAccount.txt"));
       while ((line = readerAdmin.readLine()) != null) {
         tmp = new tkAdmin();
         tmp.parseAccount(line);
@@ -157,9 +158,11 @@ public class tk_list {
         tmp.parseAccount(line);
         this.listAccount.add(tmp);
       }
-    }
+      
+    }catch (IOException ex){
+        
+      }
   }
-
   // TODO: viết hàm show tài khoản
 
   public void show_List_Account() {
