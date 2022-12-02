@@ -3,3 +3,4 @@
 03,Tran Van E,1999,0742563189,nhan vien
 04,Nguyen Van D,1989,0923456781,nhan vien
 05,Nguyen Van F,1991,0931245378,nhan vien
+06,Nguyen Van An,2000,0987456321,nhan vien

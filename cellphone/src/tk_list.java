@@ -1,12 +1,13 @@
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.System.Logger;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+
 
 public class tk_list {
   private ArrayList<taikhoan> listAccount = new ArrayList<taikhoan>();
@@ -26,7 +27,6 @@ public class tk_list {
     DANHSACHKHACHHANG kh = new DANHSACHKHACHHANG();
 
     kh.docfile(); // đọc file dskh
-    this.readAccountListFromFile();
 
     // tạo khách hàng
 
@@ -46,7 +46,7 @@ public class tk_list {
 
   }
 
-  public taikhoan dangNhap() {
+  public taikhoan dangNhap() throws IOException{
     readAccountListFromFile();
     String tentktmp;
     String passwdtmp;
@@ -139,9 +139,9 @@ public class tk_list {
     String line;
     taikhoan tmp = null;
     try {
-      BufferedReader readerAdmin = new BufferedReader(new FileReader("adminAccount.txt"));
-      BufferedReader readerUser = new BufferedReader(new FileReader("userAccount.txt"));
-      BufferedReader readerEmployee = new BufferedReader(new FileReader("employeeAccount.txt"));
+      BufferedReader readerAdmin = new BufferedReader(new InputStreamReader("adminAccount.txt",StandardCharsets.UTF_8));
+      BufferedReader readerUser = new BufferedReader("userAccount.txt"));
+      BufferedReader readerEmployee = new BufferedReader("employeeAccount.txt");
       while ((line = readerAdmin.readLine()) != null) {
         tmp = new tkAdmin();
         tmp.parseAccount(line);
@@ -157,13 +157,6 @@ public class tk_list {
         tmp.parseAccount(line);
         this.listAccount.add(tmp);
       }
-
-      readerAdmin.close();
-      readerEmployee.close();
-      readerUser.close();
-    } catch (IOException e) {
-
-      System.out.println("error: " + e);
     }
   }
 
@@ -194,6 +187,7 @@ public class tk_list {
           System.out.println("4. Thoat");
           System.out.println("Vui long chon: ");
           mode = sc.nextInt();
+          sc.nextLine();
           switch (mode) {
             case 1:
               tk.setTentk();
@@ -219,7 +213,7 @@ public class tk_list {
     }
   }
 
-  public void MenuDanhSachTaiKhoan() {
+  public void MenuDanhSachTaiKhoan() throws IOException {
     this.readAccountListFromFile();
     int mode;
     while (true) {
@@ -237,6 +231,7 @@ public class tk_list {
           this.chinhSuaTaiKhoan();
           break;
         case 3:
+          sc.nextLine();
           this.xoaTaiKhoan();
           break;
       }

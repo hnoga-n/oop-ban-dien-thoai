@@ -1,8 +1,7 @@
 import java.util.Scanner;
 
 public class tkAdmin extends taikhoan {
-  private String manv;
-
+  private String manv;  
   public static void main(String[] args) {
 
   }

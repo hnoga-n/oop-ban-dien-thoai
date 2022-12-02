@@ -47,7 +47,6 @@ public class tkKhachHang extends taikhoan {
     this.setTentk(userAttribute[1]);
     this.setPasswd(userAttribute[2]);
     this.setMaKh(userAttribute[3]);
-
   }
 
 }

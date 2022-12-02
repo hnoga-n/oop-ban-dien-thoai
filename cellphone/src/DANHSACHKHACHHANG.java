@@ -157,7 +157,6 @@ public class DANHSACHKHACHHANG {
     public void MenuDanhSachKhachHang() throws IOException {
         docfile();
         while (true) {
-
             System.out.println("\n");
             System.out.println("------------------------------------");
             System.out.println("==========    * MENU *    ==========");
@@ -272,5 +271,6 @@ public class DANHSACHKHACHHANG {
     public static void main(String[] args) throws IOException {
 
         DANHSACHKHACHHANG list = new DANHSACHKHACHHANG();
+        list.MenuDanhSachKhachHang();
     }
 }
