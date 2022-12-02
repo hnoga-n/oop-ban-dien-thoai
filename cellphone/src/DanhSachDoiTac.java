@@ -92,6 +92,7 @@ public class DanhSachDoiTac {
             System.out.print("\n");
         }
     }
+
     // FILE
     public void ghiFile() {
         FileOutputStream f = null;
@@ -100,7 +101,6 @@ public class DanhSachDoiTac {
             for (DoiTac dt : arrDT) {
                 String line = dt.getFileLine();
                 byte[] b = line.getBytes("utf8");
-
                 f.write(b);
             }
         } catch (FileNotFoundException ex) {
@@ -133,7 +133,6 @@ public class DanhSachDoiTac {
                 if (line.isEmpty())
                     continue;
                 DoiTac dt = new DoiTac();
-
                 dt.parseFile(line);
                 arrDT.add(dt);
             }
@@ -162,69 +161,6 @@ public class DanhSachDoiTac {
                 }
             }
         }
-    }
-
-    // MENU
-    public void menuDoiTac() throws IOException {
-        this.docFile();
-        System.out.println("1.Them Doi Tac");
-        System.out.println("2.Tim Doi Tac theo ma");
-        System.out.println("3.Xoa Doi Tac theo ma");
-        System.out.println("4.Chinh sua thong tin Doi Tac");
-        System.out.println("5.Xuat danh sach Doi Tac");
-        System.out.println("6.Xuat so luong Doi tac");
-        System.out.println("0.Thoat");
-        int chon;
-        do {
-            System.out.print("Chon: ");
-            chon = Integer.parseInt(sc.nextLine());
-            switch (chon) {
-                case 1: {
-                    System.out.print("Nhap ma Doi Tac: ");
-                    String ma = sc.nextLine();
-                    System.out.print("Nhap ten Doi Tac: ");
-                    String ten = sc.nextLine();
-                    System.out.print("Nhap so dien thoai: ");
-                    String sdt = sc.nextLine();
-                    System.out.print("Nhap mail Doi Tac: ");
-                    String mail = sc.nextLine();
-                    DoiTac dt = new DoiTac(ma, ten, sdt, mail);
-                    this.them(dt);
-                    break;
-                }
-                case 2: {
-                    System.out.print("Nhap ma cua Doi Tac can tim: ");
-                    String ma = sc.nextLine();
-                    this.tim(ma).xuatDoiTac();
-                    break;
-                }
-                case 3: {
-                    System.out.print("Nhap ma cua Doi Tac can xoa: ");
-                    String ma = sc.nextLine();
-                    this.xoa(ma);
-                    System.out.println("Da xoa Doi Tac " + ma);
-                    break;
-                }
-                case 4: {
-                    System.out.print("Nhap ma cua Doi Tac can sua: ");
-                    String ma = sc.nextLine();
-                    this.sua(ma);
-                    break;
-                }
-                case 5: {
-                    this.xuatDanhSach();
-                    break;
-                }
-                case 6: {
-                    System.out.println("So luong Doi Tac: " + this.soluongDT());
-                    break;
-                }
-                case 0: {
-                    this.ghiFile();
-                    break;
-                }
-            }
-        } while (chon != 0);
     }
 
     public static void main(String[] args) throws IOException {
