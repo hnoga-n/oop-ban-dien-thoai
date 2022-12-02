@@ -271,6 +271,5 @@ public class DANHSACHKHACHHANG {
 
     public static void main(String[] args) throws IOException {
 
-        DANHSACHKHACHHANG list = new DANHSACHKHACHHANG();
     }
 }

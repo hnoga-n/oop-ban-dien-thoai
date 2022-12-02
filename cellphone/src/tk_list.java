@@ -1,21 +1,22 @@
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
+
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.System.Logger;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class tk_list {
   private ArrayList<taikhoan> listAccount = new ArrayList<taikhoan>();
-  private int soLuongtk;
+
   Scanner sc = new Scanner(System.in);
 
   public static void main(String[] args) throws IOException {
     tk_list list = new tk_list();
     list.readAccountListFromFile();
+
     list.show_List_Account();
     list.dangKi();
     list.show_List_Account();
@@ -26,8 +27,6 @@ public class tk_list {
     DANHSACHKHACHHANG kh = new DANHSACHKHACHHANG();
 
     kh.docfile(); // đọc file dskh
-    this.readAccountListFromFile();
-
     // tạo khách hàng
 
     String makhtmp;
@@ -41,7 +40,11 @@ public class tk_list {
     tktmp.setMatk("TK" + this.listAccount.size());
 
     listAccount.add(tktmp);
-    this.writeAccountListToFile();
+    System.out.println("before write");
+    for (taikhoan tk : listAccount) {
+      System.out.println(tk.getTentk());
+    }
+    // this.writeAccountListToFile();
     return 1;
 
   }
@@ -67,7 +70,7 @@ public class tk_list {
 
   public taikhoan dangNhap(String tentktmp, String passwdtmp) {
     taikhoan tmp = null;
-    for (taikhoan obj : listAccount) {
+    for (taikhoan obj : this.listAccount) {
       if (obj.getTentk().equals(tentktmp) && obj.getPasswd().equals(passwdtmp)) {
         tmp = obj;
         break;
@@ -78,7 +81,6 @@ public class tk_list {
 
   public void xoaTaiKhoan() {
     String matktmp;
-    taikhoan tktmp = null;
 
     System.out.println("Nhap ma tai khoan can xoa: ");
     matktmp = sc.nextLine();
@@ -93,45 +95,45 @@ public class tk_list {
   }
 
   public void writeAccountListToFile() {
-    FileOutputStream writerAdmin = null;
-    FileOutputStream writerUser = null;
-    FileOutputStream writerEmployee = null;
+    File newWriterAdmin1 = new File("adminAccount.txt");
+    File newWriterAdmin2 = new File("userAccount.txt");
+    File newWriterAdmin3 = new File("employeeAccount.txt");
     try {
-      writerAdmin = new FileOutputStream("adminAccount.txt", true);
-      writerUser = new FileOutputStream("userAccount.txt", true);
-      writerEmployee = new FileOutputStream("employeeAccount.txt", true);
-      for (taikhoan tk : listAccount) {
+      FileWriter writerAdmin = new FileWriter(newWriterAdmin1, false);
+      FileWriter writerUser = new FileWriter(newWriterAdmin2, false);
+      FileWriter writerEmployee = new FileWriter(newWriterAdmin3, false);
+      String line = "";
+      for (taikhoan tk : this.listAccount) {
         if (tk instanceof tkAdmin) {
-          String line = tk.getMatk() + "," + tk.getTentk() + "," + tk.getPasswd() + "," + tk.getMakhOrNv() + "\n";
-          byte[] b = line.getBytes("utf8");
-          writerAdmin.write(b);
-        }
-        if (tk instanceof tkNhanvien) {
-          String line = tk.getMatk() + "," + tk.getTentk() + "," + tk.getPasswd() + "," + tk.getMakhOrNv() + "\n";
-          byte[] b = line.getBytes("utf8");
-          writerEmployee.write(b);
-        }
-        if (tk instanceof tkKhachHang) {
-          String line = tk.getMatk() + "," + tk.getTentk() + "," + tk.getPasswd() + "," + tk.getMakhOrNv() + "\n";
-          byte[] b = line.getBytes("utf8");
-          writerUser.write(b);
+          System.out.println(tk.getTentk());
+          line = tk.getMatk() + "," + tk.getTentk() + "," + tk.getPasswd() + "," + tk.getMakhOrNv();
+          writerAdmin.write(line);
+          writerAdmin.write("\n");
         }
       }
+      writerAdmin.close();
+
+      for (taikhoan tk : listAccount) {
+        if (tk instanceof tkNhanvien) {
+          line = tk.getMatk() + "," + tk.getTentk() + "," + tk.getPasswd() + "," +
+              tk.getMakhOrNv();
+          writerEmployee.write(line);
+          writerEmployee.write("\n");
+        }
+      }
+      writerEmployee.close();
+      for (taikhoan tk : listAccount) {
+        if (tk instanceof tkKhachHang) {
+          line = tk.getMatk() + "," + tk.getTentk() + "," + tk.getPasswd() + "," +
+              tk.getMakhOrNv();
+          writerUser.write(line);
+          writerUser.write("\n");
+        }
+      }
+      writerUser.close();
 
     } catch (IOException e) {
-
       System.out.println("error: " + e);
-    } finally {
-      if (writerAdmin != null || writerEmployee != null || writerUser != null) {
-        try {
-          writerAdmin.close();
-          writerEmployee.close();
-          writerUser.close();
-        } catch (Exception e) {
-          // TODO: handle exception
-          System.out.println("error: " + e);
-        }
-      }
     }
   }
 
@@ -180,7 +182,6 @@ public class tk_list {
   // TODO: viết hàm chỉnh sửa tài khoản
   public void chinhSuaTaiKhoan() {
     String matktmp; // mã tài khoản cần chỉnh sửa
-    taikhoan tktmp; // tài khoản cần chỉnh sửa
     int mode; // lựa chọn thông số cần chỉnh sửa
 
     System.out.println("Moi nhap ma tai khoan can chinh sua: ");
