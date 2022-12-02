@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
@@ -11,283 +10,162 @@ import java.nio.charset.StandardCharsets;
 import java.io.UnsupportedEncodingException;
 import java.io.IOException;
 import java.io.FileNotFoundException;
-public class DanhSachDoiTac
-{
-    public ArrayList<DoiTac> arrDT=new ArrayList<DoiTac>();
-    Scanner sc=new Scanner(System.in);
-    public int soluongDT()
-    {
+
+public class DanhSachDoiTac {
+    public ArrayList<DoiTac> arrDT = new ArrayList<DoiTac>();
+    Scanner sc = new Scanner(System.in);
+
+    public int soluongDT() {
         return arrDT.size();
     }
-    
-    
-    public void them(DoiTac dt)
-    {
+
+    public void them(DoiTac dt) {
         arrDT.add(dt);
     }
-   
-    public DoiTac tim(String Ma)
-    {
-        for(DoiTac dt: arrDT)
-        {
-            if(dt.getMADT().equals(Ma)) return dt;
+
+    public DoiTac tim(String Ma) {
+        for (DoiTac dt : arrDT) {
+            if (dt.getMADT().equals(Ma))
+                return dt;
         }
         return null;
     }
-    
-    public void xoa(String Ma)
-    {
-        for(DoiTac dt: arrDT)
-        {
-            if(dt.getMADT().equals(Ma)) arrDT.remove(dt);
+
+    public void xoa(String Ma) {
+        for (DoiTac dt : arrDT) {
+            if (dt.getMADT().equals(Ma))
+                arrDT.remove(dt);
             break;
-        }      
+        }
     }
-    
-    public void sua(String Ma)
-    {
+
+    public void sua(String Ma) {
         int chon;
         System.out.println("1.Sua ma Doi Tac");
         System.out.println("2.Sua ten Doi Tac");
         System.out.println("3.Sua so dien thoai");
         System.out.println("4.Sua mail Doi Tac");
         System.out.println("0.Tro lai");
-        for(DoiTac dt: arrDT)
-        {
+        for (DoiTac dt : arrDT) {
 
-            if(dt.getMADT().equals(Ma))
-            {
-                do
-                {
+            if (dt.getMADT().equals(Ma)) {
+                do {
                     System.out.print("Chon: ");
-                    chon=Integer.parseInt(sc.nextLine());
-                    switch(chon)
-                    {
-                        case 1: 
-                        {
+                    chon = Integer.parseInt(sc.nextLine());
+                    switch (chon) {
+                        case 1: {
                             System.out.print("Nhap ma Doi Tac moi: ");
-                            String s=sc.nextLine();
+                            String s = sc.nextLine();
                             dt.setMADT(s);
                             break;
                         }
-                        case 2:
-                        {
+                        case 2: {
                             System.out.print("Nhap ten Doi Tac moi: ");
-                            String s=sc.nextLine();
+                            String s = sc.nextLine();
                             dt.setTenDoiTac(s);
                             break;
                         }
-                        case 3: 
-                        {
+                        case 3: {
                             System.out.print("Nhap so dien thoai moi: ");
-                            String s=sc.nextLine();
+                            String s = sc.nextLine();
                             dt.setTel(s);
                             break;
                         }
-                        case 4:
-                        {
+                        case 4: {
                             System.out.print("Nhap mail Doi Tac moi: ");
-                            String s=sc.nextLine();
+                            String s = sc.nextLine();
                             dt.setMail(s);
                             break;
-                        } 
-                        case 0: break;                 
+                        }
+                        case 0:
+                            break;
                     }
-                }
-                while(chon!=0);
+                } while (chon != 0);
                 break;
             }
         }
     }
-    
-    
-    public void xuatDanhSach()
-    {
-        for(DoiTac dt: arrDT)
-        {
+
+    public void xuatDanhSach() {
+        for (DoiTac dt : arrDT) {
             dt.xuatDoiTac();
             System.out.print("\n");
         }
     }
 
-    //FILE
-    public void ghiFile()
-    {
-        FileOutputStream f=null;
-        try
-        {
-            f=new FileOutputStream("DSDT.txt",false);
-            for(DoiTac dt: arrDT)
-            {
-                String line=dt.getFileLine();
-                byte[] b=line.getBytes("utf8");
+    // FILE
+    public void ghiFile() {
+        FileOutputStream f = null;
+        try {
+            f = new FileOutputStream("DSDT.txt", false);
+            for (DoiTac dt : arrDT) {
+                String line = dt.getFileLine();
+                byte[] b = line.getBytes("utf8");
                 f.write(b);
             }
-        }
-        catch(FileNotFoundException ex)
-        {
-            Logger.getLogger(DanhSachDoiTac.class.getName()).log(Level.SEVERE,null,ex);
-        }
-        catch (UnsupportedEncodingException ex) {
+        } catch (FileNotFoundException ex) {
             Logger.getLogger(DanhSachDoiTac.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        catch (IOException ex) {
+        } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(DanhSachDoiTac.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        finally
-        {
+        } catch (IOException ex) {
+            Logger.getLogger(DanhSachDoiTac.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
             if (f != null) {
-                try 
-                {
+                try {
                     f.close();
-                } catch (Exception ex) 
-                {
+                } catch (Exception ex) {
                     Logger.getLogger(DanhSachDoiTac.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
     }
 
-    public void docFile() throws IOException
-    {
-        FileInputStream f=null;
+    public void docFile() throws IOException {
+        FileInputStream f = null;
         InputStreamReader reader = null;
         BufferedReader bfReader = null;
-        try
-        {
-            f=new FileInputStream("DSDT.txt");
-            reader=new InputStreamReader(f,StandardCharsets.UTF_8);
-            bfReader=new BufferedReader(reader);
-            String line =null;
-            while((line=bfReader.readLine())!=null)
-            {
-                if(line.isEmpty()) continue;
-                DoiTac dt=new DoiTac();
+        try {
+            f = new FileInputStream("DSDT.txt");
+            reader = new InputStreamReader(f, StandardCharsets.UTF_8);
+            bfReader = new BufferedReader(reader);
+            String line = null;
+            while ((line = bfReader.readLine()) != null) {
+                if (line.isEmpty())
+                    continue;
+                DoiTac dt = new DoiTac();
                 dt.parseFile(line);
                 arrDT.add(dt);
             }
-        }
-        catch(FileNotFoundException ex)
-        {
+        } catch (FileNotFoundException ex) {
             Logger.getLogger(DanhSachDoiTac.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        finally
-        {
-            if(f!=null)
-            {
-                try
-                {
+        } finally {
+            if (f != null) {
+                try {
                     f.close();
-                }
-                catch (IOException ex) 
-                {
+                } catch (IOException ex) {
                     Logger.getLogger(DanhSachDoiTac.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            if(reader!=null)
-            {
-                try
-                {
+            if (reader != null) {
+                try {
                     reader.close();
-                }
-                catch (IOException ex) 
-                {
+                } catch (IOException ex) {
                     Logger.getLogger(DanhSachDoiTac.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            if(bfReader!=null)
-            {
-                try 
-                {
-                    bfReader.close();  
-                }
-                catch (IOException ex) 
-                {
+            if (bfReader != null) {
+                try {
+                    bfReader.close();
+                } catch (IOException ex) {
                     Logger.getLogger(DanhSachDoiTac.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
     }
 
-    // MENU
-    public void menuDoiTac() throws IOException
-    {
-        this.docFile();
-        System.out.println("1.Them Doi Tac");
-        System.out.println("2.Tim Doi Tac theo ma");
-        System.out.println("3.Xoa Doi Tac theo ma");
-        System.out.println("4.Chinh sua thong tin Doi Tac");
-        System.out.println("5.Xuat danh sach Doi Tac");
-        System.out.println("6.Xuat so luong Doi tac");
-        System.out.println("0.Thoat");
-        int chon;
-        do
-        {
-            System.out.print("Chon: ");
-            chon=Integer.parseInt(sc.nextLine());
-            switch(chon)
-            {
-                case 1:
-                {
-                    System.out.print("Nhap ma Doi Tac: ");
-                    String ma=sc.nextLine();
-                    System.out.print("Nhap ten Doi Tac: ");
-                    String ten=sc.nextLine();
-                    System.out.print("Nhap so dien thoai: ");
-                    String sdt=sc.nextLine();
-                    System.out.print("Nhap mail Doi Tac: ");
-                    String mail=sc.nextLine();
-                    DoiTac dt=new DoiTac(ma,ten,sdt,mail);
-                    this.them(dt);
-                    break;
-                }
-                case 2:
-                {
-                    System.out.print("Nhap ma cua Doi Tac can tim: ");
-                    String ma=sc.nextLine();
-                    this.tim(ma).xuatDoiTac();
-                    break;
-                }
-                case 3:
-                {
-                    System.out.print("Nhap ma cua Doi Tac can xoa: ");
-                    String ma=sc.nextLine();
-                    this.xoa(ma);
-                    System.out.println("Da xoa Doi Tac " + ma);
-                    break;
-                }
-                case 4:
-                {
-                    System.out.print("Nhap ma cua Doi Tac can sua: ");
-                    String ma=sc.nextLine();
-                    this.sua(ma);
-                    break;
-                }
-                case 5:
-                {
-                    this.xuatDanhSach();
-                    break;
-                }
-                case 6:
-                {
-                    System.out.println("So luong Doi Tac: " + this.soluongDT());
-                    break;
-                }
-                case 0:
-                {
-                    this.ghiFile();
-                    break;
-                }
-            }         
-        }
-        while(chon!=0);
-    }
-
-
-    public static void main(String[] args) throws IOException
-    {
-        DanhSachDoiTac dsdt =new DanhSachDoiTac();
-        DoiTac d=new DoiTac("DT4","Huawei","1111222233","huawei@gmail.com");
+    public static void main(String[] args) throws IOException {
+        DanhSachDoiTac dsdt = new DanhSachDoiTac();
+        DoiTac d = new DoiTac("DT4", "Huawei", "1111222233", "huawei@gmail.com");
         dsdt.docFile();
         dsdt.them(d);
         dsdt.xuatDanhSach();

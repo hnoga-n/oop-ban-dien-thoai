@@ -50,4 +50,11 @@ public class HoaDonBanHang extends HoaDon {
         System.out.println("Mã khách hàng: " + makh + "\nMã nhân viên: " + manv + "\nĐiểm khách hàng: " + diemkh);
         super.xuatHoaDon();
     }
+
+    public String dinhDangGhiVaoFile() {
+        return this.getMahd() + "\n" + makh + "\n" + diemkh + "\n"
+                + this.getmatk() + "\n" + manv + "\n" + this.getNgay()
+                + "\n" + this.getdssp().dinhDangFileHoaDon()
+                + this.getdssp().tongGia();
+    }
 }

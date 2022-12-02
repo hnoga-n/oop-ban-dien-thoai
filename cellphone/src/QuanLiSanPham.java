@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.StringTokenizer;
 
 public class QuanLiSanPham {
     private static final String NULL = null;
@@ -52,6 +51,14 @@ public class QuanLiSanPham {
     }
 
     // Tổng giá
+    public int getTonggia() {
+        return tonggia;
+    }
+
+    public void setTonggia(int tonggia) {
+        this.tonggia = tonggia;
+    }
+
     public int tongGia() {
         tonggia = 0;
         for (SanPham sanPham : danhSach) {
@@ -77,7 +84,7 @@ public class QuanLiSanPham {
         System.out.println(this.danhSach.size());
     }
 
-    // tìm kiếm theo mã sản phẩm
+    // tìm kiếm
     public void timKiem(String masp) {
 
         for (SanPham product : danhSach) {
@@ -173,7 +180,7 @@ public class QuanLiSanPham {
                     if (line == NULL) {
                         break;
                     }
-                    String txt[] = line.split(",");
+                    String txt[] = line.split(", ");
                     int gia = Integer.parseInt(txt[3]);
                     ChiTietSanPham ctsp = new ChiTietSanPham(txt[5], txt[6], txt[7], txt[8], txt[9]);
                     SanPham sp = new SanPham(txt[0], txt[1], txt[2], gia, txt[4], ctsp);
@@ -354,12 +361,11 @@ public class QuanLiSanPham {
                                 if (line == NULL) {
                                     break;
                                 }
-                                StringTokenizer st = new StringTokenizer(line, ",");
-
                                 String txt[] = line.split(",");
                                 int gia = Integer.parseInt(txt[3]);
                                 ChiTietSanPham ctsp = new ChiTietSanPham(txt[5], txt[6], txt[7], txt[8], txt[9]);
-                                this.danhSach.add(new SanPham(st.nextToken(), txt[1], txt[2], gia, txt[4], ctsp));
+                                SanPham sp = new SanPham(txt[0], txt[1], txt[2], gia, txt[4], ctsp);
+                                this.danhSach.add(sp);
 
                             }
                             br.close();
@@ -379,6 +385,17 @@ public class QuanLiSanPham {
 
             } while (luaChon0 != 0);
         }
+    }
+
+    // Định dạng cho file hóa đơn.
+    public String dinhDangFileHoaDon() {
+        String s = "";
+        for (SanPham sanPham : danhSach) {
+            String s1 = sanPham.getMasp() + "," + sanPham.getTensp() + "," + sanPham.getHang() + "," + sanPham.getGia()
+                    + "," + sanPham.getThoiGianBaoHanh() + "\n";
+            s = s + s1;
+        }
+        return s;
     }
 
 }

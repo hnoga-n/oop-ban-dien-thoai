@@ -8,9 +8,15 @@ public class giohang {
   Scanner sc = new Scanner(System.in);
 
   // private ArrayList<sanpham> inventoryProduct = new ArrayList<sanpham>();
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
     giohang cart = new giohang("tk1");
-
+    QuanLiSanPham dssp = new QuanLiSanPham();
+    dssp.docDuLieuTuFile();
+    cart.themSp();
+    cart.themSp();
+    cart.xemGiohang();
+    cart.goSpKhoiGiohang();
+    cart.xemGiohang();
   }
 
   public giohang(String matk) {
@@ -39,7 +45,7 @@ public class giohang {
   }
 
   // TODO: GÕ SP KHỎI GIỎ HÀNG
-  public void goSpKhoiGiohang() {
+  public int goSpKhoiGiohang() {
     String masptmp;
 
     System.out.println("Nhap ma san pham can go: ");
@@ -48,10 +54,11 @@ public class giohang {
       if (sp.getMasp().equalsIgnoreCase(masptmp)) {
         spcart.remove(sp);
         System.out.println("Go san pham thanh cong!");
-        break;
+        return 1;
       }
     }
     System.out.println("Khong tim thay san pham trong gio hang ");
+    return -1;
   }
 
   // TODO: XÓA TẤT CẢ SP KHỎI GIỎ HÀNG
@@ -81,8 +88,8 @@ public class giohang {
     return 1;
   }
 
-  public long tongGia() {
-    long tonggia = 0;
+  public int tongGia() {
+    int tonggia = 0;
     for (SanPham sp : spcart) {
       tonggia = tonggia + sp.getGia();
     }
