@@ -223,6 +223,7 @@ public class DANHSACHNHANVIEN {
     }
 
     public void docfile() throws IOException {
+        this.arrnv.clear();
         FileInputStream f = null;
         InputStreamReader reader = null;
         BufferedReader bufferedReader = null;

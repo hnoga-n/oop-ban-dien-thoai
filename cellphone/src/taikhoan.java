@@ -26,7 +26,6 @@ public abstract class taikhoan {
     this.matk = matk;
     this.tentk = tentk;
     this.passwd = passwd;
-
   }
 
   public void setMatk() {
@@ -73,4 +72,7 @@ public abstract class taikhoan {
     this.setPasswd();
   }
 
+  public String getFileLine() {
+      return getMatk() + "," + getTentk() + "," + getPasswd() + "," + getMakhOrNv() + "\n";
+}
 }

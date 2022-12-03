@@ -157,7 +157,6 @@ public class DANHSACHKHACHHANG {
     public void MenuDanhSachKhachHang() throws IOException {
         docfile();
         while (true) {
-
             System.out.println("\n");
             System.out.println("------------------------------------");
             System.out.println("==========    * MENU *    ==========");
@@ -227,6 +226,7 @@ public class DANHSACHKHACHHANG {
     }
 
     public void docfile() throws IOException {
+        this.arrkh.clear();
         FileInputStream f = null;
         InputStreamReader reader = null;
         BufferedReader bufferedReader = null;

@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class HoaDonBanHang extends HoaDon {
 
@@ -46,15 +47,38 @@ public class HoaDonBanHang extends HoaDon {
         this.diemkh = diemkh;
     }
 
+    public String getManv() {
+        return manv;
+    }
+
+    public void setManv(String manv) {
+        this.manv = manv;
+    }
+
     public void xuatHoaDonBanHang() {
-        System.out.println("Mã khách hàng: " + makh + "\nMã nhân viên: " + manv + "\nĐiểm khách hàng: " + diemkh);
+        System.out.println(
+                "----------------------------------------------------------------------------------------------------------------------"
+                        + "\nMa khach hang: " + makh
+                        + "\n----------------------------------------------------------------------------------------------------------------------"
+                        + "\nMa nhan vien: " + manv
+                        + "\n----------------------------------------------------------------------------------------------------------------------"
+                        + "\nDiem khach hang: " + diemkh);
         super.xuatHoaDon();
     }
 
     public String dinhDangGhiVaoFile() {
         return this.getMahd() + "\n" + makh + "\n" + diemkh + "\n"
                 + this.getmatk() + "\n" + manv + "\n" + this.getNgay()
-                + "\n" + this.getdssp().dinhDangFileHoaDon()
-                + this.getdssp().tongGia();
+                + "\n" + this.getdssp().tongGia() + this.getdssp().dinhDangFileHoaDon();
     }
+
+    public void suaDanhSachSanPham() {
+        try (Scanner sc = new Scanner(System.in)) {
+            System.out.println("Nhap ma san pham can sua: ");
+            String masp = sc.nextLine();
+            this.getdssp().sua(masp);
+
+        }
+    }
+
 }

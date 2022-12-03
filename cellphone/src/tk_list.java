@@ -7,6 +7,8 @@ import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 public class tk_list {
   private ArrayList<taikhoan> listAccount = new ArrayList<taikhoan>();
@@ -15,7 +17,7 @@ public class tk_list {
 
   public static void main(String[] args) throws IOException {
     tk_list list = new tk_list();
-    list.show_List_Account();
+
   }
 
   public int dangKi() throws IOException {
@@ -35,15 +37,12 @@ public class tk_list {
     tktmp.setMatk("TK" + this.listAccount.size());
 
     listAccount.add(tktmp);
-    for (taikhoan tk : listAccount) {
-      System.out.println(tk.getTentk());
-    }
     this.writeAccountListToFile();
     return 1;
 
   }
 
-  public taikhoan dangNhap() {
+  public taikhoan dangNhap() throws IOException {
     String tentktmp;
     String passwdtmp;
     taikhoan tmp = null;
@@ -130,6 +129,7 @@ public class tk_list {
   }
 
   public void readAccountListFromFile() {
+    this.listAccount.clear();
     String line;
     taikhoan tmp = null;
     this.listAccount.clear();
@@ -153,15 +153,10 @@ public class tk_list {
         this.listAccount.add(tmp);
       }
 
-      readerAdmin.close();
-      readerEmployee.close();
-      readerUser.close();
-    } catch (IOException e) {
+    } catch (IOException ex) {
 
-      System.out.println("error: " + e);
     }
   }
-
   // TODO: viết hàm show tài khoản
 
   public void show_List_Account() {
@@ -188,6 +183,7 @@ public class tk_list {
           System.out.println("4. Thoat");
           System.out.println("Vui long chon: ");
           mode = sc.nextInt();
+          sc.nextLine();
           switch (mode) {
             case 1:
               tk.setTentk();
@@ -231,6 +227,7 @@ public class tk_list {
           this.chinhSuaTaiKhoan();
           break;
         case 3:
+          sc.nextLine();
           this.xoaTaiKhoan();
           break;
       }
