@@ -18,11 +18,7 @@ public class tk_list {
 
   public static void main(String[] args) throws IOException {
     tk_list list = new tk_list();
-    list.readAccountListFromFile();
 
-    list.show_List_Account();
-    list.dangKi();
-    list.show_List_Account();
 
   }
 
@@ -43,17 +39,12 @@ public class tk_list {
     tktmp.setMatk("TK" + this.listAccount.size());
 
     listAccount.add(tktmp);
-    System.out.println("before write");
-    for (taikhoan tk : listAccount) {
-      System.out.println(tk.getTentk());
-    }
-    // this.writeAccountListToFile();
+    this.writeAccountListToFile();
     return 1;
 
   }
 
   public taikhoan dangNhap() throws IOException{
-    readAccountListFromFile();
     String tentktmp;
     String passwdtmp;
     taikhoan tmp = null;
@@ -141,6 +132,7 @@ public class tk_list {
   }
 
   public void readAccountListFromFile() {
+    this.listAccount.clear();
     String line;
     taikhoan tmp = null;
     try {

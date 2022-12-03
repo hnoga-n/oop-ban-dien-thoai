@@ -226,6 +226,7 @@ public class DANHSACHKHACHHANG {
     }
 
     public void docfile() throws IOException {
+        this.arrkh.clear();
         FileInputStream f = null;
         InputStreamReader reader = null;
         BufferedReader bufferedReader = null;

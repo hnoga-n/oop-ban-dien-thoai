@@ -1,9 +1,10 @@
 
+
 public class HoaDon {
 
     @Override
     public String toString() {
-        return "Order [Mã hóa đơn=" + mahd + ", Mã tài khản=" + matk + ", Ngày=" + ngay;
+        return "Order [Ma hoa don=" + mahd + ", Ma tai khoan=" + matk + ", Ngay=" + ngay;
     }
 
     private String mahd;
@@ -54,9 +55,13 @@ public class HoaDon {
     }
 
     public void xuatHoaDon() {
-        System.out.println("Mã hóa đơn: " + mahd + "\nMã tài khoản: " + matk + "\nNgày: " + ngay);
+        System.out.println("----------------------------------------------------------------------------------------------------------------------");
+        System.out.println("Ma hoa don: " + mahd + "\n----------------------------------------------------------------------------------------------------------------------"
+                + "\nMa tai khoan: " + matk + "\n----------------------------------------------------------------------------------------------------------------------" + "\nNgay: "
+                + ngay);
         dssp.xuatDanhSach();
-        System.out.println("\nTổng giá: " + dssp.tongGia());
+        System.out.println("\nTong gia: " + dssp.tongGia());
+        System.out.println("----------------------------------------------------------------------------------------------------------------------\n");
     }
 
 }

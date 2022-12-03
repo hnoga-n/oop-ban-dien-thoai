@@ -2,9 +2,16 @@ import java.util.Scanner;
 import java.io.IOException;
 public class menuchucnang implements interface_menuchucnang{
     Scanner sc = new Scanner(System.in);
-    
+    DANHSACHKHACHHANG listkh = new DANHSACHKHACHHANG();
+    DANHSACHNHANVIEN listnv = new DANHSACHNHANVIEN();
+    QuanLiSanPham listsp = new QuanLiSanPham();
+    tk_list listtk = new tk_list();
+    DanhSachDoiTac listdt = new DanhSachDoiTac();
+    DanhSachHoaDonBanHang listbh = new DanhSachHoaDonBanHang();
+    DanhsachHoaDonNhapHang listnh = new DanhsachHoaDonNhapHang();
     public void Menuchinh() throws IOException {
         tk_list listtk = new tk_list();
+        listtk.readAccountListFromFile();
         while (true) {
             System.out.println("\n");
             System.out.println("------------------------------------");
@@ -49,10 +56,6 @@ public class menuchucnang implements interface_menuchucnang{
     }
 
     public void Menuchucnangadmin() throws IOException{
-        DANHSACHKHACHHANG listkh = new DANHSACHKHACHHANG();
-        DANHSACHNHANVIEN listnv = new DANHSACHNHANVIEN();
-        QuanLiSanPham listsp = new QuanLiSanPham();
-        tk_list listtk = new tk_list();
         while (true) {
             System.out.println("\n");
             System.out.println("------------------------------------");
@@ -82,8 +85,36 @@ public class menuchucnang implements interface_menuchucnang{
                         listsp.chucNang();
                         break;
                     case "4":
+                        listdt.menuDoiTac();
                         break;
                     case "5":
+                        while (true) {
+                            System.out.println("\n");
+                            System.out.println("------------------------------------");
+                            System.out.println("==========    * MENU *    ==========");
+                            System.out.println("------------------------------------");
+                            System.out.println("1. Hoa don ban hang");
+                            System.out.println("2. Hoa don nhap hang");
+                            System.out.println("3. Thoat");
+                            System.out.println("------------------------------------");
+                            System.out.print("Chon: ");
+                            String key1 = sc.nextLine();
+                            if (Integer.parseInt(key1) < 1 || Integer.parseInt(key1) > 3)
+                                System.out.println("Vui long chon so tu 1 den 3 !");
+                            else {
+                                switch (key1) {
+                                    case "1":
+                                        listbh.Menu();
+                                        break;
+                                    case "2":
+                                        listnh.Menu();
+                                        break;
+                                }
+                            }
+                            if (Integer.parseInt(key1) == 3) {
+                                break;
+                            }
+                        }
                         break;
                     case "6":
                         listtk.MenuDanhSachTaiKhoan();

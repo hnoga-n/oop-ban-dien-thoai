@@ -1,9 +1,8 @@
-import java.util.Scanner;
 
 //import java.util.Scanner;
 
 public class SanPham implements Comparable<SanPham> {
-    Scanner sc=new Scanner(System.in);
+
     public SanPham() {
     }
 
@@ -85,7 +84,7 @@ public class SanPham implements Comparable<SanPham> {
 
     @Override
     public String toString() {
-        return masp + ", " + tensp + ", " + hang + ", " + gia + ", " + thoiGianBaoHanh + ", "
+        return masp + "," + tensp + "," + hang + "," + gia + "," + thoiGianBaoHanh + ","
                 + this.getChitietsp().toString();
     }
 
@@ -122,16 +121,23 @@ public class SanPham implements Comparable<SanPham> {
 
     // xuất thông tin chi tiết
     public void XuatThongTinChiTiet() {
-        System.out.println("Thông tin chi tiết sản phẩm:");
-        System.out.println("Mã sản phẩm: " + masp + "\nTên sản phảm: " + tensp + "\nHãng: " + hang + "\nGiá: " + gia
-                + "\nThời gian bảo hành: " + thoiGianBaoHanh + "\nChi tiết:\n " + chitietsp);
+        System.out.println("---------------------------------------------------");
+        System.out.println("Thong tin chi tiet san pham:");
+        System.out.println("---------------------------------------------------" + "\nMa san pham: " + masp
+                + "\n---------------------------------------------------" + "\nTen san pham: " + tensp
+                + "\n---------------------------------------------------" + "\nHang: " + hang
+                + "\n---------------------------------------------------" + "\nGia: " + gia
+                + "\n---------------------------------------------------"
+                + "\nThoi gian bao hanh: " + thoiGianBaoHanh + "\n---------------------------------------------------"
+                + "\nChi tiết: ");
+        this.chitietsp.XuatMoTaSanPham();
 
     }
 
     // xuất thông tin dùng cho phương thức tìmkiếm ở quản lí danh sách
     public String XuatThongTin() {
-        return "Mã sản phẩm: " + masp + ";  Tên sản phảm: " + tensp + ";  Hãng: " + hang + ";  Giá: " + gia
-                + ";  Thời gian bảo hành: " + thoiGianBaoHanh;
+        return "Ma san pham: " + masp + ";  Ten san pham: " + tensp + ";  Hang: " + hang + ";  Gia: " + gia
+                + ";  Thoi gian bao hanh: " + thoiGianBaoHanh;
 
     }
 
