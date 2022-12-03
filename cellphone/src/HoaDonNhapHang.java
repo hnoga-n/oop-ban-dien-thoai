@@ -34,7 +34,17 @@ public class HoaDonNhapHang extends HoaDon {
     }
 
     public void xuatHoaDonNhapHang() {
-        System.out.println("Mã đối tác: " + madt + "\nĐiểm đối tác: " + diemdt);
+        System.out.println(
+                "----------------------------------------------------------------------------------------------------------------------"
+                        + "\nMa doi tac: " + madt
+                        + "\n----------------------------------------------------------------------------------------------------------------------"
+                        + "\nDiem doi tac: " + diemdt);
         super.xuatHoaDon();
+    }
+
+    public String dinhDangGhiVaoFile() {
+        return this.getMahd() + "\n" + madt + "\n" + diemdt + "\n"
+                + this.getmatk() + "\n" + this.getNgay()
+                + "\n" + this.getdssp().tongGia() + this.getdssp().dinhDangFileHoaDon();
     }
 }

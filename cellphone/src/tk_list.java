@@ -7,6 +7,9 @@ import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+
 
 public class tk_list {
   private ArrayList<taikhoan> listAccount = new ArrayList<taikhoan>();
@@ -15,11 +18,7 @@ public class tk_list {
 
   public static void main(String[] args) throws IOException {
     tk_list list = new tk_list();
-    list.readAccountListFromFile();
 
-    list.show_List_Account();
-    list.dangKi();
-    list.show_List_Account();
 
   }
 
@@ -40,17 +39,12 @@ public class tk_list {
     tktmp.setMatk("TK" + this.listAccount.size());
 
     listAccount.add(tktmp);
-    System.out.println("before write");
-    for (taikhoan tk : listAccount) {
-      System.out.println(tk.getTentk());
-    }
-    // this.writeAccountListToFile();
+    this.writeAccountListToFile();
     return 1;
 
   }
 
-  public taikhoan dangNhap() {
-    readAccountListFromFile();
+  public taikhoan dangNhap() throws IOException{
     String tentktmp;
     String passwdtmp;
     taikhoan tmp = null;
@@ -138,6 +132,7 @@ public class tk_list {
   }
 
   public void readAccountListFromFile() {
+    this.listAccount.clear();
     String line;
     taikhoan tmp = null;
     try {
@@ -159,16 +154,11 @@ public class tk_list {
         tmp.parseAccount(line);
         this.listAccount.add(tmp);
       }
-
-      readerAdmin.close();
-      readerEmployee.close();
-      readerUser.close();
-    } catch (IOException e) {
-
-      System.out.println("error: " + e);
-    }
+      
+    }catch (IOException ex){
+        
+      }
   }
-
   // TODO: viết hàm show tài khoản
 
   public void show_List_Account() {
@@ -195,6 +185,7 @@ public class tk_list {
           System.out.println("4. Thoat");
           System.out.println("Vui long chon: ");
           mode = sc.nextInt();
+          sc.nextLine();
           switch (mode) {
             case 1:
               tk.setTentk();
@@ -220,7 +211,7 @@ public class tk_list {
     }
   }
 
-  public void MenuDanhSachTaiKhoan() {
+  public void MenuDanhSachTaiKhoan() throws IOException {
     this.readAccountListFromFile();
     int mode;
     while (true) {
@@ -238,6 +229,7 @@ public class tk_list {
           this.chinhSuaTaiKhoan();
           break;
         case 3:
+          sc.nextLine();
           this.xoaTaiKhoan();
           break;
       }

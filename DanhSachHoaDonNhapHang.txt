@@ -1,0 +1,40 @@
+hd1235
+dt1235
+1235
+tk1235
+10/7/2022
+37290000
+sp1231,Samsung Galaxy Z Flip4,Samsung,20900000,12 thang
+sp1232,iPhone 11,Iphone,11900000,12 thang
+sp1233,Xiaomi Redmi Note 11,Xiaomi,4490000,12 thang 
+--------------------------------------------------------
+hd1236
+dt1236
+1236
+tk1236
+10/8/2022
+37290000
+sp1231,Samsung Galaxy Z Flip4,Samsung,20900000,12 thang
+sp1232,iPhone 11,Iphone,11900000,12 thang
+sp1233,Xiaomi Redmi Note 11,Xiaomi,4490000,12 thang 
+--------------------------------------------------------
+hd1237
+dt1237
+1237
+tk1237
+18/9/2022
+49390000
+sp1231,Vivo Y15s,Vivo,21000000,12 thang
+sp1232,OPPO A55,OPP0,13900000,6 thang
+sp1233,OPPO Reno8 Pro 5G,OPP0,14490000,24 thang 
+--------------------------------------------------------
+hd1238
+dt1238
+1238
+tk1238
+28/11/2022
+35899000
+sp1231,Realme 9 Pro+ 5G,Realme,10900000,12 thang
+sp1232,iPhone 13,Iphone,19000000,12 thang
+sp1233,Realme 9i,Realme,5999000,12 thang 
+--------------------------------------------------------
