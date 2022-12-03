@@ -15,12 +15,7 @@ public class tk_list {
 
   public static void main(String[] args) throws IOException {
     tk_list list = new tk_list();
-    list.readAccountListFromFile();
-
     list.show_List_Account();
-    list.dangKi();
-    list.show_List_Account();
-
   }
 
   public int dangKi() throws IOException {
@@ -40,17 +35,15 @@ public class tk_list {
     tktmp.setMatk("TK" + this.listAccount.size());
 
     listAccount.add(tktmp);
-    System.out.println("before write");
     for (taikhoan tk : listAccount) {
       System.out.println(tk.getTentk());
     }
-    // this.writeAccountListToFile();
+    this.writeAccountListToFile();
     return 1;
 
   }
 
   public taikhoan dangNhap() {
-    readAccountListFromFile();
     String tentktmp;
     String passwdtmp;
     taikhoan tmp = null;
@@ -103,9 +96,8 @@ public class tk_list {
       FileWriter writerUser = new FileWriter(newWriterAdmin2, false);
       FileWriter writerEmployee = new FileWriter(newWriterAdmin3, false);
       String line = "";
-      for (taikhoan tk : this.listAccount) {
+      for (taikhoan tk : listAccount) {
         if (tk instanceof tkAdmin) {
-          System.out.println(tk.getTentk());
           line = tk.getMatk() + "," + tk.getTentk() + "," + tk.getPasswd() + "," + tk.getMakhOrNv();
           writerAdmin.write(line);
           writerAdmin.write("\n");
@@ -140,6 +132,7 @@ public class tk_list {
   public void readAccountListFromFile() {
     String line;
     taikhoan tmp = null;
+    this.listAccount.clear();
     try {
       BufferedReader readerAdmin = new BufferedReader(new FileReader("adminAccount.txt"));
       BufferedReader readerUser = new BufferedReader(new FileReader("userAccount.txt"));
@@ -220,7 +213,7 @@ public class tk_list {
     }
   }
 
-  public void MenuDanhSachTaiKhoan() {
+  public void MenuDanhSachTaiKhoan() throws IOException {
     this.readAccountListFromFile();
     int mode;
     while (true) {

@@ -1,10 +1,12 @@
 import java.util.Scanner;
 import java.io.IOException;
-public class menuchucnang implements interface_menuchucnang{
+
+public class menuchucnang implements interface_menuchucnang {
     Scanner sc = new Scanner(System.in);
-    
+
     public void Menuchinh() throws IOException {
         tk_list listtk = new tk_list();
+        listtk.readAccountListFromFile();
         while (true) {
             System.out.println("\n");
             System.out.println("------------------------------------");
@@ -25,16 +27,13 @@ public class menuchucnang implements interface_menuchucnang{
                         break;
                     case "2":
                         taikhoan tk = listtk.dangNhap();
-                        if(tk instanceof tkAdmin) {
+                        if (tk instanceof tkAdmin) {
                             Menuchucnangadmin();
-                        }
-                        else if(tk instanceof tkKhachHang) {
+                        } else if (tk instanceof tkKhachHang) {
                             System.out.println("Im kh");
-                        }
-                        else if(tk instanceof tkNhanvien) {
+                        } else if (tk instanceof tkNhanvien) {
                             System.out.println("Im nv");
-                        }
-                        else {
+                        } else {
                             System.out.println("I have not account");
                         }
                         break;
@@ -48,7 +47,7 @@ public class menuchucnang implements interface_menuchucnang{
         }
     }
 
-    public void Menuchucnangadmin() throws IOException{
+    public void Menuchucnangadmin() throws IOException {
         DANHSACHKHACHHANG listkh = new DANHSACHKHACHHANG();
         DANHSACHNHANVIEN listnv = new DANHSACHNHANVIEN();
         QuanLiSanPham listsp = new QuanLiSanPham();
@@ -95,7 +94,8 @@ public class menuchucnang implements interface_menuchucnang{
             }
         }
     }
-    public static void main(String[] args) throws IOException{
+
+    public static void main(String[] args) throws IOException {
         menuchucnang menu = new menuchucnang();
         menu.Menuchucnangadmin();
     }
