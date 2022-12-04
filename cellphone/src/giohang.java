@@ -3,13 +3,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class giohang {
-  private String matk;
   private ArrayList<SanPham> spcart;
   Scanner sc = new Scanner(System.in);
 
   // private ArrayList<sanpham> inventoryProduct = new ArrayList<sanpham>();
   public static void main(String[] args) throws IOException {
-    giohang cart = new giohang("tk1");
+    giohang cart = new giohang();
     QuanLiSanPham dssp = new QuanLiSanPham();
     dssp.docDuLieuTuFile();
     cart.themSp();
@@ -19,8 +18,7 @@ public class giohang {
     cart.xemGiohang();
   }
 
-  public giohang(String matk) {
-    this.matk = matk;
+  public giohang() {
     spcart = new ArrayList<SanPham>();
   }
 
@@ -44,6 +42,7 @@ public class giohang {
     }
   }
 
+  // Kiểm tra xem giỏ hàng có
   // TODO: GÕ SP KHỎI GIỎ HÀNG
   public int goSpKhoiGiohang() {
     String masptmp;
@@ -63,11 +62,7 @@ public class giohang {
 
   // TODO: XÓA TẤT CẢ SP KHỎI GIỎ HÀNG
   public void goAllSanphamKhoiGiohang() {
-    for (SanPham sp : spcart) {
-      spcart.clear();
-      System.out.println("Go tat ca san pham thanh cong!");
-      break;
-    }
+    spcart.clear();
   }
   // TODO: XEM GIỎ HÀNG
 

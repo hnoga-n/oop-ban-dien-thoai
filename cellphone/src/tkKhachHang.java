@@ -1,6 +1,5 @@
 public class tkKhachHang extends taikhoan {
   private String makh;
-  private giohang cart;
 
   public static void main(String[] args) {
 
@@ -9,18 +8,21 @@ public class tkKhachHang extends taikhoan {
   public tkKhachHang() {
     super();
     makh = null;
-    cart = new giohang(this.getMatk());
   }
 
   public tkKhachHang(String makh) {
     this.makh = makh;
-    cart = new giohang(this.getMatk());
   }
 
   public tkKhachHang(String matk, String tentk, String passwd, String makh) {
     super(matk, tentk, passwd);
     this.makh = makh;
-    this.cart = new giohang(this.getMatk());
+
+  }
+
+  public tkKhachHang(tkKhachHang tk) {
+    super(tk.getMatk(), tk.getTentk(), tk.getPasswd());
+    this.makh = tk.makh;
   }
 
   public void setMaKh() {
