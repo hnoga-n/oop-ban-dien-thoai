@@ -1,15 +1,10 @@
 import java.io.BufferedReader;
 import java.io.File;
-
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-
 
 public class tk_list {
   private ArrayList<taikhoan> listAccount = new ArrayList<taikhoan>();
@@ -18,7 +13,6 @@ public class tk_list {
 
   public static void main(String[] args) throws IOException {
     tk_list list = new tk_list();
-
 
   }
 
@@ -44,7 +38,7 @@ public class tk_list {
 
   }
 
-  public taikhoan dangNhap() throws IOException{
+  public taikhoan dangNhap() throws IOException {
     String tentktmp;
     String passwdtmp;
     taikhoan tmp = null;
@@ -73,18 +67,19 @@ public class tk_list {
     return tmp;
   }
 
-  public void xoaTaiKhoan() {
+  public boolean xoaTaiKhoan() {
     String matktmp;
-
     System.out.println("Nhap ma tai khoan can xoa: ");
     matktmp = sc.nextLine();
     for (int i = 0; i < this.listAccount.size(); i++) {
-      if (this.listAccount.get(i).getMatk() == matktmp) {
+      if (this.listAccount.get(i).getMatk().equalsIgnoreCase(matktmp)) {
         this.listAccount.remove(listAccount.get(i));
         System.out.println("\nXoa tai khoan thanh cong!\n");
-        break;
+        return true;
       }
     }
+    System.out.println("\nXoa tai khoan khong thanh cong!\n");
+    return false;
 
   }
 
@@ -97,9 +92,8 @@ public class tk_list {
       FileWriter writerUser = new FileWriter(newWriterAdmin2, false);
       FileWriter writerEmployee = new FileWriter(newWriterAdmin3, false);
       String line = "";
-      for (taikhoan tk : this.listAccount) {
+      for (taikhoan tk : listAccount) {
         if (tk instanceof tkAdmin) {
-          System.out.println(tk.getTentk());
           line = tk.getMatk() + "," + tk.getTentk() + "," + tk.getPasswd() + "," + tk.getMakhOrNv();
           writerAdmin.write(line);
           writerAdmin.write("\n");
@@ -135,6 +129,7 @@ public class tk_list {
     this.listAccount.clear();
     String line;
     taikhoan tmp = null;
+    this.listAccount.clear();
     try {
       BufferedReader readerAdmin = new BufferedReader(new FileReader("adminAccount.txt"));
       BufferedReader readerUser = new BufferedReader(new FileReader("userAccount.txt"));
@@ -154,10 +149,12 @@ public class tk_list {
         tmp.parseAccount(line);
         this.listAccount.add(tmp);
       }
-      
-    }catch (IOException ex){
-        
-      }
+      readerAdmin.close();
+      readerUser.close();
+      readerEmployee.close();
+    } catch (IOException ex) {
+      System.out.println("error: " + ex);
+    }
   }
   // TODO: viết hàm show tài khoản
 
@@ -212,7 +209,7 @@ public class tk_list {
   }
 
   public void MenuDanhSachTaiKhoan() throws IOException {
-    this.readAccountListFromFile();
+    // this.readAccountListFromFile();
     int mode;
     while (true) {
       System.out.println("\n");
