@@ -98,7 +98,7 @@ public class DoiTac {
     }
 
     // FILE
-    public String getFileFline() {
+    public String getFileLine() {
         return MADT + "," + tenDoiTac + "," + Tel + "," + Mail + "\n";
     }
 

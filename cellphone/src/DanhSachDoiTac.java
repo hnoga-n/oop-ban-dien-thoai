@@ -115,7 +115,7 @@ public class DanhSachDoiTac {
         try {
             f = new FileOutputStream("danhsachdoitac.txt", false);
             for (DoiTac dt : arrDT) {
-                String line = dt.getFileFline();
+                String line = dt.getFileLine();
                 byte[] b = line.getBytes("utf8");
                 f.write(b);
             }
