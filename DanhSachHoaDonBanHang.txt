@@ -4,10 +4,10 @@ kh1231
 tk1231
 nv1231
 10/7/2022
-37290000
-sp1231,Samsung Galaxy Z Flip4,Samsung,20900000,12 thang
-sp1232,iPhone 11,Iphone,11900000,12 thang
-sp1233,Xiaomi Redmi Note 11,Xiaomi,4490000,12 thang 
+41780000
+sp1231,Samsung Galaxy Z Flip4,Samsung,20900000,1,12 th�ng
+sp1232,iPhone 11,Iphone,11900000,1,12 th�ng
+sp1233,Xiaomi Redmi Note 11,Xiaomi,4490000,2,12 th�ng 
 --------------------------------------------------------
 hd1232
 kh1232
@@ -15,10 +15,10 @@ kh1232
 tk1232
 nv1232
 10/8/2022
-37290000
-sp1231,Samsung Galaxy Z Flip4,Samsung,20900000,12 thang
-sp1232,iPhone 11,Iphone,11900000,12 thang
-sp1233,Xiaomi Redmi Note 11,Xiaomi,4490000,12 thang 
+99970000
+sp1231,Samsung Galaxy Z Flip4,Samsung,20900000,3,12 th�ng
+sp1232,iPhone 11,Iphone,11900000,2,12 th�ng
+sp1233,Xiaomi Redmi Note 11,Xiaomi,4490000,3,12 th�ng 
 --------------------------------------------------------
 hd1233
 kh1233
@@ -26,10 +26,10 @@ kh1233
 tk1233
 nv1233
 18/9/2022
-49390000
-sp1231,Vivo Y15s,Vivo,21000000,12 thang
-sp1232,OPPO A55,OPP0,13900000,6 thang
-sp1233,OPPO Reno8 Pro 5G,OPP0,14490000,24 thang 
+63880000
+sp1231,Vivo Y15s,Vivo,21000000,1,12 th�ng
+sp1232,OPPO A55,OPP0,13900000,1,6 th�ng
+sp1233,OPPO Reno8 Pro 5G,OPP0,14490000,2,24 th�ng 
 --------------------------------------------------------
 hd1234
 kh1234
@@ -38,7 +38,7 @@ tk1234
 nv1234
 28/11/2022
 35899000
-sp1231,Realme 9 Pro+ 5G,Realme,10900000,12 thang
-sp1232,iPhone 13,Iphone,19000000,12 thang
-sp1233,Realme 9i,Realme,5999000,12 thang 
+sp1231,Realme 9 Pro+ 5G,Realme,10900000,1,12 th�ng
+sp1232,iPhone 13,Iphone,19000000,1,12 th�ng
+sp1233,Realme 9i,Realme,5999000,1,12 th�ng 
 --------------------------------------------------------

@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.text.StyledEditorKit.BoldAction;
+
 public class tk_list {
   private ArrayList<taikhoan> listAccount = new ArrayList<taikhoan>();
 
@@ -13,6 +15,8 @@ public class tk_list {
 
   public static void main(String[] args) throws IOException {
     tk_list list = new tk_list();
+
+    list.chinhSuaTaiKhoan();
 
   }
 
@@ -29,7 +33,19 @@ public class tk_list {
     // tạo tài khoản khách hàng
 
     taikhoan tktmp = new tkKhachHang(makhtmp);
-    tktmp.nhapTaikhoan();
+    boolean matchFlag = true;
+    do {
+      tktmp.nhapTaikhoan();
+      matchFlag = false;
+      for (taikhoan tmp : listAccount) {
+        if (tmp.getTentk().equals(tktmp.getTentk()) == true) {
+          matchFlag = true;
+          System.out.println("Ten tai khoan bi trung !");
+          break;
+        }
+      }
+
+    } while (matchFlag == true);
     tktmp.setMatk("TK" + this.listAccount.size());
 
     listAccount.add(tktmp);
@@ -126,7 +142,6 @@ public class tk_list {
   }
 
   public void readAccountListFromFile() {
-    this.listAccount.clear();
     String line;
     taikhoan tmp = null;
     this.listAccount.clear();

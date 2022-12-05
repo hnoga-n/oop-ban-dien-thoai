@@ -1,4 +1,7 @@
 import java.util.Scanner;
+
+import javax.lang.model.util.ElementScanner14;
+
 import java.io.IOException;
 
 public class menuchucnang implements interface_menuchucnang {
@@ -153,6 +156,7 @@ public class menuchucnang implements interface_menuchucnang {
                 } else {
                     switch (key) {
                         case "1":
+                            listsp.docDuLieuTuFile();
                             listsp.xuatDanhSach();
                             break;
                         case "2":
@@ -171,21 +175,26 @@ public class menuchucnang implements interface_menuchucnang {
                             System.out.println("thanh toan");
                             break;
                         case "7":
-                            System.out.println("Gio hang van con san pham, ban co muon thoat ?");
-                            System.out.println("1. Co");
-                            System.out.println("2. Khong");
-                            System.out.println("---------------");
-                            System.out.println("Moi chon: ");
-                            int yesno;
-                            yesno = sc.nextInt();
-                            switch (yesno) {
-                                case 1:
-                                    cart.goAllSanphamKhoiGiohang();
-                                    break;
-                                case 2:
-                                    key = "69";
-                                    break;
+                            if (cart.cartIsEmpty() == false) {
+                                System.out.println("Gio hang van con san pham, ban van muon thoat ?");
+                                System.out.println("1. Co");
+                                System.out.println("2. Khong");
+                                System.out.println("---------------");
+                                System.out.println("Moi chon: ");
+                                int yesno;
+                                yesno = sc.nextInt();
+                                switch (yesno) {
+                                    case 1:
+                                        cart.goAllSanphamKhoiGiohang();
+                                        break;
+                                    case 2:
+                                        key = "69";
+                                        break;
+                                }
+                            } else {
+                                break;
                             }
+
                     }
                 }
                 if (key.matches("7") == true) {
