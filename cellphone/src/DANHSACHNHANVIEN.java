@@ -41,6 +41,7 @@ public class DANHSACHNHANVIEN {
 
     public void ThemNhanVien() {
         NHANVIEN a = new NHANVIEN();
+        a.setManv("NV" + (Integer.parseInt(arrnv.get(arrnv.size()-1).getManv().substring(2)) + 1));
         a.NhapNhanVien();
         arrnv.add(a);
 
@@ -148,21 +149,70 @@ public class DANHSACHNHANVIEN {
             System.out.println("Khong tim thay nhan vien !");
     }
 
+    public void SuaNhanVien_menuchucnangnv(String manv) {
+        NHANVIEN nv = null;
+        nv = TimKiemNhanVienTheoMaNV(manv);
+        if (nv != null) {
+            for (NHANVIEN obj : arrnv) {
+                if (obj == nv) {
+                    while (true) {
+                        System.out.println("\n");
+                        System.out.println("--------------------------------");
+                        System.out.println("======    SUA THONG TIN   ======");
+                        System.out.println("--------------------------------");
+                        System.out.println("1. Sua ho ten");
+                        System.out.println("2. Sua nam sinh");
+                        System.out.println("3. Sua so dien thoai");
+                        System.out.println("4. Thoat");
+                        System.out.println("--------------------------------");
+                        ;
+                        System.out.print("Chon: ");
+                        String key = sc.nextLine();
+                        if (Integer.parseInt(key) < 1 || Integer.parseInt(key) > 4)
+                            System.out.println("Vui long chon so tu 1 den 4 !");
+                        else {
+                            switch (key) {
+                                case "1":
+                                    System.out.print("Nhap ho ten nhan vien moi: ");
+                                    String hoten = sc.nextLine();
+                                    obj.setHoten(hoten);
+                                    break;
+                                case "2":
+                                    System.out.print("Nhap nam sinh moi: ");
+                                    String namsinh = kt.KiemTraNamSinh();
+                                    obj.setNamsinh(namsinh);
+                                    break;
+                                case "3":
+                                    System.out.print("Nhap so dien thoai moi: ");
+                                    String sdt = kt.KiemTraNhapSDT();
+                                    obj.setSdt(sdt);
+                                    break;
+                            }
+                        }
+                        if (Integer.parseInt(key) == 4)
+                            break;
+                    }
+                }
+            }
+        } else
+            System.out.println("Khong tim thay nhan vien !");
+    }
+
     public void MenuDanhSachNhanVien() throws IOException {
         docfile();
         while (true) {
 
             System.out.println("\n");
-            System.out.println("------------------------------------");
-            System.out.println("==========    * MENU *    ==========");
-            System.out.println("------------------------------------");
+            System.out.println("------------------------------------------------------");
+            System.out.println("==========    * MENU QUAN LI NHAN VIEN *    ==========");
+            System.out.println("------------------------------------------------------");
             System.out.println("1. Them nhan vien");
             System.out.println("2. Xoa nhan vien");
             System.out.println("3. Tim kiem nhan vien");
             System.out.println("4. Sua thong tin nhan vien");
             System.out.println("5. Xuat danh sach nhan vien");
             System.out.println("6. Thoat");
-            System.out.println("------------------------------------");
+            System.out.println("------------------------------------------------------");
             System.out.print("Chon: ");
             String key = sc.nextLine();
             if (Integer.parseInt(key) < 1 || Integer.parseInt(key) > 6)

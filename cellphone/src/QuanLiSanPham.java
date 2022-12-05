@@ -549,14 +549,13 @@ public class QuanLiSanPham {
                             System.out.println("MENU ----------");
                             System.out.println("Lựa chọn: ");
                             System.out.println(
-                                    "1. Sửa mã sản phẩm.\n"
-                                            + "2. Sửa tên sản phẩm.\n"
-                                            + "3. Sửa tên hãng.\n"
-                                            + "4. Sửa giá sản phẩm\n"
-                                            + "5. Sửa thời gian bảo hành.\n"
-                                            + "6. Sửa số lượng.\n"
-                                            + "7. Sửa chi tiết sản phẩm.\n"
-                                            + "0. Thoát.\n");
+                                    "1. Sua ma san pham.\n"
+                                            + "2. Sua ten san pham.\n"
+                                            + "3. Sua ten hang.\n"
+                                            + "4. Sua gia san pham\n"
+                                            + "5. Sua thoi gian bao hanh.\n"
+                                            + "6. Sua chi tiet san pham.\n"
+                                            + "0. Thoat.\n");
                             luaChon1 = sc.nextInt();
                             sc.nextLine();
                             if (luaChon1 == 1) {

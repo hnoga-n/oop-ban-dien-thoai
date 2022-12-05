@@ -5,11 +5,11 @@ public class kiemtra {
         String DauVao;
         while (true) {
             DauVao=sc.nextLine();
-            if(DauVao.matches("[0-9]{1,2}")){
+            if(DauVao.matches("NV"+"[0-9]{1}")){
                 return DauVao;
             }
             else{
-                System.out.println("Ma nhan vien gom 2 chu so");
+                System.out.println("Sai dinh dang ma nhan vien! vd:'NV1'");
             }
             System.out.print("Moi nhap lai: ");
         }

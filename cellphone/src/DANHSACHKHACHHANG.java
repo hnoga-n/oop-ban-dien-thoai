@@ -158,16 +158,16 @@ public class DANHSACHKHACHHANG {
         docfile();
         while (true) {
             System.out.println("\n");
-            System.out.println("------------------------------------");
-            System.out.println("==========    * MENU *    ==========");
-            System.out.println("------------------------------------");
+            System.out.println("-------------------------------------------------------");
+            System.out.println("==========    * MENU QUAN LI KHACH HANG *    ==========");
+            System.out.println("-------------------------------------------------------");
             System.out.println("1. Them khach hang");
             System.out.println("2. Xoa khach hang");
             System.out.println("3. Tim kiem khach hang");
             System.out.println("4. Sua thong tin khach hang");
             System.out.println("5. Xuat danh sach khach hang");
             System.out.println("6. Thoat");
-            System.out.println("------------------------------------");
+            System.out.println("-------------------------------------------------------");
             System.out.print("Chon: ");
             String key = sc.nextLine();
 

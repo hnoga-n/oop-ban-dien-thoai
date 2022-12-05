@@ -13,11 +13,8 @@ public class tk_list {
 
   Scanner sc = new Scanner(System.in);
 
-  public static void main(String[] args) throws IOException {
-    tk_list list = new tk_list();
-
-    list.chinhSuaTaiKhoan();
-
+  public ArrayList<taikhoan> getListAccountArr() {
+    return this.listAccount;
   }
 
   public int dangKi() throws IOException {
@@ -83,20 +80,21 @@ public class tk_list {
     return tmp;
   }
 
-  public boolean xoaTaiKhoan() {
+  public void xoaTaiKhoan() {
     String matktmp;
+    boolean flag = false;
     System.out.println("Nhap ma tai khoan can xoa: ");
     matktmp = sc.nextLine();
     for (int i = 0; i < this.listAccount.size(); i++) {
-      if (this.listAccount.get(i).getMatk().equalsIgnoreCase(matktmp)) {
+      if (this.listAccount.get(i).getMatk().equalsIgnoreCase(matktmp) ) {
         this.listAccount.remove(listAccount.get(i));
+        flag = true;
         System.out.println("\nXoa tai khoan thanh cong!\n");
-        return true;
       }
     }
-    System.out.println("\nXoa tai khoan khong thanh cong!\n");
-    return false;
-
+    if(flag == false) {
+      System.out.println("\nXoa tai khoan khong thanh cong!\n");
+    }
   }
 
   public void writeAccountListToFile() {
@@ -144,11 +142,13 @@ public class tk_list {
   public void readAccountListFromFile() {
     String line;
     taikhoan tmp = null;
-    this.listAccount.clear();
+    BufferedReader readerAdmin = null;
+    BufferedReader readerUser = null;
+    BufferedReader readerEmployee = null;
     try {
-      BufferedReader readerAdmin = new BufferedReader(new FileReader("adminAccount.txt"));
-      BufferedReader readerUser = new BufferedReader(new FileReader("userAccount.txt"));
-      BufferedReader readerEmployee = new BufferedReader(new FileReader("employeeAccount.txt"));
+      readerAdmin = new BufferedReader(new FileReader("adminAccount.txt"));
+      readerUser = new BufferedReader(new FileReader("userAccount.txt"));
+      readerEmployee = new BufferedReader(new FileReader("employeeAccount.txt"));
       while ((line = readerAdmin.readLine()) != null) {
         tmp = new tkAdmin();
         tmp.parseAccount(line);
@@ -164,11 +164,32 @@ public class tk_list {
         tmp.parseAccount(line);
         this.listAccount.add(tmp);
       }
-      readerAdmin.close();
-      readerUser.close();
-      readerEmployee.close();
-    } catch (IOException ex) {
-      System.out.println("error: " + ex);
+      
+    }catch (IOException ex){
+        System.out.println(ex);
+    }
+    finally {
+      if(readerAdmin != null) {
+        try {
+          readerAdmin.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+      }
+      if(readerUser != null) {
+        try {
+          readerUser.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+      }
+      if(readerEmployee != null) {
+        try {
+          readerEmployee.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+      } 
     }
   }
   // TODO: viết hàm show tài khoản
@@ -188,13 +209,17 @@ public class tk_list {
 
     System.out.println("Moi nhap ma tai khoan can chinh sua: ");
     matktmp = sc.next();
-    for (taikhoan tk : this.listAccount) {
+    for (taikhoan tk : this.listAccount) {  
       if (tk.getMatk().equalsIgnoreCase(matktmp)) {
         while (true) {
+          System.out.println("--------------------------------");
+          System.out.println("======    SUA TAI KHOAN   ======");
+          System.out.println("--------------------------------");
           System.out.println("1. Chinh sua ten tai khoan.");
           System.out.println("2. Chinh sua mat khau.");
           System.out.println("3. Chinh sua ma tai khoan.");
           System.out.println("4. Thoat");
+          System.out.println("--------------------------------");
           System.out.println("Vui long chon: ");
           mode = sc.nextInt();
           sc.nextLine();
@@ -222,16 +247,55 @@ public class tk_list {
 
     }
   }
+  public void chinhSuaTaiKhoan_menuchucnangnv(String matktmp) {
+    int mode; // lựa chọn thông số cần chỉnh sửa
+    for (taikhoan tk : this.listAccount) {
+      if (tk.getMatk().equalsIgnoreCase(matktmp)) {
+        while (true) {
+          System.out.println("--------------------------------");
+          System.out.println("======    SUA TAI KHOAN   ======");
+          System.out.println("--------------------------------");
+          System.out.println("1. Chinh sua ten tai khoan.");
+          System.out.println("2. Chinh sua mat khau.");
+          System.out.println("3. Thoat");
+          System.out.println("--------------------------------");
+          System.out.println("Vui long chon: ");
+          mode = sc.nextInt();
+          sc.nextLine();
+          switch (mode) {
+            case 1:
+              tk.setTentk();
+              System.out.println("\nChinh sua ten tai khoan thanh cong!\n");
+              break;
+            case 2:
+              tk.setPasswd();
+              System.out.println("\nChinh sua mat khau tai khoan thanh cong!\n");
+              break;
+          }
+
+          if (mode == 3) {
+            break;
+          }
+        }
+        break;
+      }
+    }
+  }
 
   public void MenuDanhSachTaiKhoan() throws IOException {
     // this.readAccountListFromFile();
     int mode;
     while (true) {
       System.out.println("\n");
+      System.out.println("------------------------------------");
+      System.out.println("==========    * MENU *    ==========");
+      System.out.println("------------------------------------");
       System.out.println("1.Hien thi danh sach tai khoan");
       System.out.println("2.Chinh sua tai khoan");
       System.out.println("3.Xoa tai khoan");
-      System.out.println("4.Thoat.");
+      System.out.println("4.Thoat");
+      System.out.println("------------------------------------");
+      System.out.println("Vui long chon: ");
       mode = sc.nextInt();
       switch (mode) {
         case 1:
@@ -248,10 +312,13 @@ public class tk_list {
 
       if (mode == 4) {
         this.writeAccountListToFile();
-        this.show_List_Account();
         break;
       }
 
     }
+  }
+  public static void main(String[] args) throws IOException {
+    tk_list list = new tk_list();
+    list.chinhSuaTaiKhoan();
   }
 }
