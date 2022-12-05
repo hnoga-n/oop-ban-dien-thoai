@@ -80,7 +80,7 @@ public class tk_list {
     return tmp;
   }
 
-  public boolean xoaTaiKhoan() {
+  public void xoaTaiKhoan() {
     String matktmp;
     boolean flag = false;
     System.out.println("Nhap ma tai khoan can xoa: ");
@@ -90,7 +90,6 @@ public class tk_list {
         this.listAccount.remove(listAccount.get(i));
         flag = true;
         System.out.println("\nXoa tai khoan thanh cong!\n");
-        return true;
       }
     }
     if(flag == false) {
