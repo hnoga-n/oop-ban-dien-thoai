@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class HoaDonBanHang extends HoaDon {
@@ -57,12 +58,12 @@ public class HoaDonBanHang extends HoaDon {
 
     public void xuatHoaDonBanHang() {
         System.out.println(
-                "----------------------------------------------------------------------------------------------------------------------"
-                        + "\nMa khach hang: " + makh
-                        + "\n----------------------------------------------------------------------------------------------------------------------"
-                        + "\nMa nhan vien: " + manv
-                        + "\n----------------------------------------------------------------------------------------------------------------------"
-                        + "\nDiem khach hang: " + diemkh);
+                "--------------------------------------------------------------------------------------------------------------------------------------------------"
+                        + "\nMã khách hàng: " + makh
+                        + "\n--------------------------------------------------------------------------------------------------------------------------------------------------"
+                        + "\nMã nhân viên: " + manv
+                        + "\n--------------------------------------------------------------------------------------------------------------------------------------------------"
+                        + "\nĐiểm khách hàng: " + diemkh);
         super.xuatHoaDon();
     }
 
@@ -74,7 +75,7 @@ public class HoaDonBanHang extends HoaDon {
 
     public void suaDanhSachSanPham() {
         try (Scanner sc = new Scanner(System.in)) {
-            System.out.println("Nhap ma san pham can sua: ");
+            System.out.println("Nhập mã sản phẩm cần sửa: ");
             String masp = sc.nextLine();
             this.getdssp().sua(masp);
 

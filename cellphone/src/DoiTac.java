@@ -102,7 +102,7 @@ public class DoiTac {
         return MADT + "," + tenDoiTac + "," + Tel + "," + Mail + "\n";
     }
 
-    public void parseFile(String line) {
+    public void parseDT(String line) {
         String[] params = line.split(",");
         try {
             this.MADT = params[0];

@@ -56,13 +56,21 @@ public class DanhSachDoiTac {
                         case 1: {
                             System.out.print("Nhap ma Doi Tac moi: ");
                             String s = sc.nextLine();
-                            dt.setMADT(s);
+                            for(DoiTac d : arrDT)
+                            {
+                                if(s.equalsIgnoreCase(d.getMADT())) System.out.println("Ma Doi tac nay da ton tai");
+                                else dt.setMADT(s);
+                            }
                             break;
                         }
                         case 2: {
                             System.out.print("Nhap ten Doi Tac moi: ");
                             String s = sc.nextLine();
-                            dt.setTenDoiTac(s);
+                            for(DoiTac d : arrDT)
+                            {
+                                if(s.equalsIgnoreCase(d.getTenDoiTac())) System.out.println("Ten Doi tac nay da ton tai");
+                                else dt.setTenDoiTac(s);
+                            }
                             break;
                         }
                         case 3: {
@@ -93,6 +101,14 @@ public class DanhSachDoiTac {
         }
     }
 
+    public boolean checkDT(DoiTac dt) {
+        for (DoiTac d : arrDT)
+        {
+            if(d.getMADT().equalsIgnoreCase(dt.getMADT()) || d.getTenDoiTac().equalsIgnoreCase(dt.getTenDoiTac())) return false;
+        }
+        return true;
+    }
+
     // FILE
     public void ghiFile() {
         FileOutputStream f = null;
@@ -121,6 +137,7 @@ public class DanhSachDoiTac {
     }
 
     public void docFile() throws IOException {
+        this.arrDT.clear();
         FileInputStream f = null;
         InputStreamReader reader = null;
         BufferedReader bfReader = null;
@@ -133,7 +150,7 @@ public class DanhSachDoiTac {
                 if (line.isEmpty())
                     continue;
                 DoiTac dt = new DoiTac();
-                dt.parseFile(line);
+                dt.parseDT(line);
                 arrDT.add(dt);
             }
         } catch (FileNotFoundException ex) {
@@ -192,7 +209,12 @@ public class DanhSachDoiTac {
                     System.out.print("Nhap mail Doi Tac: ");
                     String mail=sc.nextLine();
                     DoiTac dt=new DoiTac(ma,ten,sdt,mail);
-                    this.them(dt);
+                    if(checkDT(dt)) {
+                        this.them(dt);
+                    }
+                    else{
+                        System.out.println("Doi tac da ton tai");
+                    } 
                     break;
                 }
                 case 2:
@@ -239,10 +261,7 @@ public class DanhSachDoiTac {
 
     public static void main(String[] args) throws IOException {
         DanhSachDoiTac dsdt = new DanhSachDoiTac();
-        DoiTac d = new DoiTac("DT4", "Huawei", "1111222233", "huawei@gmail.com");
-        dsdt.docFile();
-        dsdt.them(d);
-        dsdt.xuatDanhSach();
-        dsdt.ghiFile();
+        dsdt.menuDoiTac();
+        
     }
 }

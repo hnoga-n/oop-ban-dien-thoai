@@ -1,13 +1,12 @@
 import java.io.BufferedReader;
 import java.io.File;
-
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.text.StyledEditorKit.BoldAction;
 
 public class tk_list {
   private ArrayList<taikhoan> listAccount = new ArrayList<taikhoan>();
@@ -31,8 +30,20 @@ public class tk_list {
     // tạo tài khoản khách hàng
 
     taikhoan tktmp = new tkKhachHang(makhtmp);
-    tktmp.nhapTaikhoan();
-    tktmp.setMatk("TKKH" + this.listAccount.size());
+    boolean matchFlag = true;
+    do {
+      tktmp.nhapTaikhoan();
+      matchFlag = false;
+      for (taikhoan tmp : listAccount) {
+        if (tmp.getTentk().equals(tktmp.getTentk()) == true) {
+          matchFlag = true;
+          System.out.println("Ten tai khoan bi trung !");
+          break;
+        }
+      }
+
+    } while (matchFlag == true);
+    tktmp.setMatk("TK" + this.listAccount.size());
 
     listAccount.add(tktmp);
     this.writeAccountListToFile();
@@ -40,7 +51,7 @@ public class tk_list {
 
   }
 
-  public taikhoan dangNhap() throws IOException{
+  public taikhoan dangNhap() throws IOException {
     String tentktmp;
     String passwdtmp;
     taikhoan tmp = null;
@@ -69,7 +80,7 @@ public class tk_list {
     return tmp;
   }
 
-  public void xoaTaiKhoan() {
+  public boolean xoaTaiKhoan() {
     String matktmp;
     boolean flag = false;
     System.out.println("Nhap ma tai khoan can xoa: ");
@@ -79,7 +90,7 @@ public class tk_list {
         this.listAccount.remove(listAccount.get(i));
         flag = true;
         System.out.println("\nXoa tai khoan thanh cong!\n");
-        break;
+        return true;
       }
     }
     if(flag == false) {
@@ -96,9 +107,8 @@ public class tk_list {
       FileWriter writerUser = new FileWriter(newWriterAdmin2, false);
       FileWriter writerEmployee = new FileWriter(newWriterAdmin3, false);
       String line = "";
-      for (taikhoan tk : this.listAccount) {
+      for (taikhoan tk : listAccount) {
         if (tk instanceof tkAdmin) {
-          System.out.println(tk.getTentk());
           line = tk.getMatk() + "," + tk.getTentk() + "," + tk.getPasswd() + "," + tk.getMakhOrNv();
           writerAdmin.write(line);
           writerAdmin.write("\n");
@@ -131,7 +141,6 @@ public class tk_list {
   }
 
   public void readAccountListFromFile() {
-    this.listAccount.clear();
     String line;
     taikhoan tmp = null;
     BufferedReader readerAdmin = null;
@@ -275,7 +284,7 @@ public class tk_list {
   }
 
   public void MenuDanhSachTaiKhoan() throws IOException {
-    this.readAccountListFromFile();
+    // this.readAccountListFromFile();
     int mode;
     while (true) {
       System.out.println("\n");
