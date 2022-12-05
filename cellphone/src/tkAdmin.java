@@ -47,7 +47,6 @@ public class tkAdmin extends taikhoan {
   }
 
   public void menu() {
-    DANHSACHKHACHHANG a = new DANHSACHKHACHHANG();
 
   }
 

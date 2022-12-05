@@ -40,7 +40,7 @@ public class menuchucnang implements interface_menuchucnang {
                     case "2":
                         tk = listtk.dangNhap();
                         if(tk instanceof tkAdmin) {
-                        taikhoan tk = listtk.dangNhap();
+                        tk = listtk.dangNhap();
                         if (tk instanceof tkAdmin) {
                             Menuchucnangadmin();
                         } else if (tk instanceof tkKhachHang) {
@@ -59,6 +59,7 @@ public class menuchucnang implements interface_menuchucnang {
             }
         }
     }
+}
 
     public void Menuchucnangadmin() throws IOException {
         String key;
