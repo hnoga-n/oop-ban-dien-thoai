@@ -11,26 +11,30 @@ public class SanPham implements Comparable<SanPham> {
     private String hang;
     private int gia;
     private String thoiGianBaoHanh;
+    private int soluong;
     private ChiTietSanPham chitietsp;
 
     public SanPham(String masp) {
         this.masp = masp;
     }
 
-    public SanPham(String masp, String tensp, String hang, int gia, String thoiGianBaoHanh, ChiTietSanPham chitietsp) {
+    public SanPham(String masp, String tensp, String hang, int gia, String thoiGianBaoHanh, int soluong,
+            ChiTietSanPham chitietsp) {
         this.masp = masp;
         this.tensp = tensp;
         this.hang = hang;
         this.gia = gia;
+        this.soluong = soluong;
         this.chitietsp = chitietsp;
         this.thoiGianBaoHanh = thoiGianBaoHanh;
     }
 
-    public SanPham(String masp, String tensp, String hang, int gia, String thoiGianBaoHanh) {
+    public SanPham(String masp, String tensp, String hang, int gia, int soLuong, String thoiGianBaoHanh) {
         this.masp = masp;
         this.tensp = tensp;
         this.hang = hang;
         this.gia = gia;
+        this.soluong = soLuong;
         this.thoiGianBaoHanh = thoiGianBaoHanh;
     }
 
@@ -74,6 +78,14 @@ public class SanPham implements Comparable<SanPham> {
         this.thoiGianBaoHanh = thoiGianBaoHanh;
     }
 
+    public int getSoluong() {
+        return soluong;
+    }
+
+    public void setSoluong(int soluong) {
+        this.soluong = soluong;
+    }
+
     public ChiTietSanPham getChitietsp() {
         return chitietsp;
     }
@@ -84,7 +96,7 @@ public class SanPham implements Comparable<SanPham> {
 
     @Override
     public String toString() {
-        return masp + "," + tensp + "," + hang + "," + gia + "," + thoiGianBaoHanh + ","
+        return masp + "," + tensp + "," + hang + "," + gia + "," + soluong + "," + thoiGianBaoHanh + ","
                 + this.getChitietsp().toString();
     }
 
@@ -122,13 +134,14 @@ public class SanPham implements Comparable<SanPham> {
     // xuất thông tin chi tiết
     public void XuatThongTinChiTiet() {
         System.out.println("---------------------------------------------------");
-        System.out.println("Thong tin chi tiet san pham:");
-        System.out.println("---------------------------------------------------" + "\nMa san pham: " + masp
-                + "\n---------------------------------------------------" + "\nTen san pham: " + tensp
-                + "\n---------------------------------------------------" + "\nHang: " + hang
-                + "\n---------------------------------------------------" + "\nGia: " + gia
+        System.out.println("Thông tin chi tiết sản phẩm:");
+        System.out.println("---------------------------------------------------" + "\nMã sản phẩm: " + masp
+                + "\n---------------------------------------------------" + "\nTên sản phảm: " + tensp
+                + "\n---------------------------------------------------" + "\nHãng: " + hang
+                + "\n---------------------------------------------------" + "\nGiá: " + gia
+                + "\n---------------------------------------------------" + "\nSố lượng: " + soluong
                 + "\n---------------------------------------------------"
-                + "\nThoi gian bao hanh: " + thoiGianBaoHanh + "\n---------------------------------------------------"
+                + "\nThời gian bảo hành: " + thoiGianBaoHanh + "\n---------------------------------------------------"
                 + "\nChi tiết: ");
         this.chitietsp.XuatMoTaSanPham();
 
@@ -136,8 +149,8 @@ public class SanPham implements Comparable<SanPham> {
 
     // xuất thông tin dùng cho phương thức tìmkiếm ở quản lí danh sách
     public String XuatThongTin() {
-        return "Ma san pham: " + masp + ";  Ten san pham: " + tensp + ";  Hang: " + hang + ";  Gia: " + gia
-                + ";  Thoi gian bao hanh: " + thoiGianBaoHanh;
+        return "Mã sản phẩm: " + masp + ";  Tên sản phảm: " + tensp + ";  Hãng: " + hang + ";  Giá: " + gia
+                + ";  Thời gian bảo hành: " + thoiGianBaoHanh + ";  Số lượng: " + soluong;
 
     }
 
