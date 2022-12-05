@@ -77,8 +77,6 @@ public class NHANVIEN implements Serializable{
     // HAM NHAP XUAT
     public void NhapNhanVien() {
         kiemtra kt = new kiemtra();
-        System.out.print("Nhap ma nhan vien: ");
-        manv = kt.KiemTraNhapMa();
         System.out.print("Nhap ho ten nhan vien: ");
         hoten = sc.nextLine();
         System.out.print("Nhap nam sinh nhan vien: ");
@@ -95,7 +93,6 @@ public class NHANVIEN implements Serializable{
     }
 
     public void XuatNhanVien_1() {
-
         System.out.println("============================================================================================");
         System.out.printf("%-20s%-25s%-15s%-20s%-20s\n","MA NHAN VIEN","HO TEN","NAM SINH","SO DIEN THOAI","CHUC VU");
         System.out.println("============================================================================================");

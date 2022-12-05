@@ -450,7 +450,7 @@ public class QuanLiSanPham {
                                             + "3. Sua ten hang.\n"
                                             + "4. Sua gia san pham\n"
                                             + "5. Sua thoi gian bao hanh.\n"
-                                            + "6. Sua chi tiết san pham.\n"
+                                            + "6. Sua chi tiet san pham.\n"
                                             + "0. Thoat.\n");
                             luaChon1 = sc.nextInt();
                             sc.nextLine();

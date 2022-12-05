@@ -2,7 +2,7 @@ hd1231
 kh1231
 1231
 tk1231
-nv1231
+NV1
 10/7/2022
 37290000
 sp1231,Samsung Galaxy Z Flip4,Samsung,20900000,12 thang
@@ -13,7 +13,7 @@ hd1232
 kh1232
 1232
 tk1232
-nv1232
+NV2
 10/8/2022
 37290000
 sp1231,Samsung Galaxy Z Flip4,Samsung,20900000,12 thang
@@ -24,7 +24,7 @@ hd1233
 kh1233
 1233
 tk1233
-nv1233
+NV1
 18/9/2022
 49390000
 sp1231,Vivo Y15s,Vivo,21000000,12 thang
@@ -35,7 +35,7 @@ hd1234
 kh1234
 1234
 tk1234
-nv1234
+NV2
 28/11/2022
 35899000
 sp1231,Realme 9 Pro+ 5G,Realme,10900000,12 thang
