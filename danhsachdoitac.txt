@@ -1,4 +1,4 @@
 DT1,Iphone,1234567890,iphone@gmail.com
 DT2,Samsung,0123456789,samsung@gmail.com
 DT3,Xiaomi,1234512345,xiaomi@gmail.com
-DT4,Huawei,1111222233,huawei@gmail.com
+DT4,Vivo,1111222233,vivo@gmail.com
