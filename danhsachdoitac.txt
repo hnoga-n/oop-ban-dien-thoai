@@ -1,4 +1,7 @@
-DT1,Iphone,1234567890,iphone@gmail.com
-DT2,Samsung,0123456789,samsung@gmail.com
-DT3,Xiaomi,1234512345,xiaomi@gmail.com
-DT4,Vivo,1111222233,vivo@gmail.com
+DT1,Phong Vu,1234567890,phongvu@gmail.com
+DT2,FPT Shop,0123456789,fptshop@gmail.com
+DT3,The Gioi Di Dong,1234512345,thegioididong@gmail.com
+DT4,CellphoneS,1111222233,cellphones@gmail.com
+DT5,Di Dong Viet,0011223344,didongviet@gmail.com
+DT6,Sony Store,0987654321,sony@gmail.com
+DT7,Mobile City,0101010101,mobilecity@gmail.com
