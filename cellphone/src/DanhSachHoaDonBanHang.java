@@ -485,7 +485,7 @@ public class DanhSachHoaDonBanHang {
         }
         QuanLiSanPham danhSachThongKe = new QuanLiSanPham(thongKeSp);
         danhSachThongKe.xuatDanhSach();
-        System.out.println("Tong doanh thu: " + danhSachThongKe.tongGia());
+        System.out.println("Tong doanh thu: " + formatter.format(danhSachThongKe.tongGia())+" VND");
     }
 
     public static void main(String[] args) throws IOException {

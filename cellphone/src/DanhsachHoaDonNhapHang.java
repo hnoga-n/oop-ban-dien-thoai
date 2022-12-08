@@ -474,6 +474,6 @@ public class DanhsachHoaDonNhapHang {
         }
         QuanLiSanPham danhSachThongKe = new QuanLiSanPham(thongKeSp);
         danhSachThongKe.xuatDanhSach();
-        System.out.println("Tong chi phi nhap hang: " + danhSachThongKe.tongGia());
+        System.out.println("Tong chi phi nhap hang: " + formatter.format(danhSachThongKe.tongGia())+" VND");
     }
 }

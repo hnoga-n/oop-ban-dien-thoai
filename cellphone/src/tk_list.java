@@ -381,7 +381,7 @@ public void TimKiemTaiKhoan() {
           break;
       }
 
-      if (mode == "5") {
+      if (mode.matches("5")) {
         this.writeAccountListToFile();
         break;
       }
