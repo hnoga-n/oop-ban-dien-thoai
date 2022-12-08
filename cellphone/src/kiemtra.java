@@ -1,7 +1,9 @@
 import java.util.Scanner;
+
 public class kiemtra {
-    Scanner sc=new Scanner(System.in);
-    public String KiemTraNhapMa(){
+    Scanner sc = new Scanner(System.in);
+
+    public String KiemTraNhapMa() {
         String DauVao;
         while (true) {
             DauVao=sc.nextLine();
@@ -27,40 +29,40 @@ public class kiemtra {
             System.out.print("Moi nhap lai: ");
         }
     }
-    public String KiemTraNhapSDT(){
+
+    public String KiemTraNhapSDT() {
         String DauVao;
         while (true) {
-            DauVao=sc.nextLine();
-            if(DauVao.matches("0"+"[0-9]{9}")){
+            DauVao = sc.nextLine();
+            if (DauVao.matches("0" + "[0-9]{9}")) {
                 return DauVao;
-            }
-            else{
+            } else {
                 System.out.println("Sai dinh dang so dien thoai!");
             }
             System.out.print("Moi nhap lai: ");
         }
     }
-    public String KiemTraNamSinh(){
+
+    public String KiemTraNamSinh() {
         String year;
         while (true) {
-            year=sc.nextLine();
-            if(Integer.parseInt(year)>1900 && Integer.parseInt(year)<=2022){
+            year = sc.nextLine();
+            if (Integer.parseInt(year) > 1900 && Integer.parseInt(year) <= 2022) {
                 return year;
-            }
-            else{
+            } else {
                 System.out.println("Sai dinh dang nam sinh!");
             }
             System.out.print("Moi nhap lai: ");
         }
     }
+
     public String KiemTraNhapChucVu() {
         String chucvu;
-        while(true) {
+        while (true) {
             chucvu = sc.nextLine();
-            if(chucvu.equalsIgnoreCase("quan ly") || chucvu.equalsIgnoreCase("nhan vien")) {
+            if (chucvu.equalsIgnoreCase("quan ly") || chucvu.equalsIgnoreCase("nhan vien")) {
                 return chucvu;
-            }
-            else {
+            } else {
                 System.out.println("Sai chuc vu ! Chi nhap 'quan ly' hoac 'nhan vien' ");
             }
             System.out.print("Moi nhap lai: ");

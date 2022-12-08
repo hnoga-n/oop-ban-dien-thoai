@@ -11,6 +11,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Date;
 import java.util.Scanner;
 
 public class DanhSachHoaDonBanHang {
@@ -28,6 +29,10 @@ public class DanhSachHoaDonBanHang {
     }
 
     public ArrayList<HoaDonBanHang> getlistHDBH () {
+        return this.danhSach;
+    }
+
+    public ArrayList<HoaDonBanHang> getArray() {
         return this.danhSach;
     }
 
@@ -109,12 +114,12 @@ public class DanhSachHoaDonBanHang {
         for (HoaDonBanHang hoaDonBanHang : danhSach) {
             System.out
                     .println(
-                            "--------------------------------------------------------------------------------------------------------------------------------------------------");
+                            "-------------------------------------------------------------------------------");
             System.out.println("Hóa đơn " + i + ": ");
             i = i + 1;
             hoaDonBanHang.xuatHoaDonBanHang();
             System.out.println(
-                    "--------------------------------------------------------------------------------------------------------------------------------------------------");
+                    "--------------------------------------------------------------------------------------");
         }
     }
 
@@ -428,12 +433,13 @@ public class DanhSachHoaDonBanHang {
         } while (true);
     }
 
-
-    public void Thongkebanhang() throws IOException{
+    // thống kê
+    public void thongKeBanHang() throws IOException {
         kiemtra kt = new kiemtra();
-        docDuLieuTuFile();
+        this.docDuLieuTuFile();
+
         System.out.print("Tu ngay: ");
-        String datefrom = kt.KiemTraNhapNgay();
+        String dateform = kt.KiemTraNhapNgay();
         System.out.print("Den ngay: ");
         String dateto = kt.KiemTraNhapNgay();
 
@@ -442,18 +448,18 @@ public class DanhSachHoaDonBanHang {
         Date date2 = null;
         Date date3 = null;
         DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        try {          
-            date1 = format.parse(datefrom);
+        try {
+            date1 = format.parse(dateform);
             date3 = format.parse(dateto);
         } catch (java.text.ParseException e) {
             // TODO: handle exception
             System.out.println(e);
         }
         ArrayList<SanPham> thongKeSp = new ArrayList<SanPham>();
-        for(HoaDonBanHang hd : danhSach) {
+        for (HoaDonBanHang hd : this.danhSach) {
             try {
                 date2 = format.parse(hd.getNgay().toString());
-                if(date1.before(date2) && date3.after(date2)) {
+                if (date1.before(date2) && date3.after(date2)) {
                     for (SanPham sp : hd.getdssp().getList()) {
                         for (SanPham spThongKe : thongKeSp) {
                             if (spThongKe.getMasp().equalsIgnoreCase(sp.getMasp())) {
@@ -468,23 +474,23 @@ public class DanhSachHoaDonBanHang {
                         existedFlag = false;
                     }
                 }
-                
-            }
-             catch (java.text.ParseException e) {
+            } catch (java.text.ParseException e) {
                 // TODO: handle exception
                 System.out.println(e);
             }
-            
         }
+
         if (thongKeSp.size() <= 0) {
-                    System.out.println("Khong co san pham nao duoc ban ra trong khoang thoi gian da chon !");
-                }
-                QuanLiSanPham danhSachThongKe = new QuanLiSanPham(thongKeSp);
-                danhSachThongKe.xuatDanhSach();
-                System.out.println("Tong chi phi nhap hang: " + formatter.format(danhSachThongKe.tongGia())+" VND");
-    } 
+            System.out.println("Khong co san pham nao duoc ban ra trong khoang thoi gian da chon !");
+        }
+        QuanLiSanPham danhSachThongKe = new QuanLiSanPham(thongKeSp);
+        danhSachThongKe.xuatDanhSach();
+        System.out.println("Tong doanh thu: " + danhSachThongKe.tongGia());
+    }
+
     public static void main(String[] args) throws IOException {
-        DanhSachHoaDonBanHang list = new DanhSachHoaDonBanHang();
-        list.Thongkebanhang();
+        DanhSachHoaDonBanHang dsbh = new DanhSachHoaDonBanHang();
+        dsbh.docDuLieuTuFile();
+        dsbh.xuatDanhSach();
     }
 }

@@ -30,8 +30,21 @@ public abstract class taikhoan {
   }
 
   public void setMatk() {
-    System.out.println("moi nhap ma tai khoan: ");
-    this.matk = sc.nextLine();
+    boolean checkDuLieu = true;
+    String matktmp;
+    do {
+      System.out.println("Moi nhap ma tai khoan: ");
+      matktmp = sc.next();
+      if (matktmp.matches("[0-9]{1,}") == false) {
+        checkDuLieu = false;
+        System.out.println("Vui long nhap dung dinh dang ma tai khoan (VD: 12)");
+        continue;
+      } else {
+        checkDuLieu = true;
+        this.matk = matktmp;
+      }
+    } while (checkDuLieu == false);
+
   }
 
   public void setMatk(String matk) {
@@ -74,6 +87,6 @@ public abstract class taikhoan {
   }
 
   public String getFileLine() {
-      return getMatk() + "," + getTentk() + "," + getPasswd() + "," + getMakhOrNv() + "\n";
-}
+    return getMatk() + "," + getTentk() + "," + getPasswd() + "," + getMakhOrNv() + "\n";
+  }
 }

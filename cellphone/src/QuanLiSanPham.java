@@ -17,7 +17,7 @@ public class QuanLiSanPham {
 
     private long tonggia;
 
-    private ArrayList<SanPham> danhSach;
+    private ArrayList<SanPham> danhSachSanPham;
 
     DecimalFormat formatter = new DecimalFormat("###,###,###");
 
@@ -25,20 +25,20 @@ public class QuanLiSanPham {
 
     // Constructor
     public QuanLiSanPham() {
-        this.danhSach = new ArrayList<SanPham>();
+        this.danhSachSanPham = new ArrayList<SanPham>();
     }
 
-    public QuanLiSanPham(ArrayList<SanPham> danhSach) {
-        this.danhSach = danhSach;
+    public QuanLiSanPham(ArrayList<SanPham> danhSachSanPham) {
+        this.danhSachSanPham = danhSachSanPham;
     }
 
     public ArrayList<SanPham> getList() {
-        return this.danhSach;
+        return this.danhSachSanPham;
     }
 
     // thêm
     public void them(SanPham sp) {
-        this.danhSach.add(sp);
+        this.danhSachSanPham.add(sp);
 
     }
 
@@ -55,7 +55,7 @@ public class QuanLiSanPham {
         System.out.println(header);
         System.out.println(
                 "------------------------------------------------------------------------------------------------------------------------------------------");
-        for (SanPham product : danhSach) {
+        for (SanPham product : danhSachSanPham) {
             String now = String.format("%15s%15s%35s%15s%15s%25s", product.getMasp(), product.getHang(),
                     product.getTensp(),
                     product.getGia(), product.getSoluong(), product.getThoiGianBaoHanh());
@@ -101,7 +101,7 @@ public class QuanLiSanPham {
 
     public long tongGia() {
         tonggia = 0;
-        for (SanPham sanPham : danhSach) {
+        for (SanPham sanPham : danhSachSanPham) {
             tonggia = tonggia + sanPham.getGia() * sanPham.getSoluong();
         }
         return tonggia;
@@ -111,18 +111,18 @@ public class QuanLiSanPham {
     public void xoa(String masp) {
         SanPham sp = new SanPham();
 
-        for (SanPham sanPham : danhSach) {
+        for (SanPham sanPham : danhSachSanPham) {
             if (sanPham.getMasp().equals(masp)) {
                 sp = sanPham;
             }
         }
-        this.danhSach.remove(sp);
+        this.danhSachSanPham.remove(sp);
     }
 
     // số lượng
     public void soLuong() {
         int soLuong = 0;
-        for (SanPham sanPham : danhSach) {
+        for (SanPham sanPham : danhSachSanPham) {
             soLuong = soLuong + sanPham.getSoluong();
         }
         System.out.println(soLuong);
@@ -131,102 +131,58 @@ public class QuanLiSanPham {
     // tìm kiếm
     public void timKiem(String masp) {
 
-        for (SanPham product : danhSach) {
+        for (SanPham product : danhSachSanPham) {
             if (product.getMasp().equals(masp)) {
-                System.out.println(product.XuatThongTin());
+                product.XuatThongTinChiTiet();
             }
         }
     }
 
     // sửa
     public void sua(String masp) {
-        for (SanPham sanPham : danhSach) {
+        for (SanPham sanPham : danhSachSanPham) {
             if (sanPham.getMasp().equals(masp)) {
-                int luaChon = 0;
+                int luaChon;
                 do {
                     System.out.println("MENU ----------");
-                    System.out.println("Lựa chỞn: ");
                     System.out.println(
-                            "1. Sửa mã sản phẩm.\n"
-                                    + "2. Sửa tên sản phẩm.\n"
-                                    + "3. Sửa tên hãng.\n"
-                                    + "4. Sửa giá sản phẩm\n"
-                                    + "5. Sửa thỞi gian bảo hành.\n"
-                                    + "6.Sửa số lượng."
-                                    + "7.Sửa chi tiết sản phẩm."
-                                    + "0. Thoát.\n");
+                            "1. Sua ma san pham.\n"
+                                    + "2. Sua ten san pham.\n"
+                                    + "3. Sua ten hang.\n"
+                                    + "4. Sua gia san pham\n"
+                                    + "5. Sua thoi gian bao hanh.\n"
+                                    + "6. Sua so luong san pham.\n"
+                                    + "7. Sua chi tiet san pham.\n"
+                                    + "0. Thoat.\n");
+                    System.out.print("Lua chon: ");
                     luaChon = sc.nextInt();
                     sc.nextLine();
                     if (luaChon == 1) {
-                        System.out.println("Nhập mã sản phẩm mới: ");
+                        System.out.println("Nhap ma san pham moi: ");
                         String newMasp = sc.nextLine();
                         sanPham.setMasp(newMasp);
-                    }
-                    if (luaChon == 2) {
-                        System.out.println("Nhập tên sản phẩm mới: ");
+                    } else if (luaChon == 2) {
+                        System.out.println("Nhap ten san pham moi: ");
                         String newTensp = sc.nextLine();
                         sanPham.setTensp(newTensp);
-                    }
-                    if (luaChon == 3) {
-                        System.out.println("Nhập hãng sản phẩm mới: ");
+                    } else if (luaChon == 3) {
+                        System.out.println("Nhap hang san pham moi: ");
                         String newHang = sc.nextLine();
                         sanPham.setHang(newHang);
-                    }
-                    if (luaChon == 4) {
-                        System.out.println("Nhập giá sản phẩm mới: ");
+                    } else if (luaChon == 4) {
+                        System.out.println("Nhap gia san pham: ");
                         int newGia = sc.nextInt();
                         sanPham.setGia(newGia);
-                    }
-                    if (luaChon == 5) {
-                        System.out.println("Nhập thỞi gian bảo hành mới: ");
+                    } else if (luaChon == 5) {
+                        System.out.println("Nhap thoi gian bao hanh moi: ");
                         String newThoiGianBaoHanh = sc.nextLine();
                         sanPham.setThoiGianBaoHanh(newThoiGianBaoHanh);
-                    }
-                    if (luaChon == 6) {
-                        System.out.println("Nhập số lượng mới ");
+                    } else if (luaChon == 6) {
+                        System.out.println("Nhap so luong moi: ");
                         int newSoLuong = sc.nextInt();
                         sanPham.setSoluong(newSoLuong);
-                    }
-                    if (luaChon == 7) {
-                        int luaChon1 = 0;
-                        do {
-                            System.out.println("MENU ----------");
-                            System.out.println("Lựa chỞn chi tiết sản phẩm cần sửa: ");
-                            System.out.println(
-                                    "1. Màn hình.\n"
-                                            + "2. Vi xử lí.\n"
-                                            + "3. Camera.\n"
-                                            + "4. Pin\n"
-                                            + "5. Bộ nhớ.\n"
-                                            + "0. Thoát.\n");
-                            luaChon = sc.nextInt();
-                            sc.nextLine();
-                            if (luaChon1 == 1) {
-                                System.out.println("Nhập thông số màn hình mới: ");
-                                String newManHinh = sc.nextLine();
-                                sanPham.getChitietsp().setmanHinh(newManHinh);
-                            }
-                            if (luaChon1 == 2) {
-                                System.out.println("Nhập thông số vi xử lí mới: ");
-                                String newVxl = sc.nextLine();
-                                sanPham.getChitietsp().setvxl(newVxl);
-                            }
-                            if (luaChon1 == 3) {
-                                System.out.println("Nhập thông số camera mới: ");
-                                String newCamera = sc.nextLine();
-                                sanPham.getChitietsp().setcamera(newCamera);
-                            }
-                            if (luaChon1 == 4) {
-                                System.out.println("Nhập thông số pin mới: ");
-                                String newPin = sc.nextLine();
-                                sanPham.getChitietsp().setpin(newPin);
-                            }
-                            if (luaChon1 == 5) {
-                                System.out.println("Nhập thông số bộ nhớ mới: ");
-                                String newBoNho = sc.nextLine();
-                                sanPham.getChitietsp().setboNho(newBoNho);
-                            }
-                        } while (luaChon1 != 0);
+                    } else if (luaChon == 7) {
+                        sanPham.getChitietsp().suaChiTiet();
                     }
                 } while (luaChon != 0);
             }
@@ -253,7 +209,7 @@ public class QuanLiSanPham {
                         "số lượng",
                         "ThỞi gian bảo hành");
                 System.out.println(header);
-                for (SanPham sanPham : danhSach) {
+                for (SanPham sanPham : danhSachSanPham) {
                     if (sanPham.getHang().equals(Hangsp)) {
                         System.out.println(
                                 "--------------------------------------------------------------------------------------------------------------------------------------------------");
@@ -285,7 +241,7 @@ public class QuanLiSanPham {
                                 "giá", "số lượng",
                                 "ThỞi gian bảo hành");
                         System.out.println(header);
-                        for (SanPham sanPham : danhSach) {
+                        for (SanPham sanPham : danhSachSanPham) {
                             if (sanPham.getGia() <= 5000000) {
                                 System.out.println(
                                         "--------------------------------------------------------------------------------------------------------------------------------------------------");
@@ -305,7 +261,7 @@ public class QuanLiSanPham {
                                 "giá", "số lượng",
                                 "ThỞi gian bảo hành");
                         System.out.println(header);
-                        for (SanPham sanPham : danhSach) {
+                        for (SanPham sanPham : danhSachSanPham) {
                             if ((sanPham.getGia() >= 5000000) && (sanPham.getGia() <= 10000000)) {
                                 System.out.println(
                                         "--------------------------------------------------------------------------------------------------------------------------------------------------");
@@ -324,7 +280,7 @@ public class QuanLiSanPham {
                                 "giá", "số lượng",
                                 "ThỞi gian bảo hành");
                         System.out.println(header);
-                        for (SanPham sanPham : danhSach) {
+                        for (SanPham sanPham : danhSachSanPham) {
                             if ((sanPham.getGia() >= 10000000) && (sanPham.getGia() <= 15000000)) {
                                 System.out.println(
                                         "--------------------------------------------------------------------------------------------------------------------------------------------------");
@@ -343,7 +299,7 @@ public class QuanLiSanPham {
                                 "giá", "số lượng",
                                 "ThỞi gian bảo hành");
                         System.out.println(header);
-                        for (SanPham sanPham : danhSach) {
+                        for (SanPham sanPham : danhSachSanPham) {
                             if ((sanPham.getGia() >= 15000000) && (sanPham.getGia() <= 20000000)) {
                                 System.out.println(
                                         "--------------------------------------------------------------------------------------------------------------------------------------------------");
@@ -358,11 +314,11 @@ public class QuanLiSanPham {
                         }
                     }
                     if (luachon1 == 5) {
-                        String header = String.format("%15s%15s%35s%15s%15s%25s", "mã sản phẩm", "hãng", "tên sản phẩm",
-                                "giá", "số lượng",
-                                "ThỞi gian bảo hành");
+                        String header = String.format("%15s%15s%35s%15s%15s%25s", "ma san pham", "hang", "ten san pham",
+                                "gia", "so luong",
+                                "Thoi gian bao hanh");
                         System.out.println(header);
-                        for (SanPham sanPham : danhSach) {
+                        for (SanPham sanPham : danhSachSanPham) {
                             if (sanPham.getGia() >= 20000000) {
                                 System.out.println(
                                         "--------------------------------------------------------------------------------------------------------------------------------------------------");
@@ -380,9 +336,9 @@ public class QuanLiSanPham {
 
             }
             if (luaChon == 3) {
-                System.out.println("Nhập mã sản phẩm: ");
+                System.out.println("Nhap ma san pham: ");
                 String maSp = sc.nextLine();
-                for (SanPham sanPham : danhSach) {
+                for (SanPham sanPham : danhSachSanPham) {
                     if (sanPham.getMasp().equals(maSp)) {
                         sanPham.getChitietsp().XuatMoTaSanPham();
                     }
@@ -397,7 +353,7 @@ public class QuanLiSanPham {
         try {
             FileWriter fw = new FileWriter(file);
             try (BufferedWriter bw = new BufferedWriter(fw)) {
-                for (SanPham sanPham : danhSach) {
+                for (SanPham sanPham : danhSachSanPham) {
                     bw.write(sanPham.toString());
                     bw.newLine();
                 }
@@ -415,7 +371,7 @@ public class QuanLiSanPham {
 
     // đỞc dữ liệu từ file
     public void docDuLieuTuFile() throws IOException {
-        this.danhSach.clear();
+        this.danhSachSanPham.clear();
         File file = new File("SanPham.txt");
         try {
 
@@ -432,9 +388,9 @@ public class QuanLiSanPham {
                     String txt[] = line.split(",");
                     int gia = Integer.parseInt(txt[3]);
                     int soLuong = Integer.parseInt(txt[4]);
-                    ChiTietSanPham ctsp = new ChiTietSanPham(txt[6], txt[7], txt[8], txt[9], txt[10]);
+                    ChiTietSanPham ctsp = new ChiTietSanPham(txt[6], txt[7], txt[8], txt[9], txt[10], txt[11]);
                     SanPham sp = new SanPham(txt[0], txt[1], txt[2], gia, txt[5], soLuong, ctsp);
-                    this.danhSach.add(sp);
+                    them(sp);
 
                 }
                 br.close();
@@ -454,230 +410,93 @@ public class QuanLiSanPham {
     }
 
     // chức năng tổng thể
-    public void chucNang() throws IOException {
-        this.danhSach.clear();
-        File file = new File("SanPham.txt");
-        try {
-
-            FileReader fr = new FileReader(file);
-            try (BufferedReader br = new BufferedReader(fr)) {
-                String line = "";
-
-                while (line != NULL) {
-
-                    line = br.readLine();
-                    if (line == NULL) {
-                        break;
-                    }
-                    String txt[] = line.split(",");
-                    int gia = Integer.parseInt(txt[3]);
-                    int soLuong = Integer.parseInt(txt[4]);
-                    ChiTietSanPham ctsp = new ChiTietSanPham(txt[6], txt[7], txt[8], txt[9], txt[10]);
-                    SanPham sp = new SanPham(txt[0], txt[1], txt[2], gia, txt[5], soLuong, ctsp);
-                    this.danhSach.add(sp);
-
-                }
-                br.close();
-            } catch (FileNotFoundException e) {
-                throw e;
-            } catch (NumberFormatException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            fr.close();
-
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+    public void menuSanPham() throws IOException {
+        this.docDuLieuTuFile();
         int luaChon0 = 0;
         do {
             System.out.println("MENU ----------");
-            System.out.println("Lựa chỞn: ");
             System.out.println(
-                    "1. In danh sách sản phẩm.\n"
-                            + "2. Thêm sản phẩm.\n"
-                            + "3. Xóa sản phẩm.\n"
-                            + "4. Tìm kiếm sản phẩm.\n"
-                            + "5. Số lượng sản phẩm\n"
-                            + "6. Tổng giá.\n"
-                            + "7. Sửa sản phẩm.\n"
-                            + "0. Thoát.\n");
-            System.out.println("Vui lòng nhập lựa chỞn của bạn: ");
+                    "1. In danh sach san pham.\n"
+                            + "2. Them san pham.\n"
+                            + "3. Xoa san pham.\n"
+                            + "4. Tim kiem san pham.\n"
+                            + "5. So luong san pham\n"
+                            + "6. Tong gia.\n"
+                            + "7. Sua san pham.\n"
+                            + "0. Thoat.\n");
+            System.out.print("Nhap lua chon: ");
             luaChon0 = sc.nextInt();
             sc.nextLine();
             if (luaChon0 == 1) {
-                System.out.println("Danh sách sản phẩm:");
-                String header = String.format("%15s%15s%35s%15s%15s%25s", "mã sản phẩm", "hãng", "tên sản phẩm", "giá",
-                        "số lượng",
-                        "ThỞi gian bảo hành");
+                System.out.println("Danh sach san pham:");
+                String header = String.format("%15s%15s%35s%15s%15s%25s", "Ma san pham", "Hang", "Ten san pham", "Gia",
+                        "So luong",
+                        "Thoi gian bao hanh");
                 System.out.println(header);
-                for (SanPham product : danhSach) {
+                for (SanPham product : danhSachSanPham) {
                     String now = String.format("%15s%15s%35s%15s%15s%25s", product.getMasp(), product.getHang(),
                             product.getTensp(), product.getGia(), product.getSoluong(), product.getThoiGianBaoHanh());
                     System.out.println(now);
                 }
             } else if (luaChon0 == 2) {
-                System.out.println("Nhập mã sản phẩm: ");
+                System.out.print("Nhap ma san pham: ");
                 String MaSp = sc.nextLine();
-                System.out.println("Nhập tên hãng: ");
+                System.out.print("Nhap ten hang: ");
                 String HangSp = sc.nextLine();
-                System.out.println("Nhập tên sản phẩm: ");
+                System.out.print("Nhap ten san pham: ");
                 String TenSp = sc.nextLine();
-                System.out.println("Nhập giá: ");
+                System.out.print("Nhap gia: ");
                 int GiaSp = sc.nextInt();
                 sc.nextLine();
-                System.out.println("Nhập thỞi gian bảo hành: ");
+                System.out.print("Nhap thoi gian bao hanh: ");
                 String ThoiGianBaoHanhSp = sc.nextLine();
-                System.out.println("Nhập số lượng: ");
+                System.out.print("Nhap so luong: ");
                 int soLuong = sc.nextInt();
                 sc.nextLine();
-                System.out.println("Nhập thông số màn hình: ");
+                System.out.print("Nhap thong so man hinh: ");
                 String ManHinhSp = sc.nextLine();
-                System.out.println("Nhập thông số vi xử lí: ");
+                System.out.print("Nhap thong so vi xu li: ");
                 String VxlSp = sc.nextLine();
-                System.out.println("Nhập thông số camera: ");
+                System.out.print("Nhap thong so camera: ");
                 String CameraSp = sc.nextLine();
-                System.out.println("Nhập thông số pin: ");
+                System.out.print("Nhap thong so pin: ");
                 String PinSp = sc.nextLine();
-                System.out.println("Nhập thông số bộ nhớ: ");
+                System.out.print("Nhap thong so ram: ");
+                String RamSp = sc.nextLine();
+                System.out.print("Nhap thong so bo nho: ");
                 String BoNhoSp = sc.nextLine();
-                ChiTietSanPham ctsp = new ChiTietSanPham(ManHinhSp, VxlSp, CameraSp, PinSp, BoNhoSp);
+                ChiTietSanPham ctsp = new ChiTietSanPham(ManHinhSp, VxlSp, CameraSp, PinSp, RamSp, BoNhoSp);
                 SanPham sp = new SanPham(MaSp, TenSp, HangSp, GiaSp, ThoiGianBaoHanhSp, soLuong, ctsp);
-                this.danhSach.add(sp);
+                them(sp);
                 System.out.println(MaSp);
             } else if (luaChon0 == 3) {
-                System.out.println("Nhập mã sản phẩm muốn xóa: ");
+                System.out.print("Nhap ma san pham muon xoa: ");
                 String MaSp = sc.nextLine();
                 SanPham sp = new SanPham(MaSp);
-                this.danhSach.remove(sp);
+                this.danhSachSanPham.remove(sp);
             } else if (luaChon0 == 4) {
-                System.out.println("Nhập mã sản phẩm muốn tìm: ");
+                System.out.print("Nhap ma san pham muon tim: ");
                 String MaSp = sc.nextLine();
-                for (SanPham product : danhSach) {
+                for (SanPham product : danhSachSanPham) {
                     if (product.getMasp().equals(MaSp)) {
-                        System.out.println(product.XuatThongTin());
+                        product.XuatThongTinChiTiet();
                     }
                 }
 
             } else if (luaChon0 == 5) {
-                System.out.println(this.danhSach.size());
+                System.out.println(this.danhSachSanPham.size());
             } else if (luaChon0 == 6) {
                 tonggia = 0;
-                for (SanPham sanPham2 : danhSach) {
+                for (SanPham sanPham2 : danhSachSanPham) {
                     tonggia = tonggia + sanPham2.getGia();
                 }
                 System.out.println(tonggia);
             } else if (luaChon0 == 7) {
-                System.out.println("Nhập mã sản phẩm muốn sửa: ");
+                System.out.print("Nhap ma san pham muon sua: ");
                 String MaSp = sc.nextLine();
-                for (SanPham sanPham3 : danhSach) {
-                    if (sanPham3.getMasp().equals(MaSp)) {
-                        int luaChon1 = 0;
-                        do {
-                            System.out.println("MENU ----------");
-                            System.out.println("Lựa chỞn: ");
-                            System.out.println(
-                                    "1. Sua ma san pham.\n"
-                                            + "2. Sua ten san pham.\n"
-                                            + "3. Sua ten hang.\n"
-                                            + "4. Sua gia san pham\n"
-                                            + "5. Sua thoi gian bao hanh.\n"
-                                            + "6. Sua chi tiet san pham.\n"
-                                            + "0. Thoat.\n");
-                            luaChon1 = sc.nextInt();
-                            sc.nextLine();
-                            if (luaChon1 == 1) {
-                                System.out.println("Nhập mã sản phẩm mới: ");
-                                String newMasp = sc.nextLine();
-                                sanPham3.setMasp(newMasp);
-                            }
-                            if (luaChon1 == 2) {
-                                System.out.println("Nhập tên sản phẩm mới: ");
-                                String newTensp = sc.nextLine();
-                                sanPham3.setTensp(newTensp);
-                            }
-                            if (luaChon1 == 3) {
-                                System.out.println("Nhập hãng sản phẩm mới: ");
-                                String newHang = sc.nextLine();
-                                sanPham3.setHang(newHang);
-                            }
-                            if (luaChon1 == 4) {
-                                System.out.println("Nhập giá sản phẩm mới: ");
-                                int newGia = sc.nextInt();
-                                sanPham3.setGia(newGia);
-                            }
-                            if (luaChon1 == 5) {
-                                System.out.println("Nhập thỞi gian bảo hành mới: ");
-                                String newThoiGianBaoHanh = sc.nextLine();
-                                sanPham3.setThoiGianBaoHanh(newThoiGianBaoHanh);
-                            }
-                            if (luaChon1 == 6) {
-                                System.out.println("Nhập số lượng mới ");
-                                int newSoLuong = sc.nextInt();
-                                sanPham3.setSoluong(newSoLuong);
-                            }
-                            if (luaChon1 == 7) {
-                                int luaChon = 0;
-                                do {
-                                    System.out.println("MENU ----------");
-                                    System.out.println("Lựa chỞn chi tiết sản phẩm cần sửa: ");
-                                    System.out.println(
-                                            "1. Màn hình.\n"
-                                                    + "2. Vi xử lí.\n"
-                                                    + "3. Camera.\n"
-                                                    + "4. Pin\n"
-                                                    + "5. Bộ nhớ.\n"
-                                                    + "0. Thoát.\n");
-                                    luaChon = sc.nextInt();
-                                    sc.nextLine();
-                                    if (luaChon == 1) {
-                                        System.out.println("Nhập thông số màn hình mới: ");
-                                        String newManHinh = sc.nextLine();
-                                        sanPham3.getChitietsp().setmanHinh(newManHinh);
-                                    }
-                                    if (luaChon == 2) {
-                                        System.out.println("Nhập thông số vi xử lí mới: ");
-                                        String newVxl = sc.nextLine();
-                                        sanPham3.getChitietsp().setvxl(newVxl);
-                                    }
-                                    if (luaChon == 3) {
-                                        System.out.println("Nhập thông số camera mới: ");
-                                        String newCamera = sc.nextLine();
-                                        sanPham3.getChitietsp().setcamera(newCamera);
-                                    }
-                                    if (luaChon == 4) {
-                                        System.out.println("Nhập thông số pin mới: ");
-                                        String newPin = sc.nextLine();
-                                        sanPham3.getChitietsp().setpin(newPin);
-                                    }
-                                    if (luaChon == 5) {
-                                        System.out.println("Nhập thông số bộ nhớ mới: ");
-                                        String newBoNho = sc.nextLine();
-                                        sanPham3.getChitietsp().setboNho(newBoNho);
-                                    }
-                                } while (luaChon != 0);
-                            }
-                        } while (luaChon1 != 0);
-                    }
-                }
+                this.sua(MaSp);
             } else if (luaChon0 == 0) {
-                try {
-                    FileWriter fw = new FileWriter(file);
-                    try (BufferedWriter bw = new BufferedWriter(fw)) {
-                        for (SanPham sanPham : danhSach) {
-                            bw.write(sanPham.toString());
-                            bw.newLine();
-                        }
-                        bw.flush();
-                        bw.close();
-                    }
-                    fw.close();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    // TODO: handle exception
-                }
+                this.ghiDuLieuVaoFile();
                 break;
             }
 
@@ -687,7 +506,7 @@ public class QuanLiSanPham {
     // Ğịnh dạng cho file hóa đơn.
     public String dinhDangFileHoaDon() {
         String s = "";
-        for (SanPham sanPham : danhSach) {
+        for (SanPham sanPham : danhSachSanPham) {
             String s1 = "\n" + sanPham.getMasp() + "," + sanPham.getTensp() + "," + sanPham.getHang() + ","
                     + sanPham.getGia() + "," + sanPham.getSoluong()
                     + "," + sanPham.getThoiGianBaoHanh();
@@ -741,7 +560,7 @@ public class QuanLiSanPham {
                         if(flag0 == false) {
                             break;
                         }
-                        for(SanPham obj : danhSach) {
+                        for(SanPham obj : danhSachSanPham) {
                             if(obj.getMasp().equalsIgnoreCase(masp)) {
                                 flag = true;
                                 sp=obj;
@@ -879,8 +698,8 @@ public class QuanLiSanPham {
         }
     }
 
-    public static void main(String[] args) throws IOException{
-        QuanLiSanPham list = new QuanLiSanPham();
-        list.Menuchucnangnhaphang();
+    public static void main(String[] args) throws IOException {
+        QuanLiSanPham dssp = new QuanLiSanPham();
+        dssp.menuSanPham();
     }
 }

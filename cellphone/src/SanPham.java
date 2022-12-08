@@ -38,6 +38,15 @@ public class SanPham implements Comparable<SanPham> {
         this.thoiGianBaoHanh = thoiGianBaoHanh;
     }
 
+    public SanPham(SanPham sp) {
+        this.masp = sp.masp;
+        this.tensp = sp.tensp;
+        this.hang = sp.hang;
+        this.gia = sp.gia;
+        this.soluong = sp.soluong;
+        this.thoiGianBaoHanh = sp.thoiGianBaoHanh;
+    }
+
     public String getMasp() {
         return masp;
     }
@@ -134,23 +143,23 @@ public class SanPham implements Comparable<SanPham> {
     // xuất thông tin chi tiết
     public void XuatThongTinChiTiet() {
         System.out.println("---------------------------------------------------");
-        System.out.println("Thông tin chi tiết sản phẩm:");
-        System.out.println("---------------------------------------------------" + "\nMã sản phẩm: " + masp
-                + "\n---------------------------------------------------" + "\nTên sản phảm: " + tensp
-                + "\n---------------------------------------------------" + "\nHãng: " + hang
-                + "\n---------------------------------------------------" + "\nGiá: " + gia
-                + "\n---------------------------------------------------" + "\nSố lượng: " + soluong
+        System.out.println("Thong tin chi tiet:");
+        System.out.println("---------------------------------------------------" + "\nMa san pham: " + masp
+                + "\n---------------------------------------------------" + "\nTen san pham: " + tensp
+                + "\n---------------------------------------------------" + "\nHang: " + hang
+                + "\n---------------------------------------------------" + "\nGia: " + gia
+                + "\n---------------------------------------------------" + "\nSo luong: " + soluong
                 + "\n---------------------------------------------------"
-                + "\nThời gian bảo hành: " + thoiGianBaoHanh + "\n---------------------------------------------------"
-                + "\nChi tiết: ");
+                + "\nThoi gian bao hanh: " + thoiGianBaoHanh + "\n---------------------------------------------------"
+                + "\nChi tiet: ");
         this.chitietsp.XuatMoTaSanPham();
 
     }
 
     // xuất thông tin dùng cho phương thức tìmkiếm ở quản lí danh sách
     public String XuatThongTin() {
-        return "Mã sản phẩm: " + masp + ";  Tên sản phảm: " + tensp + ";  Hãng: " + hang + ";  Giá: " + gia
-                + ";  Thời gian bảo hành: " + thoiGianBaoHanh + ";  Số lượng: " + soluong;
+        return "Ma san pham: " + masp + ";  Ten san pham: " + tensp + ";  Hang: " + hang + ";  Gia: " + gia
+                + ";  Thoi gian bao hanh: " + thoiGianBaoHanh + ";  So luong: " + soluong;
 
     }
 
