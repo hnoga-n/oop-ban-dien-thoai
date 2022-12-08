@@ -6,11 +6,25 @@ public class kiemtra {
     public String KiemTraNhapMa() {
         String DauVao;
         while (true) {
-            DauVao = sc.nextLine();
-            if (DauVao.matches("NV" + "[0-9]{1}")) {
+            DauVao=sc.nextLine();
+            if(DauVao.matches("[0-9]{1,2}")){
                 return DauVao;
-            } else {
-                System.out.println("Sai dinh dang ma nhan vien! vd:'NV1'");
+            }
+            else{
+                System.out.println("Sai dinh dang ma! vd:'1'");
+            }
+            System.out.print("Moi nhap lai: ");
+        }
+    }
+    public String KiemTraNhapMaSP(){
+        String DauVao;
+        while (true) {
+            DauVao=sc.nextLine();
+            if(DauVao.matches("[isvx]"+"[0-9]{1,2}")){
+                return DauVao;
+            }
+            else{
+                System.out.println("Sai dinh dang ma! vd:'i1,s1,x1,v1'");
             }
             System.out.print("Moi nhap lai: ");
         }
@@ -54,18 +68,17 @@ public class kiemtra {
             System.out.print("Moi nhap lai: ");
         }
     }
-
-    // kiểm tra định dạng ngày
     public String KiemTraNhapNgay() {
         String DauVao;
         while (true) {
-            DauVao = sc.nextLine();
-            if (DauVao.matches("[0-9]{1,2}" + "/" + "[0-9]{1,2}" + "/" + "[0-9]{4}")) {
+            DauVao=sc.nextLine();
+            if(DauVao.matches("[0-9]{1,2}" + "/" + "[0-9]{1,2}" + "/" + "[0-9]{4}")){
                 return DauVao;
-            } else {
+            }
+            else{
                 System.out.println("Sai dinh dang ngay! VD: '11/1/2003' ");
             }
             System.out.print("Moi nhap lai: ");
         }
-    }
+    } 
 }

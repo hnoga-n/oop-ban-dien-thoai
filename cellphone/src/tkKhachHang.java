@@ -42,6 +42,12 @@ public class tkKhachHang extends taikhoan {
     System.out.printf("%-15s%-15s%-15s%-15s%-15s\n", getMatk(), getTentk(), getPasswd(), null, this.makh);
   }
 
+  public void xuatThongTinTaiKhoan_1() {
+    System.out.printf("%-15s%-15s%-15s%-15s%-15s\n", "Ma tai khoan", "Ten tai khoan", "Mat khau", "Ma nhan vien",
+        "Ma khach hang");
+        System.out.printf("%-15s%-15s%-15s%-15s%-15s\n", getMatk(), getTentk(), getPasswd(), null, this.makh);
+  }
+
   public void parseAccount(String line) {
     String[] userAttribute = line.split(",");
 

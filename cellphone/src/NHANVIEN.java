@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.Serializable;
 public class NHANVIEN implements Serializable{
@@ -97,6 +98,14 @@ public class NHANVIEN implements Serializable{
         System.out.printf("%-20s%-25s%-15s%-20s%-20s\n","MA NHAN VIEN","HO TEN","NAM SINH","SO DIEN THOAI","CHUC VU");
         System.out.println("============================================================================================");
         System.out.printf("%-20s%-25s%-15s%-20s%-20s\n",manv,hoten,namsinh,sdt,chucvu);
+    }
+
+    public void Xuathoadonbanhang(ArrayList<HoaDonBanHang> list) {
+        for(HoaDonBanHang obj : list) {
+            if(obj.getManv().equalsIgnoreCase(this.manv)) {
+                obj.xuatHoaDonBanHang();
+            }
+        }
     }
     //FILE FUNCTION
 

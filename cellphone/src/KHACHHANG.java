@@ -100,7 +100,7 @@ public class KHACHHANG {
         System.out.println("==============================================================================");
         System.out.printf("%-20s%-25s%-15s%-20s\n", "MA KHACH HANG", "HO TEN", "NAM SINH", "SO DIEN THOAI");
         System.out.println("==============================================================================");
-        System.out.printf("%-20s%-25s%-15s%-20s%-20s\n", makh, hoten, namsinh, sdt);
+        System.out.printf("%-20s%-25s%-15s%-20s\n", makh, hoten, namsinh, sdt);
     }
 
     // HAM FILE

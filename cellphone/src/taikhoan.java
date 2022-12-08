@@ -11,6 +11,7 @@ public abstract class taikhoan {
   abstract void parseAccount(String line);
 
   abstract void xuatThongTinTaiKhoan();
+  abstract void xuatThongTinTaiKhoan_1();
 
   public static void main(String[] args) {
 

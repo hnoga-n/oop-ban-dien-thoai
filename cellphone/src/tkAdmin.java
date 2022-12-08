@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class tkAdmin extends taikhoan {
   private String manv;
@@ -46,8 +47,9 @@ public class tkAdmin extends taikhoan {
     System.out.printf("%-15s%-15s%-15s%-15s%-15s\n", getMatk(), getTentk(), getPasswd(), this.manv, null);
   }
 
-  public void menu() {
-
+  public void xuatThongTinTaiKhoan_1() {
+    System.out.printf("%-15s%-15s%-15s%-15s%-15s\n", "Ma tai khoan", "Ten tai khoan", "Mat khau", "Ma nhan vien",
+        "Ma khach hang");
+    System.out.printf("%-15s%-15s%-15s%-15s%-15s\n", getMatk(), getTentk(), getPasswd(), this.manv, null);
   }
-
 }
