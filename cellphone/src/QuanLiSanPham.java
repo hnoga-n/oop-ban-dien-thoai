@@ -17,13 +17,13 @@ public class QuanLiSanPham {
     private ArrayList<SanPham> danhSachSanPham = new ArrayList<SanPham>();
 
     // Constructor
-    /* public QuanLiSanPham() {
+    public QuanLiSanPham() {
         this.danhSachSanPham = new ArrayList<SanPham>();
     }
 
     public QuanLiSanPham(ArrayList<SanPham> danhSachSanPham) {
         this.danhSachSanPham = danhSachSanPham;
-    } */
+    }
 
     public ArrayList<SanPham> getList() {
         return this.danhSachSanPham;
@@ -109,8 +109,7 @@ public class QuanLiSanPham {
     }
 
     // sửa
-    public void sua(String masp) 
-    {
+    public void sua(String masp) {
         for (SanPham sanPham : danhSachSanPham) {
             if (sanPham.getMasp().equals(masp)) {
                 int luaChon;
@@ -132,33 +131,27 @@ public class QuanLiSanPham {
                         System.out.println("Nhap ma san pham moi: ");
                         String newMasp = sc.nextLine();
                         sanPham.setMasp(newMasp);
-                    }
-                    else if (luaChon == 2) {
+                    } else if (luaChon == 2) {
                         System.out.println("Nhap ten san pham moi: ");
                         String newTensp = sc.nextLine();
                         sanPham.setTensp(newTensp);
-                    }
-                    else if (luaChon == 3) {
+                    } else if (luaChon == 3) {
                         System.out.println("Nhap hang san pham moi: ");
                         String newHang = sc.nextLine();
                         sanPham.setHang(newHang);
-                    }
-                    else if (luaChon == 4) {
+                    } else if (luaChon == 4) {
                         System.out.println("Nhap gia san pham: ");
                         int newGia = sc.nextInt();
                         sanPham.setGia(newGia);
-                    }
-                    else if (luaChon == 5) {
+                    } else if (luaChon == 5) {
                         System.out.println("Nhap thoi gian bao hanh moi: ");
                         String newThoiGianBaoHanh = sc.nextLine();
                         sanPham.setThoiGianBaoHanh(newThoiGianBaoHanh);
-                    }
-                    else if (luaChon == 6) {
+                    } else if (luaChon == 6) {
                         System.out.println("Nhap so luong moi: ");
                         int newSoLuong = sc.nextInt();
                         sanPham.setSoluong(newSoLuong);
-                    }
-                    else if (luaChon == 7) {
+                    } else if (luaChon == 7) {
                         sanPham.getChitietsp().suaChiTiet();
                     }
                 } while (luaChon != 0);
@@ -442,7 +435,7 @@ public class QuanLiSanPham {
                 String RamSp = sc.nextLine();
                 System.out.print("Nhap thong so bo nho: ");
                 String BoNhoSp = sc.nextLine();
-                ChiTietSanPham ctsp = new ChiTietSanPham(ManHinhSp, VxlSp, CameraSp, PinSp,RamSp, BoNhoSp);
+                ChiTietSanPham ctsp = new ChiTietSanPham(ManHinhSp, VxlSp, CameraSp, PinSp, RamSp, BoNhoSp);
                 SanPham sp = new SanPham(MaSp, TenSp, HangSp, GiaSp, ThoiGianBaoHanhSp, soLuong, ctsp);
                 them(sp);
                 System.out.println(MaSp);
@@ -472,7 +465,7 @@ public class QuanLiSanPham {
                 System.out.print("Nhap ma san pham muon sua: ");
                 String MaSp = sc.nextLine();
                 this.sua(MaSp);
-            }  else if (luaChon0 == 0) {
+            } else if (luaChon0 == 0) {
                 this.ghiDuLieuVaoFile();
                 break;
             }
@@ -492,9 +485,8 @@ public class QuanLiSanPham {
         return s;
     }
 
-    public static void main(String[] args) throws IOException 
-    {
-        QuanLiSanPham dssp= new QuanLiSanPham();
+    public static void main(String[] args) throws IOException {
+        QuanLiSanPham dssp = new QuanLiSanPham();
         dssp.menuSanPham();
     }
 }

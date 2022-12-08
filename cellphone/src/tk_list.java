@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.swing.text.StyledEditorKit.BoldAction;
-
 public class tk_list {
   private ArrayList<taikhoan> listAccount = new ArrayList<taikhoan>();
 
@@ -18,14 +16,20 @@ public class tk_list {
   }
 
   public int dangKi() throws IOException {
-    DANHSACHKHACHHANG kh = new DANHSACHKHACHHANG();
+    DANHSACHKHACHHANG dskh = new DANHSACHKHACHHANG();
 
-    kh.docfile(); // đọc file dskh
+    dskh.docfile(); // đọc file dskh
     // tạo khách hàng
 
     String makhtmp;
-    makhtmp = "KH" + kh.getArray().size();
-    kh.ThemKhachHangDangKi(makhtmp);
+    int maMax = 0;
+    for (KHACHHANG kh : dskh.getArray()) {
+      if (Integer.parseInt(kh.getMakh().substring(2)) > maMax) {
+        maMax = Integer.parseInt(kh.getMakh().substring(2));
+      }
+    }
+    makhtmp = "KH" + (maMax + 1);
+    dskh.ThemKhachHangDangKi(makhtmp);
 
     // tạo tài khoản khách hàng
 
@@ -43,10 +47,16 @@ public class tk_list {
       }
 
     } while (matchFlag == true);
-    tktmp.setMatk("TK" + this.listAccount.size());
 
+    for (taikhoan tk : listAccount) {
+      if (Integer.parseInt(tk.getMatk()) > maMax) {
+        maMax = Integer.parseInt(tk.getMatk());
+      }
+    }
+    tktmp.setMatk((maMax + 1) + "");
     listAccount.add(tktmp);
     this.writeAccountListToFile();
+
     return 1;
 
   }
@@ -61,7 +71,7 @@ public class tk_list {
     System.out.println("Nhap mat khau:");
     passwdtmp = sc.next();
     for (taikhoan obj : listAccount) {
-      if (obj.getTentk().equalsIgnoreCase(tentktmp) && obj.getPasswd().equalsIgnoreCase(passwdtmp)) {
+      if (obj.getTentk().equals(tentktmp) && obj.getPasswd().equals(passwdtmp)) {
         tmp = obj;
         break;
       }
@@ -80,21 +90,43 @@ public class tk_list {
     return tmp;
   }
 
-  public void xoaTaiKhoan() {
+  public int xoaTaiKhoan() throws IOException {
     String matktmp;
-    boolean flag = false;
     System.out.println("Nhap ma tai khoan can xoa: ");
-    matktmp = sc.nextLine();
-    for (int i = 0; i < this.listAccount.size(); i++) {
-      if (this.listAccount.get(i).getMatk().equalsIgnoreCase(matktmp) ) {
-        this.listAccount.remove(listAccount.get(i));
-        flag = true;
+    matktmp = sc.next();
+    for (taikhoan tk : listAccount) {
+
+      if (tk.getMatk().equalsIgnoreCase(matktmp)) {
+        // trường hợp xóa tk khách hàng
+        if (tk instanceof tkKhachHang) {
+          DANHSACHKHACHHANG dskh = new DANHSACHKHACHHANG();
+          dskh.docfile();
+          for (KHACHHANG kh : dskh.getArray()) {
+            if (kh.getMakh().equalsIgnoreCase(tk.getMakhOrNv())) {
+              dskh.getArray().remove(kh);
+              break;
+            }
+          }
+          dskh.ghiFile();
+        } else // trường hợp xóa tk nhân viên
+        {
+          DANHSACHNHANVIEN dsnv = new DANHSACHNHANVIEN();
+          dsnv.docfile();
+          for (NHANVIEN nv : dsnv.getArray()) {
+            if (nv.getManv().equalsIgnoreCase(tk.getMakhOrNv())) {
+              dsnv.getArray().remove(nv);
+              break;
+            }
+          }
+          dsnv.ghiFile();
+        }
+        this.listAccount.remove(tk);
         System.out.println("\nXoa tai khoan thanh cong!\n");
+        return 1;
       }
     }
-    if(flag == false) {
-      System.out.println("\nXoa tai khoan khong thanh cong!\n");
-    }
+    System.out.println("\nXoa tai khoan khong thanh cong, khong tim thay tai khoan !\n");
+    return -1;
   }
 
   public void writeAccountListToFile() {
@@ -140,6 +172,7 @@ public class tk_list {
   }
 
   public void readAccountListFromFile() {
+    this.listAccount.clear();
     String line;
     taikhoan tmp = null;
     BufferedReader readerAdmin = null;
@@ -164,32 +197,31 @@ public class tk_list {
         tmp.parseAccount(line);
         this.listAccount.add(tmp);
       }
-      
-    }catch (IOException ex){
-        System.out.println(ex);
-    }
-    finally {
-      if(readerAdmin != null) {
+
+    } catch (IOException ex) {
+      System.out.println(ex);
+    } finally {
+      if (readerAdmin != null) {
         try {
           readerAdmin.close();
         } catch (Exception e) {
-            System.out.println(e);
+          System.out.println(e);
         }
       }
-      if(readerUser != null) {
+      if (readerUser != null) {
         try {
           readerUser.close();
         } catch (Exception e) {
-            System.out.println(e);
+          System.out.println(e);
         }
       }
-      if(readerEmployee != null) {
+      if (readerEmployee != null) {
         try {
           readerEmployee.close();
         } catch (Exception e) {
-            System.out.println(e);
+          System.out.println(e);
         }
-      } 
+      }
     }
   }
   // TODO: viết hàm show tài khoản
@@ -209,7 +241,7 @@ public class tk_list {
 
     System.out.println("Moi nhap ma tai khoan can chinh sua: ");
     matktmp = sc.next();
-    for (taikhoan tk : this.listAccount) {  
+    for (taikhoan tk : this.listAccount) {
       if (tk.getMatk().equalsIgnoreCase(matktmp)) {
         while (true) {
           System.out.println("--------------------------------");
@@ -242,11 +274,11 @@ public class tk_list {
             break;
           }
         }
-        break;
       }
 
     }
   }
+
   public void chinhSuaTaiKhoan_menuchucnangnv(String matktmp) {
     int mode; // lựa chọn thông số cần chỉnh sửa
     for (taikhoan tk : this.listAccount) {
@@ -284,7 +316,7 @@ public class tk_list {
 
   public void MenuDanhSachTaiKhoan() throws IOException {
     // this.readAccountListFromFile();
-    int mode;
+    String mode;
     while (true) {
       System.out.println("\n");
       System.out.println("------------------------------------");
@@ -296,29 +328,34 @@ public class tk_list {
       System.out.println("4.Thoat");
       System.out.println("------------------------------------");
       System.out.println("Vui long chon: ");
-      mode = sc.nextInt();
+      mode = sc.next();
+      if (mode.matches("[1-4]{1}") == false) {
+        System.out.println("Vui long nhap so tu 1 den 4 !");
+        continue;
+      }
       switch (mode) {
-        case 1:
+        case "1":
           this.show_List_Account();
           break;
-        case 2:
+        case "2":
           this.chinhSuaTaiKhoan();
           break;
-        case 3:
-          sc.nextLine();
+        case "3":
           this.xoaTaiKhoan();
           break;
       }
-
-      if (mode == 4) {
+      if (mode.matches("4") == true) {
         this.writeAccountListToFile();
         break;
       }
 
     }
   }
+
   public static void main(String[] args) throws IOException {
     tk_list list = new tk_list();
-    list.chinhSuaTaiKhoan();
+    list.readAccountListFromFile();
+    list.dangKi();
+    list.MenuDanhSachTaiKhoan();
   }
 }

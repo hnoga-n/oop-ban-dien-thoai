@@ -8,6 +8,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class DanhsachHoaDonNhapHang {
     private static final String NULL = null;
@@ -396,5 +399,58 @@ public class DanhsachHoaDonNhapHang {
 
             }
         } while (true);
+    }
+
+    public void thongKeNhapHang() throws IOException {
+        kiemtra kt = new kiemtra();
+        docDuLieuTuFile();
+        System.out.print("Tu ngay: ");
+        String dateform = kt.KiemTraNhapNgay();
+        System.out.print("Den ngay: ");
+        String dateto = kt.KiemTraNhapNgay();
+
+        boolean existedFlag = false;
+        Date date1 = null;
+        Date date2 = null;
+        Date date3 = null;
+        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            date1 = format.parse(dateform);
+            date3 = format.parse(dateto);
+        } catch (java.text.ParseException e) {
+            // TODO: handle exception
+            System.out.println(e);
+        }
+        ArrayList<SanPham> thongKeSp = new ArrayList<SanPham>();
+        for (HoaDonNhapHang hd : danhSach) {
+            try {
+                date2 = format.parse(hd.getNgay().toString());
+                if (date1.before(date2) && date3.after(date2)) {
+                    for (SanPham sp : hd.getdssp().getList()) {
+                        for (SanPham spThongKe : thongKeSp) {
+                            if (spThongKe.getMasp().equalsIgnoreCase(sp.getMasp())) {
+                                spThongKe.setSoluong(spThongKe.getSoluong() + sp.getSoluong());
+                                existedFlag = true;
+                                break;
+                            }
+                        }
+                        if (existedFlag == false) {
+                            thongKeSp.add(sp);
+                        }
+                        existedFlag = false;
+                    }
+                }
+            } catch (java.text.ParseException e) {
+                // TODO: handle exception
+                System.out.println(e);
+            }
+        }
+
+        if (thongKeSp.size() <= 0) {
+            System.out.println("Khong co san pham nao duoc ban ra trong khoang thoi gian da chon !");
+        }
+        QuanLiSanPham danhSachThongKe = new QuanLiSanPham(thongKeSp);
+        danhSachThongKe.xuatDanhSach();
+        System.out.println("Tong chi phi nhap hang: " + danhSachThongKe.tongGia());
     }
 }
