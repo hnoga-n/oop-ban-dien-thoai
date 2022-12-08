@@ -18,7 +18,7 @@ public class DANHSACHKHACHHANG {
     kiemtra kt = new kiemtra();
 
     public ArrayList<KHACHHANG> getArray() {
-        return arrkh;
+        return this.arrkh;
     }
 
     public void XuatDanhSachKH() {

@@ -38,6 +38,15 @@ public class SanPham implements Comparable<SanPham> {
         this.thoiGianBaoHanh = thoiGianBaoHanh;
     }
 
+    public SanPham(SanPham sp) {
+        this.masp = sp.masp;
+        this.tensp = sp.tensp;
+        this.hang = sp.hang;
+        this.gia = sp.gia;
+        this.soluong = sp.soluong;
+        this.thoiGianBaoHanh = sp.thoiGianBaoHanh;
+    }
+
     public String getMasp() {
         return masp;
     }

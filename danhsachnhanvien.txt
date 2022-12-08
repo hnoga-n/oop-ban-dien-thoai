@@ -1,3 +1,2 @@
 NV0,Mach Hao Tuan,2003,0938446903,quan ly
 NV1,Nguyen Van Son,1997,0965823147,nhan vien
-NV2,Nguyen Van An,1999,0986571234,nhan vien
