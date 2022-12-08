@@ -64,6 +64,7 @@ public class DanhSachDoiTac {
                                 else
                                     dt.setMADT(s);
                             }
+
                             break;
                         }
                         case 2: {
@@ -249,6 +250,7 @@ public class DanhSachDoiTac {
                     s3 = "SDT";
                     s4 = "Mail";
                     System.out.printf("%-10s%-20s%-15s%-30s\n", s1, s2, s3, s4);
+
                     this.xuatDanhSach();
                     break;
                 }

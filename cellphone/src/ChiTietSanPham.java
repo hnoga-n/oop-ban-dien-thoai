@@ -28,48 +28,60 @@ public class ChiTietSanPham {
         return manHinh;
     }
 
-    public void setmanHinh(String manHinh) {
-        this.manHinh = manHinh;
+    public void setmanHinh() {
+        System.out.print("Nhap thong so man hinh moi: ");
+        String newManHinh = sc.nextLine();
+        this.manHinh=newManHinh;
     }
 
     public String getvxl() {
         return vxl;
     }
 
-    public void setvxl(String vxl) {
-        this.vxl = vxl;
+    public void setvxl() {
+        System.out.print("Nhap thong so vi xu li moi: ");
+        String newVxl = sc.nextLine();
+        this.vxl=newVxl;
     }
 
     public String getcamera() {
         return camera;
     }
 
-    public void setcamera(String camera) {
-        this.camera = camera;
+    public void setcamera() {
+        System.out.print("Nhap thong so camera moi: ");
+        String newCamera = sc.nextLine();
+        this.camera=newCamera;
     }
 
     public String getpin() {
         return pin;
     }
 
-    public void setpin(String pin) {
-        this.pin = pin;
+    public void setpin() {
+        System.out.print("Nhap thong so pin moi: ");
+        String newPin = sc.nextLine();
+        this.pin=newPin;
     }
 
     public String getram() {
         return ram;
     }
 
-    public void setram(String ram) {
-        this.ram = ram;
+    public void setram() {
+        System.out.print("Nhap thong so ram moi: ");
+        String newRam = sc.nextLine();
+        this.ram=newRam;
     }
 
     public String getboNho() {
         return boNho;
     }
 
-    public void setboNho(String boNho) {
-        this.boNho = boNho;
+    public void setboNho() {
+        System.out.println("Nhap thong so bo nho moi: ");
+        String newBoNho = sc.nextLine();
+        this.boNho=newBoNho;
     }
 
     @Override
@@ -98,7 +110,6 @@ public class ChiTietSanPham {
 
     // sửa các chi tiết sản phẩm
     public void sua() {
-        try (Scanner sc = new Scanner(System.in)) {
             int luaChon = 0;
             do {
                 System.out.println("MENU ----------");
@@ -115,37 +126,24 @@ public class ChiTietSanPham {
                 luaChon = sc.nextInt();
                 sc.nextLine();
                 if (luaChon == 1) {
-                    System.out.println("Nhap thong so man hinh moi: ");
-                    String newManHinh = sc.nextLine();
-                    this.setmanHinh(newManHinh);
+                    this.setmanHinh();
                 }
                 if (luaChon == 2) {
-                    System.out.println("Nhap thong so vi xu ly moi: ");
-                    String newVxl = sc.nextLine();
-                    this.setvxl(newVxl);
+                    this.setvxl();
                 }
                 if (luaChon == 3) {
-                    System.out.println("Nhap thong so camera moi: ");
-                    String newCamera = sc.nextLine();
-                    this.setcamera(newCamera);
+                    this.setcamera();
                 }
                 if (luaChon == 4) {
-                    System.out.println("Nhap thong so pin moi: ");
-                    String newPin = sc.nextLine();
-                    this.setpin(newPin);
+                    this.setpin();
                 }
                 if (luaChon == 5) {
-                    System.out.println("Nhap thong so bo nho moi: ");
-                    String newBoNho = sc.nextLine();
-                    this.setboNho(newBoNho);
+                    this.setboNho();
                 }
                 if (luaChon == 6) {
-                    System.out.println("Nhap thong so ram moi: ");
-                    String newRam = sc.nextLine();
-                    this.setram(newRam);
+                    this.setram();
                 }
             } while (luaChon != 0);
-        }
     }
 
     public void suaChiTiet() 
@@ -168,39 +166,27 @@ public class ChiTietSanPham {
             sc.nextLine();
             if (luaChon == 1) 
             {
-                System.out.print("Nhap thong so man hinh moi: ");
-                String newManHinh = sc.nextLine();
-                this.setmanHinh(newManHinh);
+                this.setmanHinh();
             }
             if (luaChon == 2) 
             {
-                System.out.print("Nhap thong so vi xu li moi: ");
-                String newVxl = sc.nextLine();
-                this.setvxl(newVxl);
+                this.setvxl();
             }
             if (luaChon == 3) 
             {
-                System.out.print("Nhap thong so camera moi: ");
-                String newCamera = sc.nextLine();
-                this.setcamera(newCamera);
+                this.setcamera();
             }
             if (luaChon == 4) 
             {
-                System.out.print("Nhap thong so pin moi: ");
-                String newPin = sc.nextLine();
-                this.setpin(newPin);
+                this.setpin();
             }
             if (luaChon == 5) 
             {
-                System.out.print("Nhap thong ram moi: ");
-                String newRam = sc.nextLine();
-                this.setram(newRam);
+                this.setram();
             }
             if (luaChon == 6) 
             {
-                System.out.print("Nhap thong so bo nho moi: ");
-                String newBoNho = sc.nextLine();
-                this.setboNho(newBoNho);
+                this.setboNho();
             }
             
         } while (luaChon != 0);

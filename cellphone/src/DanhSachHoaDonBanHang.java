@@ -1,4 +1,5 @@
 
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -6,19 +7,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Date;
 import java.util.Scanner;
 
 public class DanhSachHoaDonBanHang {
     Scanner sc = new Scanner(System.in);
     private static final String NULL = null;
     private ArrayList<HoaDonBanHang> danhSach;
-    DecimalFormat formatter = new DecimalFormat("###,###,###");
 
     public DanhSachHoaDonBanHang() {
         this.danhSach = new ArrayList<HoaDonBanHang>();
@@ -27,6 +22,7 @@ public class DanhSachHoaDonBanHang {
     public DanhSachHoaDonBanHang(ArrayList<HoaDonBanHang> danhSach) {
         this.danhSach = danhSach;
     }
+
 
     public ArrayList<HoaDonBanHang> getlistHDBH() {
         return this.danhSach;
@@ -37,12 +33,15 @@ public class DanhSachHoaDonBanHang {
     }
 
     // thĂªm
+
     public void them(HoaDonBanHang hd) {
         this.danhSach.add(hd);
 
     }
 
-    // xĂ³a
+
+    // Xoa
+
     public void xoa(String mahd) {
         HoaDonBanHang hdbh = new HoaDonBanHang();
         for (HoaDonBanHang hoaDonBanHang : danhSach) {
@@ -54,46 +53,43 @@ public class DanhSachHoaDonBanHang {
         this.danhSach.remove(hdbh);
     }
 
-    // sá»­a
+
+    // Sua
     public void sua(String mahd) {
         for (HoaDonBanHang hoaDon : danhSach) {
             if (hoaDon.getMahd().equals(mahd)) {
                 int luaChon = 0;
                 do {
                     System.out.println("MENU ----------");
-                    System.out.println("Lá»±a chá»�n: ");
+
+                    System.out.println("Lua chon: ");
                     System.out.println(
-                            "1. Sá»­a mĂ£ hĂ³a Ä‘Æ¡n.\n"
-                                    + "2. Sá»­a mĂ£ tĂ i khoáº£n.\n"
-                                    + "3. Sá»­a mĂ£ khĂ¡ch hĂ ng.\n"
-                                    + "4. Sá»­a mĂ£ nhĂ¢n viĂªn.\n"
-                                    + "5. Sá»­a danh sĂ¡ch sáº£n pháº©m.\n"
-                                    + "0. ThoĂ¡t.\n");
+                            "1. Sua ma hoa don.\n"
+                                    + "2. Sua ma tai khoan.\n"
+                                    + "3. Sua ma khach hang.\n"
+                                    + "4. Sua ma nhan vien.\n"
+                                    + "5. Sua danh sach san pham.\n"
+                                    + "0. Thoat.\n");
                     luaChon = sc.nextInt();
                     sc.nextLine();
                     if (luaChon == 1) {
-                        System.out.println("Nháº­p mĂ£ hĂ³a Ä‘Æ¡n má»›i: ");
-                        String newMaHd = sc.nextLine();
-                        hoaDon.setMahd(newMaHd);
+                        hoaDon.setMahd();
                     }
                     if (luaChon == 2) {
-                        System.out.println("Nháº­p mĂ£ tĂ i khoáº£n má»›i: ");
-                        String newMaTk = sc.nextLine();
-                        hoaDon.setmatk(newMaTk);
+                        hoaDon.setmatk();
                     }
                     if (luaChon == 3) {
-                        System.out.println("Nháº­p mĂ£ khĂ¡ch hĂ ng má»›i: ");
-                        String newMaKh = sc.nextLine();
-                        hoaDon.setMakh(newMaKh);
+                        hoaDon.setMakh();
                     }
                     if (luaChon == 4) {
-                        System.out.println("Nháº­p mĂ£ nhĂ¢n viĂªn má»›i: ");
-                        String newMaNv = sc.nextLine();
-                        hoaDon.setmanv(newMaNv);
+                        hoaDon.setmanv();
+
                     }
 
                     if (luaChon == 5) {
-                        System.out.println("Nháº­p mĂ£ sáº£n pháº©m cáº§n sá»­a: ");
+
+                        System.out.println("Nhap ma san pham can sua: ");
+
                         String masp = sc.nextLine();
                         hoaDon.getdssp().sua(masp);
                     }
@@ -103,18 +99,18 @@ public class DanhSachHoaDonBanHang {
         }
     }
 
-    // xuáº¥t danh sĂ¡ch hĂ³a Ä‘Æ¡n
+
+    // xuất danh sach hoa don
+
     public void xuatDanhSach() {
         int i = 1;
         for (HoaDonBanHang hoaDonBanHang : danhSach) {
-            System.out
-                    .println(
-                            "-------------------------------------------------------------------------------");
-            System.out.println("HĂ³a Ä‘Æ¡n " + i + ": ");
+            System.out.println("--------------------------------------------------");
+            System.out.println("Hoa don " + i + ": ");
+
             i = i + 1;
             hoaDonBanHang.xuatHoaDonBanHang();
-            System.out.println(
-                    "--------------------------------------------------------------------------------------");
+            System.out.println("--------------------------------------------------");
         }
     }
 
@@ -141,7 +137,9 @@ public class DanhSachHoaDonBanHang {
 
     }
 
-    // Ä‘á»�c file
+
+    // đọc file
+
     public void docDuLieuTuFile() throws IOException {
         this.danhSach.clear();
         File file = new File("DanhSachHoaDonBanHang.txt");
@@ -178,7 +176,7 @@ public class DanhSachHoaDonBanHang {
                             String txt1[] = line.split(",");
                             int gia = Integer.parseInt(txt1[3]);
                             int soluong = Integer.parseInt(txt1[4]);
-                            SanPham sp = new SanPham(txt1[0], txt1[1], txt1[2], gia, txt1[5], soluong, null);
+                            SanPham sp = new SanPham(txt1[0], txt1[1], txt1[2], gia, txt1[5],soluong, null);
                             dssp.them(sp);
                             line = br.readLine();
                         }
@@ -205,6 +203,7 @@ public class DanhSachHoaDonBanHang {
 
     // Menu
     public void Menu() throws IOException {
+
         this.danhSach.clear();
         File file = new File("DanhSachHoaDonBanHang.txt");
         try {
@@ -264,76 +263,86 @@ public class DanhSachHoaDonBanHang {
             e.printStackTrace();
         }
 
+       this.docDuLieuTuFile();
+
+
         int luaChon0 = -1;
         do {
             System.out.println("MENU ----------");
-            System.out.println("Lá»±a chá»�n: ");
+
+            System.out.println("Lua chon: ");
             System.out.println(
-                    "1. In danh sĂ¡ch hĂ³a Ä‘Æ¡n bĂ¡n hĂ ng.\n"
-                            + "2. ThĂªm hĂ³a Ä‘Æ¡n.\n"
-                            + "3. XĂ³a hĂ³a Ä‘Æ¡n.\n"
-                            + "4. Sá»­a hĂ³a Ä‘Æ¡n.\n"
-                            + "0. ThoĂ¡t.\n");
-            System.out.println("Vui lĂ²ng nháº­p lá»±a chá»�n cá»§a báº¡n: ");
+                    "1. In danh sach hoa don ban hang.\n"
+                            + "2. Them hoa don.\n"
+                            + "3. Xoa hoa don.\n"
+                            + "4. Sua hoa don.\n"
+                            + "0. Thoat.\n");
+            System.out.println("Vui long Nhap lua chon cua ban: ");
+
             luaChon0 = sc.nextInt();
             sc.nextLine();
             if (luaChon0 == 1) {
                 int i = 1;
                 for (HoaDonBanHang hoaDonBanHang : danhSach) {
                     System.out.println(
-                            "--------------------------------------------------------------------------------------------------------------------------------------------------");
-                    System.out.println("HĂ³a Ä‘Æ¡n " + i + ": ");
+
+                            "--------------------------------------------------");
+                    System.out.println("Hoa don " + i + ": ");
                     i = i + 1;
                     hoaDonBanHang.xuatHoaDonBanHang();
-                    System.out.println(
-                            "--------------------------------------------------------------------------------------------------------------------------------------------------");
+                    System.out.println("--------------------------------------------------");
                 }
             } else if (luaChon0 == 2) {
-                System.out.println("Nháº­p mĂ£ hĂ³a Ä‘Æ¡n: ");
+                System.out.println("Nhap ma hoa don: ");
                 String Mahd = sc.nextLine();
-                System.out.println("Nháº­p mĂ£ khĂ¡ch hĂ ng: ");
+                System.out.println("Nhap ma khach hang: ");
                 String Makh = sc.nextLine();
-                System.out.println("Nháº­p mĂ£ tĂ i khoáº£n: ");
+                System.out.println("Nhap ma tai khoan: ");
                 String Matk = sc.nextLine();
-                System.out.println("Nháº­p mĂ£ nhĂ¢n viĂªn: ");
+                System.out.println("Nhap ma nhan vien: ");
                 String Manv = sc.nextLine();
-                System.out.println("Nháº­p ngĂ y: ");
+                sc.nextLine();
+                System.out.println("Nhap ngay: ");
                 int day = sc.nextInt();
                 sc.nextLine();
-                System.out.println("Nháº­p thĂ¡ng: ");
+                System.out.println("Nhap thang: ");
                 int month = sc.nextInt();
                 sc.nextLine();
-                System.out.println("Nháº­p nÄƒm: ");
+                System.out.println("Nhap nam: ");
                 int year = sc.nextInt();
                 sc.nextLine();
                 Ngay ngay = new Ngay(day, month, year);
-                System.out.println("Nháº­p sá»‘ lÆ°á»£ng sáº£n pháº©m khĂ¡c nhau: ");
+                System.out.println("Nhap so luong san pham khac nhau: ");
+
                 int sl = sc.nextInt();
                 sc.nextLine();
                 QuanLiSanPham dssp = new QuanLiSanPham();
                 for (int i = 1; i <= sl; i++) {
-                    System.out.println("Nháº­p mĂ£ sáº£n pháº©m thá»© " + i + ": ");
+
+                    System.out.println("Nhap ma san pham thu " + i + ": ");
                     String Masp = sc.nextLine();
-                    System.out.println("Nháº­p tĂªn sáº£n pháº©m: ");
+                    System.out.println("Nhap ten san pham: ");
                     String Tensp = sc.nextLine();
-                    System.out.println("Nháº­p hĂ£ng sáº£n pháº©m: ");
+                    System.out.println("Nhap hang san pham: ");
                     String Hangsp = sc.nextLine();
-                    System.out.println("Nháº­p giĂ¡: ");
+                    System.out.println("Nhap gia: ");
                     int gia = sc.nextInt();
                     sc.nextLine();
-                    System.out.println("Nháº­p thá»�i gian báº£o hĂ nh: ");
+                    System.out.println("Nhap thoi gian bao hanh: ");
                     String ThoiGianBaoHanh = sc.nextLine();
-                    System.out.println("Nháº­p sá»‘ lÆ°á»£ng: ");
+                    System.out.println("Nhap so luong: ");
                     int soLuong = sc.nextInt();
                     sc.nextLine();
-                    SanPham sp = new SanPham(Masp, Tensp, Hangsp, gia, soLuong, ThoiGianBaoHanh);
+                    SanPham sp = new SanPham(Masp, Tensp, Hangsp, gia,soLuong, ThoiGianBaoHanh);
                     dssp.them(sp);
                 }
                 HoaDonBanHang hdbh = new HoaDonBanHang(Mahd, Matk, ngay, dssp, Makh, Manv);
                 this.danhSach.add(hdbh);
 
             } else if (luaChon0 == 3) {
-                System.out.println("Nháº­p mĂ£ hĂ³a Ä‘Æ¡n muá»‘n xĂ³a: ");
+
+                System.out.println("Nhap ma hoa don muon xoa: ");
+
                 String Mahd = sc.nextLine();
                 HoaDonBanHang hdbh = new HoaDonBanHang();
                 for (HoaDonBanHang hoaDonBanHang : danhSach) {
@@ -345,45 +354,40 @@ public class DanhSachHoaDonBanHang {
                 this.danhSach.remove(hdbh);
 
             } else if (luaChon0 == 4) {
-                System.out.println("Nháº­p mĂ£ hĂ³a Ä‘Æ¡n muá»‘n sá»­a: ");
+
+                System.out.println("Nhap ma hoa don muon sua: ");
                 String Mahd = sc.nextLine();
                 for (HoaDonBanHang hoaDon : danhSach) {
                     if (hoaDon.getMahd().equals(Mahd)) {
                         int luaChon1 = 0;
                         do {
                             System.out.println("MENU ----------");
-                            System.out.println("Lá»±a chá»�n: ");
+
+                            System.out.println("Lua chon: ");
                             System.out.println(
-                                    "1. Sá»­a mĂ£ hĂ³a Ä‘Æ¡n.\n"
-                                            + "2. Sá»­a mĂ£ tĂ i khoáº£n.\n"
-                                            + "3. Sá»­a mĂ£ khĂ¡ch hĂ ng.\n"
-                                            + "4. Sá»­a mĂ£ nhĂ¢n viĂªn.\n"
-                                            + "5. Sá»­a danh sĂ¡ch sáº£n pháº©m.\n"
-                                            + "0. ThoĂ¡t.\n");
+                                    "1. Sua ma hoa don.\n"
+                                            + "2. Sua ma tai khoan.\n"
+                                            + "3. Sua ma khach hang.\n"
+                                            + "4. Sua ma nhan vien.\n"
+                                            + "5. Sua danh sach san pham.\n"
+                                            + "0. Thoat.\n");
                             luaChon1 = sc.nextInt();
                             sc.nextLine();
                             if (luaChon1 == 1) {
-                                System.out.println("Nháº­p mĂ£ hĂ³a Ä‘Æ¡n má»›i: ");
-                                String newMaHd = sc.nextLine();
-                                hoaDon.setMahd(newMaHd);
+                                hoaDon.setMahd();
                             }
                             if (luaChon1 == 2) {
-                                System.out.println("Nháº­p mĂ£ tĂ i khoáº£n má»›i: ");
-                                String newMaTk = sc.nextLine();
-                                hoaDon.setmatk(newMaTk);
+                                hoaDon.setmatk();
                             }
                             if (luaChon1 == 3) {
-                                System.out.println("Nháº­p mĂ£ khĂ¡ch hĂ ng má»›i: ");
-                                String newMaKh = sc.nextLine();
-                                hoaDon.setMakh(newMaKh);
+                                hoaDon.setMakh();
                             }
                             if (luaChon1 == 4) {
-                                System.out.println("Nháº­p mĂ£ nhĂ¢n viĂªn má»›i: ");
-                                String newMaNv = sc.nextLine();
-                                hoaDon.setmanv(newMaNv);
+                                hoaDon.setmanv();
                             }
                             if (luaChon1 == 5) {
-                                System.out.println("Nháº­p mĂ£ sáº£n pháº©m cáº§n sá»­a: ");
+                                System.out.println("Nhap ma san pham can sua: ");
+
                                 String masp = sc.nextLine();
                                 hoaDon.getdssp().sua(masp);
                             }
@@ -392,25 +396,8 @@ public class DanhSachHoaDonBanHang {
                 }
 
             } else if (luaChon0 == 0) {
-                try {
-                    FileWriter fw = new FileWriter(file);
-                    try (BufferedWriter bw = new BufferedWriter(fw)) {
-                        for (HoaDonBanHang hoaDonBanHang : danhSach) {
-                            bw.write(hoaDonBanHang.dinhDangGhiVaoFile()
-                                    + "\n--------------------------------------------------------");
-                            bw.newLine();
-                        }
-                        bw.flush();
-                        bw.close();
-                    }
-                    fw.close();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    // TODO: handle exception
-                }
+                this.ghiDuLieuVaoFile();
                 break;
-
             }
         } while (true);
     }
@@ -475,4 +462,5 @@ public class DanhSachHoaDonBanHang {
         dsbh.docDuLieuTuFile();
         dsbh.xuatDanhSach();
     }
+
 }

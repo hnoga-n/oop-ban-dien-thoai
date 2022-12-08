@@ -6,8 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.DecimalFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -28,7 +26,7 @@ public class QuanLiSanPham {
 
     public QuanLiSanPham(ArrayList<SanPham> danhSachSanPham) {
         this.danhSachSanPham = danhSachSanPham;
-    }
+    } 
 
     public ArrayList<SanPham> getList() {
         return this.danhSachSanPham;
@@ -44,12 +42,13 @@ public class QuanLiSanPham {
     public void xuatDanhSach() {
         System.out.println(
                 "-------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("Danh s�ch s?n ph?m:");
+
+        System.out.println("Danh sach san pham:");
         System.out.println(
                 "----------------------------------------------------------------------------------------------------------------------------------");
-        String header = String.format("%15s%15s%35s%15s%15s%25s", "M? s?n ph?m", "h?ng", "t�n s?n ph?m", "gi�",
-                "s? l�?ng",
-                "Th?i gian b?o h�nh");
+        String header = String.format("%15s%15s%35s%15s%15s%25s", "ma san pham", "hang", "ten san pham", "gia",
+                "so luong",
+                "Thoi gian bao hanh");
         System.out.println(header);
         System.out.println(
                 "------------------------------------------------------------------------------------------------------------------------------------------");
@@ -89,16 +88,20 @@ public class QuanLiSanPham {
 
     }
 
+
     // Tổng giá
-    public long getTonggia() {
+    public int getTonggia() {
         return tonggia;
     }
 
-    public void setTonggia(int tonggia) {
-        this.tonggia = tonggia;
+    public void setTonggia() {
+        System.out.println("Nhap tong gia moi: ");
+        int newTongGia=sc.nextInt();
+        sc.nextLine();
+        this.tonggia=newTongGia;
     }
 
-    public long tongGia() {
+    public int tongGia() {
         tonggia = 0;
         for (SanPham sanPham : danhSachSanPham) {
             tonggia = tonggia + sanPham.getGia() * sanPham.getSoluong();
@@ -138,7 +141,8 @@ public class QuanLiSanPham {
     }
 
     // sửa
-    public void sua(String masp) {
+    public void sua(String masp) 
+    {
         for (SanPham sanPham : danhSachSanPham) {
             if (sanPham.getMasp().equals(masp)) {
                 int luaChon;
@@ -156,31 +160,25 @@ public class QuanLiSanPham {
                     System.out.print("Lua chon: ");
                     luaChon = sc.nextInt();
                     sc.nextLine();
-                    if (luaChon == 1) {
-                        System.out.println("Nhap ma san pham moi: ");
-                        String newMasp = sc.nextLine();
-                        sanPham.setMasp(newMasp);
-                    } else if (luaChon == 2) {
-                        System.out.println("Nhap ten san pham moi: ");
-                        String newTensp = sc.nextLine();
-                        sanPham.setTensp(newTensp);
-                    } else if (luaChon == 3) {
-                        System.out.println("Nhap hang san pham moi: ");
-                        String newHang = sc.nextLine();
-                        sanPham.setHang(newHang);
-                    } else if (luaChon == 4) {
-                        System.out.println("Nhap gia san pham: ");
-                        int newGia = sc.nextInt();
-                        sanPham.setGia(newGia);
-                    } else if (luaChon == 5) {
-                        System.out.println("Nhap thoi gian bao hanh moi: ");
-                        String newThoiGianBaoHanh = sc.nextLine();
-                        sanPham.setThoiGianBaoHanh(newThoiGianBaoHanh);
-                    } else if (luaChon == 6) {
-                        System.out.println("Nhap so luong moi: ");
-                        int newSoLuong = sc.nextInt();
-                        sanPham.setSoluong(newSoLuong);
-                    } else if (luaChon == 7) {
+                    if (luaChon == 1) {                     
+                        sanPham.setMasp();
+                    }
+                    else if (luaChon == 2) {
+                        sanPham.setTensp();
+                    }
+                    else if (luaChon == 3) {
+                        sanPham.setHang();
+                    }
+                    else if (luaChon == 4) {
+                        sanPham.setGia();
+                    }
+                    else if (luaChon == 5) {
+                        sanPham.setThoiGianBaoHanh();
+                    }
+                    else if (luaChon == 6) {
+                        sanPham.setSoluong();
+                    }
+                    else if (luaChon == 7) {
                         sanPham.getChitietsp().suaChiTiet();
                     }
                 } while (luaChon != 0);
@@ -193,7 +191,7 @@ public class QuanLiSanPham {
         int luaChon;
         do {
             System.out.println("MENU ----------");
-            System.out.println("Lựa chỞn: ");
+            System.out.println("Lựa chọn: ");
             System.out.println(
                     "1. Tìm kiếm hãng.\n"
                             + "2. Tìm kiếm theo giá.\n"
@@ -206,7 +204,7 @@ public class QuanLiSanPham {
                 String Hangsp = sc.nextLine();
                 String header = String.format("%15s%15s%35s%15s%15s%25s", "mã sản phẩm", "hãng", "tên sản phẩm", "giá",
                         "số lượng",
-                        "ThỞi gian bảo hành");
+                        "Thời gian bảo hành");
                 System.out.println(header);
                 for (SanPham sanPham : danhSachSanPham) {
                     if (sanPham.getHang().equals(Hangsp)) {
@@ -225,7 +223,7 @@ public class QuanLiSanPham {
                 int luachon1 = 0;
                 do {
                     System.out.println("MENU ----------");
-                    System.out.println("Lựa chỞn: ");
+                    System.out.println("Lựa chọn: ");
                     System.out.println(
                             "1. Giá dưới 5 triệu.\n"
                                     + "2. Giá từ 5 triệu đến 10 triệu.\n"
@@ -238,7 +236,7 @@ public class QuanLiSanPham {
                     if (luachon1 == 1) {
                         String header = String.format("%15s%15s%35s%15s%15s%25s", "mã sản phẩm", "hãng", "tên sản phẩm",
                                 "giá", "số lượng",
-                                "ThỞi gian bảo hành");
+                                "Thời gian bảo hành");
                         System.out.println(header);
                         for (SanPham sanPham : danhSachSanPham) {
                             if (sanPham.getGia() <= 5000000) {
@@ -258,7 +256,7 @@ public class QuanLiSanPham {
                     if (luachon1 == 2) {
                         String header = String.format("%15s%15s%35s%15s%15s%25s", "mã sản phẩm", "hãng", "tên sản phẩm",
                                 "giá", "số lượng",
-                                "ThỞi gian bảo hành");
+                                "Thời gian bảo hành");
                         System.out.println(header);
                         for (SanPham sanPham : danhSachSanPham) {
                             if ((sanPham.getGia() >= 5000000) && (sanPham.getGia() <= 10000000)) {
@@ -277,7 +275,7 @@ public class QuanLiSanPham {
                     if (luachon1 == 3) {
                         String header = String.format("%15s%15s%35s%15s%15s%25s", "mã sản phẩm", "hãng", "tên sản phẩm",
                                 "giá", "số lượng",
-                                "ThỞi gian bảo hành");
+                                "Thời gian bảo hành");
                         System.out.println(header);
                         for (SanPham sanPham : danhSachSanPham) {
                             if ((sanPham.getGia() >= 10000000) && (sanPham.getGia() <= 15000000)) {
@@ -296,7 +294,7 @@ public class QuanLiSanPham {
                     if (luachon1 == 4) {
                         String header = String.format("%15s%15s%35s%15s%15s%25s", "mã sản phẩm", "hãng", "tên sản phẩm",
                                 "giá", "số lượng",
-                                "ThỞi gian bảo hành");
+                                "Thời gian bảo hành");
                         System.out.println(header);
                         for (SanPham sanPham : danhSachSanPham) {
                             if ((sanPham.getGia() >= 15000000) && (sanPham.getGia() <= 20000000)) {
@@ -368,7 +366,7 @@ public class QuanLiSanPham {
 
     }
 
-    // đỞc dữ liệu từ file
+    // đọc dữ liệu từ file
     public void docDuLieuTuFile() throws IOException {
         this.danhSachSanPham.clear();
         File file = new File("SanPham.txt");
@@ -464,7 +462,7 @@ public class QuanLiSanPham {
                 String RamSp = sc.nextLine();
                 System.out.print("Nhap thong so bo nho: ");
                 String BoNhoSp = sc.nextLine();
-                ChiTietSanPham ctsp = new ChiTietSanPham(ManHinhSp, VxlSp, CameraSp, PinSp, RamSp, BoNhoSp);
+                ChiTietSanPham ctsp = new ChiTietSanPham(ManHinhSp, VxlSp, CameraSp, PinSp,RamSp, BoNhoSp);
                 SanPham sp = new SanPham(MaSp, TenSp, HangSp, GiaSp, ThoiGianBaoHanhSp, soLuong, ctsp);
                 them(sp);
                 System.out.println(MaSp);
@@ -499,7 +497,7 @@ public class QuanLiSanPham {
                 System.out.print("Nhap ma san pham muon sua: ");
                 String MaSp = sc.nextLine();
                 this.sua(MaSp);
-            } else if (luaChon0 == 0) {
+            }  else if (luaChon0 == 0) {
                 this.ghiDuLieuVaoFile();
                 break;
             }
@@ -507,7 +505,7 @@ public class QuanLiSanPham {
         } while (true);
     }
 
-    // Ğịnh dạng cho file hóa đơn.
+    // Định dạng cho file hóa đơn.
     public String dinhDangFileHoaDon() {
         String s = "";
         for (SanPham sanPham : danhSachSanPham) {
@@ -518,6 +516,7 @@ public class QuanLiSanPham {
         }
         return s;
     }
+
 
     public void Menuchucnangnhaphang() throws IOException {
         // kiemtra kt = new kiemtra();
@@ -700,6 +699,7 @@ public class QuanLiSanPham {
 
     public static void main(String[] args) throws IOException {
         QuanLiSanPham dssp = new QuanLiSanPham();
+
         dssp.menuSanPham();
     }
 }
