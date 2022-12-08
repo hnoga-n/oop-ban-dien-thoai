@@ -5,23 +5,20 @@ public class HoaDonBanHang extends HoaDon {
 
     private String makh;
     private String manv;
-    private int diemkh;
 
     public HoaDonBanHang() {
     }
 
-    public HoaDonBanHang(String makh, String manv, int diemkh) {
+    public HoaDonBanHang(String makh, String manv) {
         this.makh = makh;
         this.manv = manv;
-        this.diemkh = diemkh;
     }
 
     public HoaDonBanHang(String mahd, String matk, Ngay ngay, QuanLiSanPham dssp,
-            String makh, String manv, int diemkh) {
+            String makh, String manv) {
         super(mahd, matk, ngay, dssp);
         this.makh = makh;
         this.manv = manv;
-        this.diemkh = diemkh;
     }
 
     public String getMakh() {
@@ -40,14 +37,6 @@ public class HoaDonBanHang extends HoaDon {
         this.manv = manv;
     }
 
-    public int getDiemkh() {
-        return diemkh;
-    }
-
-    public void setDiemkh(int diemkh) {
-        this.diemkh = diemkh;
-    }
-
     public String getManv() {
         return manv;
     }
@@ -61,14 +50,12 @@ public class HoaDonBanHang extends HoaDon {
                 "--------------------------------------------------------------------------------------------------------------------------------------------------"
                         + "\nMã khách hàng: " + makh
                         + "\n--------------------------------------------------------------------------------------------------------------------------------------------------"
-                        + "\nMã nhân viên: " + manv
-                        + "\n--------------------------------------------------------------------------------------------------------------------------------------------------"
-                        + "\nĐiểm khách hàng: " + diemkh);
+                        + "\nMã nhân viên: " + manv);
         super.xuatHoaDon();
     }
 
     public String dinhDangGhiVaoFile() {
-        return this.getMahd() + "\n" + makh + "\n" + diemkh + "\n"
+        return this.getMahd() + "\n" + makh + "\n"
                 + this.getmatk() + "\n" + manv + "\n" + this.getNgay()
                 + "\n" + this.getdssp().tongGia() + this.getdssp().dinhDangFileHoaDon();
     }

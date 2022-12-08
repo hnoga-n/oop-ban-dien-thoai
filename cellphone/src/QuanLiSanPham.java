@@ -21,8 +21,6 @@ public class QuanLiSanPham {
 
     DecimalFormat formatter = new DecimalFormat("###,###,###");
 
-    
-
     // Constructor
     public QuanLiSanPham() {
         this.danhSachSanPham = new ArrayList<SanPham>();
@@ -46,12 +44,12 @@ public class QuanLiSanPham {
     public void xuatDanhSach() {
         System.out.println(
                 "-------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("Danh s�ch s?n ph?m:");
+        System.out.println("Danh s�ch s?n ph?m:");
         System.out.println(
                 "----------------------------------------------------------------------------------------------------------------------------------");
-        String header = String.format("%15s%15s%35s%15s%15s%25s", "M? s?n ph?m", "h?ng", "t�n s?n ph?m", "gi�",
-                "s? l�?ng",
-                "Th?i gian b?o h�nh");
+        String header = String.format("%15s%15s%35s%15s%15s%25s", "M? s?n ph?m", "h?ng", "t�n s?n ph?m", "gi�",
+                "s? l�?ng",
+                "Th?i gian b?o h�nh");
         System.out.println(header);
         System.out.println(
                 "------------------------------------------------------------------------------------------------------------------------------------------");
@@ -66,6 +64,7 @@ public class QuanLiSanPham {
         }
 
     }
+
     public void xuatDanhSach_1(ArrayList<SanPham> list) {
         System.out.println(
                 "-------------------------------------------------------------------------------------------------------------------------------------------");
@@ -484,13 +483,18 @@ public class QuanLiSanPham {
                 }
 
             } else if (luaChon0 == 5) {
-                System.out.println(this.danhSachSanPham.size());
+                this.docDuLieuTuFile();
+                int sum = 0;
+                for (SanPham sp : danhSachSanPham) {
+                    sum += sp.getSoluong();
+                }
+                System.out.println("Tong so luong san pham co trong kho: " + sum);
             } else if (luaChon0 == 6) {
                 tonggia = 0;
                 for (SanPham sanPham2 : danhSachSanPham) {
-                    tonggia = tonggia + sanPham2.getGia();
+                    tonggia += sanPham2.getGia() * sanPham2.getSoluong();
                 }
-                System.out.println(tonggia);
+                System.out.println("Tong gia tri san pham trong kho hang hien tai: " + tonggia);
             } else if (luaChon0 == 7) {
                 System.out.print("Nhap ma san pham muon sua: ");
                 String MaSp = sc.nextLine();
@@ -515,13 +519,12 @@ public class QuanLiSanPham {
         return s;
     }
 
-
     public void Menuchucnangnhaphang() throws IOException {
-        //kiemtra kt = new kiemtra();
+        // kiemtra kt = new kiemtra();
         System.out.println("Nhap ma doi tac: ");
         String madt;
-        madt= sc.nextLine();
-        ArrayList<SanPham> arrSp =  new ArrayList<SanPham>(); // mảng sản phẩm tạm để lưu sản phẩm nhập hàng
+        madt = sc.nextLine();
+        ArrayList<SanPham> arrSp = new ArrayList<SanPham>(); // mảng sản phẩm tạm để lưu sản phẩm nhập hàng
         docDuLieuTuFile();
         while (true) {
             System.out.println("\n");
@@ -537,9 +540,10 @@ public class QuanLiSanPham {
             System.out.println("----------------------------------------------");
             System.out.print("Chon: ");
             String key = sc.nextLine();
-            if (Integer.parseInt(key) < 1 || Integer.parseInt(key) > 6)
+            if (key.matches("[1-6]{1}") == false) {
                 System.out.println("Vui long chon so tu 1 den 6 !");
-            else {
+                continue;
+            } else {
                 switch (key) {
                     case "1":
                         Boolean flag = null;
@@ -548,101 +552,96 @@ public class QuanLiSanPham {
                         int soluong;
                         SanPham sp = null;
                         System.out.println("Nhap ma san pham: ");
-                        //masp = kt.KiemTraNhapMaSP();
+                        // masp = kt.KiemTraNhapMaSP();
                         masp = sc.nextLine();
-                        for(SanPham obj : arrSp) {
-                            if(obj.getMasp().equalsIgnoreCase(masp)) {
+                        for (SanPham obj : arrSp) {
+                            if (obj.getMasp().equalsIgnoreCase(masp)) {
                                 flag0 = false;
                                 System.out.println("San pham da duoc chon!");
                                 break;
                             }
                         }
-                        if(flag0 == false) {
+                        if (flag0 == false) {
                             break;
                         }
-                        for(SanPham obj : danhSachSanPham) {
-                            if(obj.getMasp().equalsIgnoreCase(masp)) {
+                        for (SanPham obj : danhSachSanPham) {
+                            if (obj.getMasp().equalsIgnoreCase(masp)) {
                                 flag = true;
-                                sp=obj;
+                                sp = obj;
                                 break;
-                            }
-                            else {
+                            } else {
                                 flag = false;
                             }
                         }
-                        if(flag == false) {
-                            System.out.println("San pham khong co trong kho, vui long them san pham truoc khi nhap hang!");
+                        if (flag == false) {
+                            System.out.println(
+                                    "San pham khong co trong kho, vui long them san pham truoc khi nhap hang!");
                             break;
-                        } 
-                        
+                        }
+
                         System.out.println("Nhap so luong: ");
                         soluong = sc.nextInt();
-                        sc.nextLine();                       
+                        sc.nextLine();
                         sp.setSoluong(soluong);
-                        arrSp.add(sp);                     
+                        arrSp.add(sp);
                         break;
                     case "2":
-                        if(arrSp.isEmpty()) {
+                        if (arrSp.isEmpty()) {
                             System.out.println("Khong co san pham nao duoc chon!");
-                        }
-                        else {
+                        } else {
                             xuatDanhSach_1(arrSp);
                         }
                         break;
                     case "3":
-                        if(arrSp.isEmpty()) {
+                        if (arrSp.isEmpty()) {
                             System.out.println("Danh sach san pham rong!");
-                        }
-                        else{
+                        } else {
                             Boolean flag1 = null;
                             String masp1;
                             int soluong1;
                             System.out.println("Nhap ma san pham can sua: ");
-                            //masp1 = kt.KiemTraNhapMaSP();
+                            // masp1 = kt.KiemTraNhapMaSP();
                             masp1 = sc.nextLine();
                             System.out.println("Nhap so luong moi: ");
                             soluong1 = sc.nextInt();
                             sc.nextLine();
-                            for(SanPham obj : arrSp) {
-                                if(obj.getMasp().equalsIgnoreCase(masp1)) {
+                            for (SanPham obj : arrSp) {
+                                if (obj.getMasp().equalsIgnoreCase(masp1)) {
                                     flag1 = true;
                                     obj.setSoluong(soluong1);
                                     System.out.println("Cap nhat so luong thanh cong!");
                                     break;
-                                }
-                                else {
+                                } else {
                                     flag1 = false;
                                 }
                             }
-                            if(flag1 == false) {
+                            if (flag1 == false) {
                                 System.out.println("San pham khong nam trong danh sach san pham duoc chon!");
                                 break;
-                            } 
+                            }
                         }
                         break;
-                    
+
                     case "4":
-                        if(arrSp.isEmpty()) {
+                        if (arrSp.isEmpty()) {
                             System.out.println("Danh sach san pham rong!");
-                        }
-                        else {
+                        } else {
                             Boolean flag2 = null;
                             String masp2;
                             System.out.println("Nhap ma san pham can xoa: ");
-                            //masp2 = kt.KiemTraNhapMaSP();
+                            // masp2 = kt.KiemTraNhapMaSP();
                             masp2 = sc.nextLine();
-                            for(SanPham obj : arrSp) {
-                                if(obj.getMasp().equalsIgnoreCase(masp2)) {
+                            for (SanPham obj : arrSp) {
+                                if (obj.getMasp().equalsIgnoreCase(masp2)) {
                                     flag2 = true;
                                     arrSp.remove(obj);
                                     System.out.println("Xoa san pham thanh cong!");
                                     break;
-                                }
-                                else {
+                                } else {
                                     flag2 = false;
                                 }
                             }
-                            if(flag2 == false) {
+                            if (flag2 == false) {
                                 System.out.println("San pham khong nam trong danh sach san pham duoc chon!");
                                 break;
                             }
@@ -650,38 +649,39 @@ public class QuanLiSanPham {
                         break;
 
                     case "5":
-                        if(arrSp.isEmpty()) {
+                        if (arrSp.isEmpty()) {
                             System.out.println("Danh sach san pham rong!");
-                        }
-                        else {
-                            /*  XU LY HOA DON */
-                            //xử lý ngày
+                        } else {
+                            /* XU LY HOA DON */
+                            // xử lý ngày
                             LocalDate date = LocalDate.now();
-                            String [] params = date.toString().split("-");
-                            Ngay ngay = new Ngay(Integer.parseInt(params[2]) , Integer.parseInt(params[1]), Integer.parseInt(params[0]));
-                            
-                            //set mã hóa đơn
+                            String[] params = date.toString().split("-");
+                            Ngay ngay = new Ngay(Integer.parseInt(params[2]), Integer.parseInt(params[1]),
+                                    Integer.parseInt(params[0]));
+
+                            // set mã hóa đơn
                             DanhsachHoaDonNhapHang listhd = new DanhsachHoaDonNhapHang();
                             listhd.docDuLieuTuFile();
-                            String mahd = "hd" + (Integer.parseInt(listhd.getList().get(listhd.getList().size()-1).getMahd().substring(2)) + 1);
+                            String mahd = "hd" + (Integer.parseInt(
+                                    listhd.getList().get(listhd.getList().size() - 1).getMahd().substring(2)) + 1);
 
-                            //tạo quanlisanpham
+                            // tạo quanlisanpham
                             QuanLiSanPham qlsp = new QuanLiSanPham(arrSp);
 
-                            //tạo hóa đơn
-                            HoaDonNhapHang hd = new HoaDonNhapHang(mahd, null, ngay,qlsp, madt, 0);
+                            // tạo hóa đơn
+                            HoaDonNhapHang hd = new HoaDonNhapHang(mahd, null, ngay, qlsp, madt, 0);
                             hd.xuatHoaDonNhapHang();
-                            
-                            //lưu hóa đơn mới vào file
+
+                            // lưu hóa đơn mới vào file
                             listhd.getList().add(hd);
                             listhd.ghiDuLieuVaoFile();
 
                             /* XU LY SAN PHAM */
                             QuanLiSanPham qlsp1 = new QuanLiSanPham();
                             qlsp1.docDuLieuTuFile();
-                            for(SanPham sp1 : qlsp1.getList()) {
-                                for(SanPham sp2 : arrSp) {
-                                    if(sp1.getMasp().equalsIgnoreCase(sp2.getMasp())) {
+                            for (SanPham sp1 : qlsp1.getList()) {
+                                for (SanPham sp2 : arrSp) {
+                                    if (sp1.getMasp().equalsIgnoreCase(sp2.getMasp())) {
                                         sp1.setSoluong(sp1.getSoluong() + sp2.getSoluong());
                                     }
                                 }
@@ -689,7 +689,7 @@ public class QuanLiSanPham {
                             qlsp1.ghiDuLieuVaoFile();
                             arrSp.clear();
                         }
-                        break;    
+                        break;
                 }
             }
             if (Integer.parseInt(key) == 6) {

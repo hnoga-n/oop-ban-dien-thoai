@@ -67,8 +67,7 @@ public class KHACHHANG {
     // cua admin
     public void NhapKhachHang() {
         kiemtra kt = new kiemtra();
-        System.out.print("Nhap ma khach hang: ");
-        makh = kt.KiemTraNhapMa();
+
         System.out.print("Nhap ho ten khach hang: ");
         hoten = sc.nextLine();
         System.out.print("Nhap nam sinh khach hang: ");

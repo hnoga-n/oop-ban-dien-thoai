@@ -191,52 +191,67 @@ public class giohang {
   }
 
   // xem các đơn hàng đã đặt
-  public void xemDonhang(tkKhachHang tk) throws IOException {
-    DanhSachHoaDonBanHang dsbh = new DanhSachHoaDonBanHang();
-    dsbh.docDuLieuTuFile();
-    for (HoaDonBanHang hdbh : dsbh.getArray()) {
-      if (hdbh.getmatk().equalsIgnoreCase(tk.getMatk())) {
-        hdbh.xuatHoaDonBanHang();
-      }
-    }
-  }
+  /*
+   * public void xemDonhang(tkKhachHang tk) throws IOException {
+   * DanhSachHoaDonBanHang dsbh = new DanhSachHoaDonBanHang();
+   * dsbh.docDuLieuTuFile();
+   * for (HoaDonBanHang hdbh : dsbh.getArray()) {
+   * if (hdbh.getmatk().equalsIgnoreCase(tk.getMatk())) {
+   * hdbh.xuatHoaDonBanHang();
+   * }
+   * }
+   * }
+   */
 
   // hủy đơn hàng
-  public int huyDonHang(tkKhachHang tk) throws IOException {
-    String maHdCanHuy;
-    DanhSachHoaDonBanHang dsbh = new DanhSachHoaDonBanHang();
-    dsbh.docDuLieuTuFile();
-
-    System.out.println(
-        "Moi nhap ma don hang can huy (LUU Y: chi nhung hoa don co ma nhan vien bang NULL moi co the huy ! ): )");
-    maHdCanHuy = sc.next();
-    for (HoaDonBanHang hdbh : dsbh.getArray()) {
-      if (hdbh.getMahd().equalsIgnoreCase(maHdCanHuy) && hdbh.getmatk().equalsIgnoreCase(tk.getMatk())) {
-        if (hdbh.getManv().equals("null") == false) {
-          System.out.println("Hoa don da duoc xu li, khong the huy !");
-          return -1;
-        } else {
-          dsbh.getArray().remove(hdbh);
-          System.out.println("Huy don hang thanh cong !");
-          dsbh.ghiDuLieuVaoFile();
-          return 1;
-        }
-      }
-    }
-    System.out.println("Khong tim thay don hang !");
-    return -1;
-  }
+  /*
+   * public int huyDonHang(tkKhachHang tk) throws IOException {
+   * String maHdCanHuy;
+   * DanhSachHoaDonBanHang dsbh = new DanhSachHoaDonBanHang();
+   * dsbh.docDuLieuTuFile();
+   * 
+   * System.out.println(
+   * "Moi nhap ma don hang can huy (LUU Y: chi nhung hoa don co ma nhan vien bang NULL moi co the huy ! ): )"
+   * );
+   * maHdCanHuy = sc.next();
+   * for (HoaDonBanHang hdbh : dsbh.getArray()) {
+   * if (hdbh.getMahd().equalsIgnoreCase(maHdCanHuy) &&
+   * hdbh.getmatk().equalsIgnoreCase(tk.getMatk())) {
+   * if (hdbh.getManv().equals("null") == false) {
+   * System.out.println("Hoa don da duoc xu li, khong the huy !");
+   * return -1;
+   * } else {
+   * dsbh.getArray().remove(hdbh);
+   * System.out.println("Huy don hang thanh cong !");
+   * dsbh.ghiDuLieuVaoFile();
+   * return 1;
+   * }
+   * }
+   * }
+   * System.out.println("Khong tim thay don hang !");
+   * return -1;
+   * }
+   */
 
   // TODO: THANH TOÁN
-  public void thanhToan(taikhoan tk) throws IOException {
+  public void thanhToan(tkNhanvien tknv) throws IOException {
     DanhSachHoaDonBanHang dsbh = new DanhSachHoaDonBanHang();
     dsbh.docDuLieuTuFile();
+    String makh;
+    System.out.println("Moi nhap ma khach hang: ");
+    do {
+      makh = sc.next();
+      if (makh.matches("[0-9]{1,2}") == false) {
+        System.out.println("Vui long nhap dung dinh dang ma khach hang ! (VD: 01,21)");
+        continue;
+      }
+    } while (false);
+
     int maHdGanNhat = Integer.parseInt(dsbh.getArray().get(dsbh.getArray().size() - 1).getMahd().substring(2)) + 1;
     LocalDate ld = LocalDate.now(); // lấy ngày hiện tại
     Ngay date = new Ngay(ld.getDayOfMonth(), ld.getMonthValue(), ld.getYear());
     QuanLiSanPham dssp = new QuanLiSanPham(spcart);
-    HoaDonBanHang hd = new HoaDonBanHang("hd" + maHdGanNhat, tk.getMatk(), date, dssp, tk.getMakhOrNv(), "null",
-        12);
+    HoaDonBanHang hd = new HoaDonBanHang("hd" + maHdGanNhat, tknv.getMatk(), date, dssp, makh, tknv.getMakhOrNv());
     dsbh.them(hd);
     dsbh.ghiDuLieuVaoFile();
     spcart.clear();

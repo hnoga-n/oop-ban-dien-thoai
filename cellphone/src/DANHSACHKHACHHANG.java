@@ -40,8 +40,18 @@ public class DANHSACHKHACHHANG {
         }
     }
 
-    public void ThemKhachHang() {
+    public void ThemKhachHang() throws IOException {
         KHACHHANG a = new KHACHHANG();
+        docfile();
+        String makhtmp;
+        int maMax = 0;
+        for (KHACHHANG kh : this.arrkh) {
+            if (Integer.parseInt(kh.getMakh()) > maMax) {
+                maMax = Integer.parseInt(kh.getMakh());
+            }
+        }
+        makhtmp = "" + (maMax + 1);
+        a.setMakh(makhtmp);
         a.NhapKhachHang();
         arrkh.add(a);
 
