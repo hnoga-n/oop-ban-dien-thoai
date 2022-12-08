@@ -1,44 +1,39 @@
-hd1231
+HD1
 3
-1231
 3
 1
 10/7/2022
 41780000
-sp1231,Samsung Galaxy Z Flip4,Samsung,20900000,1,12 thang
-sp1232,iPhone 11,Iphone,11900000,1,12 thang
-sp1233,Xiaomi Redmi Note 11,Xiaomi,4490000,2,12 thang 
+s1,Samsung Galaxy Z Flip4,Samsung,20900000,1,12 thang
+i1,iPhone 11,Iphone,11900000,1,12 thang
+x1,Xiaomi Redmi Note 11,Xiaomi,4490000,2,12 thang 
 --------------------------------------------------------
-hd1232
+HD2
 5
-1232
 7
 2
 10/8/2022
-99970000
-sp1231,Samsung Galaxy Z Flip4,Samsung,20900000,3,12 thang
-sp1232,iPhone 11,Iphone,11900000,2,12 thang
-sp1233,Xiaomi Redmi Note 11,Xiaomi,4490000,3,12 thang 
+16390000
+i1,iPhone 11,Iphone,11900000,1,12 thang
+x1,Xiaomi Redmi Note 11,Xiaomi,4490000,1,12 thang 
 --------------------------------------------------------
-hd1233
+HD3
 1
-1233
 1
 1
 18/9/2022
 63880000
-sp1231,Vivo Y15s,Vivo,21000000,1,12 thang
-sp1232,OPPO A55,OPP0,13900000,1,6 thang
-sp1233,OPPO Reno8 Pro 5G,OPP0,14490000,2,24 thang 
+v1,Vivo Y15s,Vivo,2100000,1,12 thang
+x1,Xiaomi Redmi Note 11S 5G,Xiaomi,13900000,1,6 thang
+v3,Vivo V25 5G,Vivo,14490000,2,24 thang
 --------------------------------------------------------
-hd1234
+HD4
 2
-1234
 2
 2
 28/11/2022
 35899000
-sp1231,Realme 9 Pro+ 5G,Realme,10900000,1,12 thang
-sp1232,iPhone 13,Iphone,19000000,1,12 thang
-sp1233,Realme 9i,Realme,5999000,1,12 thang 
+x3,Xiaomi 12T Pro,Xiaomi,10900000,1,12 thang
+i3,iPhone 13,Iphone,19000000,1,12 thang
+s3,Samsung Galaxy A23,Samsung,5999000,1,12 thang 
 --------------------------------------------------------

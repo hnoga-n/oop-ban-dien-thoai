@@ -1,8 +1,10 @@
 
 //import java.util.Scanner;
 
-public class SanPham implements Comparable<SanPham> {
+import java.util.Scanner;
 
+public class SanPham implements Comparable<SanPham> {
+    Scanner sc = new Scanner(System.in);
     public SanPham() {
     }
 
@@ -38,61 +40,76 @@ public class SanPham implements Comparable<SanPham> {
         this.thoiGianBaoHanh = thoiGianBaoHanh;
     }
 
-    public SanPham(SanPham sp) {
-        this.masp = sp.masp;
-        this.tensp = sp.tensp;
-        this.hang = sp.hang;
-        this.gia = sp.gia;
-        this.soluong = sp.soluong;
-        this.thoiGianBaoHanh = sp.thoiGianBaoHanh;
-    }
-
     public String getMasp() {
         return masp;
     }
 
-    public void setMasp(String masp) {
-        this.masp = masp;
+    public void setMasp() {
+        System.out.println("Nhap ma san pham moi: ");
+        String newMasp = sc.nextLine();
+        do {
+            if(newMasp.matches("[a-z]{1}[0-9]{1,}")==true){
+                this.masp=newMasp;
+                break;
+            }
+            else{
+                System.out.println("Ma san pham bat dau bang chu cai dau cua hang roi den so!");
+                System.out.println("Nhap ma san pham moi: ");
+                newMasp = sc.nextLine();
+            }
+        } while (true);
     }
 
     public String getTensp() {
         return tensp;
     }
 
-    public void setTensp(String tensp) {
-        this.tensp = tensp;
+    public void setTensp() {
+        System.out.print("Nhap ten san pham moi: ");
+        String newTenSp = sc.nextLine();
+        this.tensp=newTenSp;
     }
 
     public String getHang() {
         return hang;
     }
 
-    public void setHang(String hang) {
-        this.hang = hang;
+    public void setHang() {
+        System.out.print("Nhap hang san pham moi: ");
+        String newHangSp = sc.nextLine();
+        this.hang=newHangSp;
     }
 
     public int getGia() {
         return gia;
     }
 
-    public void setGia(int gia) {
-        this.gia = gia;
+    public void setGia() {
+        System.out.print("Nhap gia san pham moi: ");
+        int newGia = sc.nextInt();
+        sc.nextLine();
+        this.gia=newGia;
     }
 
     public String getThoiGianBaoHanh() {
         return thoiGianBaoHanh;
     }
 
-    public void setThoiGianBaoHanh(String thoiGianBaoHanh) {
-        this.thoiGianBaoHanh = thoiGianBaoHanh;
+    public void setThoiGianBaoHanh() {
+        System.out.print("Nhap thoi gian bao hanh moi: ");
+        String newThoiGianBaoHanh = sc.nextLine();
+        this.thoiGianBaoHanh=newThoiGianBaoHanh;
     }
 
     public int getSoluong() {
         return soluong;
     }
 
-    public void setSoluong(int soluong) {
-        this.soluong = soluong;
+    public void setSoluong() {
+        System.out.print("Nhap so luong san pham moi: ");
+       int newSoLuong= sc.nextInt();
+       sc.nextLine();
+       this.soluong=newSoLuong;
     }
 
     public ChiTietSanPham getChitietsp() {

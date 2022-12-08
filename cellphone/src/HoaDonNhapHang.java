@@ -1,5 +1,9 @@
 
+
+import java.util.Scanner;
+
 public class HoaDonNhapHang extends HoaDon {
+    Scanner sc = new Scanner(System.in);
     private String madt;
     private int diemdt;
 
@@ -21,24 +25,39 @@ public class HoaDonNhapHang extends HoaDon {
         return madt;
     }
 
-    public void setMadt(String madt) {
-        this.madt = madt;
+    public void setMadt() {
+        System.out.println("Nhap ma doi tac moi: ");
+        String newMaDt = sc.nextLine();
+        do {
+            if(newMaDt.matches("^DT[0-9]{1,}")==true){
+                this.madt=newMaDt;
+                break;
+            }
+            else{
+                System.out.println("Ma doi tac bat dau bang DT roi den so!");
+                System.out.println("Nhap ma doi tac moi: ");
+                newMaDt = sc.nextLine();
+            }
+        } while (true);
     }
 
     public int getDiemdt() {
         return diemdt;
     }
 
-    public void setDiemdt(int diemdt) {
-        this.diemdt = diemdt;
+    public void setDiemdt() {
+        System.out.println("Nhap diem doi tac moi: ");
+        int newDiemDt=sc.nextInt();
+        sc.nextLine();
+        this.diemdt=newDiemDt;
     }
 
     public void xuatHoaDonNhapHang() {
         System.out.println(
-                "--------------------------------------------------------------------------------------------------------------------------------------------------"
-                        + "\nMã đối tác: " + madt
-                        + "\n--------------------------------------------------------------------------------------------------------------------------------------------------"
-                        + "\nĐiểm đối tác: " + diemdt);
+                "--------------------------------------------------------------------------------------------------------------------------"
+                        + "\nMa doi tac: " + madt
+                        + "\n--------------------------------------------------------------------------------------------------------------------------"
+                        + "\nDiem doi tac: " + diemdt);
         super.xuatHoaDon();
     }
 

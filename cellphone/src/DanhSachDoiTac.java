@@ -54,13 +54,7 @@ public class DanhSachDoiTac {
                     chon = Integer.parseInt(sc.nextLine());
                     switch (chon) {
                         case 1: {
-                            System.out.print("Nhap ma Doi Tac moi: ");
-                            String s = sc.nextLine();
-                            for(DoiTac d : arrDT)
-                            {
-                                if(s.equalsIgnoreCase(d.getMADT())) System.out.println("Ma Doi tac nay da ton tai");
-                                else dt.setMADT(s);
-                            }
+                            dt.setMADT();
                             break;
                         }
                         case 2: {
@@ -241,9 +235,7 @@ public class DanhSachDoiTac {
                 }
                 case 5:
                 {
-                    String s1,s2,s3,s4;
-                    s1="Ma DT";s2="Ten DT";s3="SDT";s4="Mail";
-                    System.out.printf("%-10s%-20s%-15s%-30s\n",s1,s2,s3,s4);
+                    System.out.printf("%-10s%-20s%-15s%-30s\n","Ma DT","Ten Doi Tac","SDT","Mail");
                     this.xuatDanhSach();
                     break;
                 }
