@@ -46,6 +46,7 @@ public class HoaDonBanHang extends HoaDon {
         return manv;
     }
 
+
     public void setmanv() {
         System.out.print("Nhap ma nhan vien moi: ");
         String newMaNv = sc.nextLine();
@@ -64,6 +65,7 @@ public class HoaDonBanHang extends HoaDon {
 
     public void xuatHoaDonBanHang() {
         System.out.println(
+
                 "--------------------------------------------------------------------------------------------------------------------------"
                         + "\nMa khach hang: " + makh
                         + "\n--------------------------------------------------------------------------------------------------------------------------"

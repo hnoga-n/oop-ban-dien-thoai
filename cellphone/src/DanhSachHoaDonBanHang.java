@@ -23,13 +23,25 @@ public class DanhSachHoaDonBanHang {
         this.danhSach = danhSach;
     }
 
-    // Them
+
+    public ArrayList<HoaDonBanHang> getlistHDBH() {
+        return this.danhSach;
+    }
+
+    public ArrayList<HoaDonBanHang> getArray() {
+        return this.danhSach;
+    }
+
+    // thĂªm
+
     public void them(HoaDonBanHang hd) {
         this.danhSach.add(hd);
 
     }
 
+
     // Xoa
+
     public void xoa(String mahd) {
         HoaDonBanHang hdbh = new HoaDonBanHang();
         for (HoaDonBanHang hoaDonBanHang : danhSach) {
@@ -41,6 +53,7 @@ public class DanhSachHoaDonBanHang {
         this.danhSach.remove(hdbh);
     }
 
+
     // Sua
     public void sua(String mahd) {
         for (HoaDonBanHang hoaDon : danhSach) {
@@ -48,6 +61,7 @@ public class DanhSachHoaDonBanHang {
                 int luaChon = 0;
                 do {
                     System.out.println("MENU ----------");
+
                     System.out.println("Lua chon: ");
                     System.out.println(
                             "1. Sua ma hoa don.\n"
@@ -69,9 +83,13 @@ public class DanhSachHoaDonBanHang {
                     }
                     if (luaChon == 4) {
                         hoaDon.setmanv();
+
                     }
+
                     if (luaChon == 5) {
+
                         System.out.println("Nhap ma san pham can sua: ");
+
                         String masp = sc.nextLine();
                         hoaDon.getdssp().sua(masp);
                     }
@@ -81,20 +99,22 @@ public class DanhSachHoaDonBanHang {
         }
     }
 
+
     // xuất danh sach hoa don
+
     public void xuatDanhSach() {
         int i = 1;
         for (HoaDonBanHang hoaDonBanHang : danhSach) {
-            System.out
-                    .println("--------------------------------------------------");
+            System.out.println("--------------------------------------------------");
             System.out.println("Hoa don " + i + ": ");
+
             i = i + 1;
             hoaDonBanHang.xuatHoaDonBanHang();
             System.out.println("--------------------------------------------------");
         }
     }
 
-    // ghi vào file
+    // ghi vĂ o file
     public void ghiDuLieuVaoFile() throws IOException {
         File file = new File("DanhSachHoaDonBanHang.txt");
         try {
@@ -117,7 +137,9 @@ public class DanhSachHoaDonBanHang {
 
     }
 
+
     // đọc file
+
     public void docDuLieuTuFile() throws IOException {
         this.danhSach.clear();
         File file = new File("DanhSachHoaDonBanHang.txt");
@@ -181,11 +203,73 @@ public class DanhSachHoaDonBanHang {
 
     // Menu
     public void Menu() throws IOException {
+
+        this.danhSach.clear();
+        File file = new File("DanhSachHoaDonBanHang.txt");
+        try {
+
+            FileReader fr = new FileReader(file);
+            try (BufferedReader br = new BufferedReader(fr)) {
+                String line = "";
+
+                while (line != NULL) {
+
+                    line = br.readLine();
+                    if (line == NULL) {
+                        break;
+                    }
+                    while (!line.equals("--------------------------------------------------------")) {
+                        String mahd = line;
+                        line = br.readLine();
+                        String makh = line;
+                        line = br.readLine();
+                        String matk = line;
+                        line = br.readLine();
+                        String manv = line;
+                        line = br.readLine();
+                        String txt[] = line.split("/");
+                        int day = Integer.parseInt(txt[0]);
+                        int month = Integer.parseInt(txt[1]);
+                        int year = Integer.parseInt(txt[2]);
+                        Ngay ngay = new Ngay(day, month, year);
+                        QuanLiSanPham dssp = new QuanLiSanPham();
+                        line = br.readLine();
+                        line = br.readLine();
+                        while (!line.equals("--------------------------------------------------------")) {
+                            String txt1[] = line.split(",");
+                            int gia = Integer.parseInt(txt1[3]);
+                            int soLuong = Integer.parseInt(txt1[4]);
+                            SanPham sp = new SanPham(txt1[0], txt1[1], txt1[2], gia, txt1[5], soLuong, null);
+                            dssp.them(sp);
+                            line = br.readLine();
+                        }
+
+                        HoaDonBanHang hdbh = new HoaDonBanHang(mahd, matk, ngay, dssp, makh, manv);
+                        this.danhSach.add(hdbh);
+
+                    }
+                }
+                br.close();
+            } catch (FileNotFoundException e) {
+                throw e;
+            } catch (NumberFormatException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            fr.close();
+
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
        this.docDuLieuTuFile();
+
 
         int luaChon0 = -1;
         do {
             System.out.println("MENU ----------");
+
             System.out.println("Lua chon: ");
             System.out.println(
                     "1. In danh sach hoa don ban hang.\n"
@@ -194,12 +278,14 @@ public class DanhSachHoaDonBanHang {
                             + "4. Sua hoa don.\n"
                             + "0. Thoat.\n");
             System.out.println("Vui long Nhap lua chon cua ban: ");
+
             luaChon0 = sc.nextInt();
             sc.nextLine();
             if (luaChon0 == 1) {
                 int i = 1;
                 for (HoaDonBanHang hoaDonBanHang : danhSach) {
                     System.out.println(
+
                             "--------------------------------------------------");
                     System.out.println("Hoa don " + i + ": ");
                     i = i + 1;
@@ -227,10 +313,12 @@ public class DanhSachHoaDonBanHang {
                 sc.nextLine();
                 Ngay ngay = new Ngay(day, month, year);
                 System.out.println("Nhap so luong san pham khac nhau: ");
+
                 int sl = sc.nextInt();
                 sc.nextLine();
                 QuanLiSanPham dssp = new QuanLiSanPham();
                 for (int i = 1; i <= sl; i++) {
+
                     System.out.println("Nhap ma san pham thu " + i + ": ");
                     String Masp = sc.nextLine();
                     System.out.println("Nhap ten san pham: ");
@@ -252,7 +340,9 @@ public class DanhSachHoaDonBanHang {
                 this.danhSach.add(hdbh);
 
             } else if (luaChon0 == 3) {
+
                 System.out.println("Nhap ma hoa don muon xoa: ");
+
                 String Mahd = sc.nextLine();
                 HoaDonBanHang hdbh = new HoaDonBanHang();
                 for (HoaDonBanHang hoaDonBanHang : danhSach) {
@@ -264,6 +354,7 @@ public class DanhSachHoaDonBanHang {
                 this.danhSach.remove(hdbh);
 
             } else if (luaChon0 == 4) {
+
                 System.out.println("Nhap ma hoa don muon sua: ");
                 String Mahd = sc.nextLine();
                 for (HoaDonBanHang hoaDon : danhSach) {
@@ -271,6 +362,7 @@ public class DanhSachHoaDonBanHang {
                         int luaChon1 = 0;
                         do {
                             System.out.println("MENU ----------");
+
                             System.out.println("Lua chon: ");
                             System.out.println(
                                     "1. Sua ma hoa don.\n"
@@ -295,6 +387,7 @@ public class DanhSachHoaDonBanHang {
                             }
                             if (luaChon1 == 5) {
                                 System.out.println("Nhap ma san pham can sua: ");
+
                                 String masp = sc.nextLine();
                                 hoaDon.getdssp().sua(masp);
                             }
@@ -307,6 +400,67 @@ public class DanhSachHoaDonBanHang {
                 break;
             }
         } while (true);
+    }
+
+    // thá»‘ng kĂª
+    public void thongKeBanHang() throws IOException {
+        kiemtra kt = new kiemtra();
+        this.docDuLieuTuFile();
+
+        System.out.print("Tu ngay: ");
+        String dateform = kt.KiemTraNhapNgay();
+        System.out.print("Den ngay: ");
+        String dateto = kt.KiemTraNhapNgay();
+
+        boolean existedFlag = false;
+        Date date1 = null;
+        Date date2 = null;
+        Date date3 = null;
+        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            date1 = format.parse(dateform);
+            date3 = format.parse(dateto);
+        } catch (java.text.ParseException e) {
+            // TODO: handle exception
+            System.out.println(e);
+        }
+        ArrayList<SanPham> thongKeSp = new ArrayList<SanPham>();
+        for (HoaDonBanHang hd : this.danhSach) {
+            try {
+                date2 = format.parse(hd.getNgay().toString());
+                if (date1.before(date2) && date3.after(date2)) {
+                    for (SanPham sp : hd.getdssp().getList()) {
+                        for (SanPham spThongKe : thongKeSp) {
+                            if (spThongKe.getMasp().equalsIgnoreCase(sp.getMasp())) {
+                                spThongKe.setSoluong(spThongKe.getSoluong() + sp.getSoluong());
+                                existedFlag = true;
+                                break;
+                            }
+                        }
+                        if (existedFlag == false) {
+                            thongKeSp.add(sp);
+                        }
+                        existedFlag = false;
+                    }
+                }
+            } catch (java.text.ParseException e) {
+                // TODO: handle exception
+                System.out.println(e);
+            }
+        }
+
+        if (thongKeSp.size() <= 0) {
+            System.out.println("Khong co san pham nao duoc ban ra trong khoang thoi gian da chon !");
+        }
+        QuanLiSanPham danhSachThongKe = new QuanLiSanPham(thongKeSp);
+        danhSachThongKe.xuatDanhSach();
+        System.out.println("Tong doanh thu: " + danhSachThongKe.tongGia());
+    }
+
+    public static void main(String[] args) throws IOException {
+        DanhSachHoaDonBanHang dsbh = new DanhSachHoaDonBanHang();
+        dsbh.docDuLieuTuFile();
+        dsbh.xuatDanhSach();
     }
 
 }

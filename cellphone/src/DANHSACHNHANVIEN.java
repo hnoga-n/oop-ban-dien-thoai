@@ -41,33 +41,33 @@ public class DANHSACHNHANVIEN {
 
     public void ThemNhanVien() {
         NHANVIEN a = new NHANVIEN();
-        a.setManv("" + (Integer.parseInt(arrnv.get(arrnv.size()-1).getManv()) + 1));
+        a.setManv("" + (Integer.parseInt(arrnv.get(arrnv.size() - 1).getManv()) + 1));
         a.NhapNhanVien();
         arrnv.add(a);
 
-        //tạo tài khoản nhân viên
+        // tạo tài khoản nhân viên
         tk_list listAccount = new tk_list();
         listAccount.readAccountListFromFile();
         taikhoan tktmp = new tkNhanvien(a.getManv());
         boolean matchFlag = true;
         do {
-        tktmp.nhapTaikhoan();
-        matchFlag = false;
-        for (taikhoan tmp : listAccount.getListAccountArr()) {
-            if (tmp.getTentk().equals(tktmp.getTentk()) == true) {
-            matchFlag = true;
-            System.out.println("Ten tai khoan bi trung !");
-            break;
+            tktmp.nhapTaikhoan();
+            matchFlag = false;
+            for (taikhoan tmp : listAccount.getListAccountArr()) {
+                if (tmp.getTentk().equals(tktmp.getTentk()) == true) {
+                    matchFlag = true;
+                    System.out.println("Ten tai khoan bi trung !");
+                    break;
+                }
             }
-        }
 
         } while (matchFlag == true);
 
         int max = Integer.parseInt(listAccount.getListAccountArr().get(0).getMatk());
-        for(taikhoan tmp : listAccount.getListAccountArr()) {
-        if(Integer.parseInt(tmp.getMatk()) > max) {
-            max = Integer.parseInt(tmp.getMatk());
-        }
+        for (taikhoan tmp : listAccount.getListAccountArr()) {
+            if (Integer.parseInt(tmp.getMatk()) > max) {
+                max = Integer.parseInt(tmp.getMatk());
+            }
         }
         tktmp.setMatk("" + (max + 1));
 
@@ -103,13 +103,25 @@ public class DANHSACHNHANVIEN {
         NHANVIEN nv = null;
         nv = TimKiemNhanVienTheoMaNV(manv);
         if (nv != null) {
+
             for (NHANVIEN obj : arrnv) {
                 if (obj == nv) {
                     arrnv.remove(obj);
-                    System.out.println("Xoa thanh cong nhan vien!");
+                    System.out.println("Xoa nhan vien thanh cong !");
                     break;
                 }
             }
+            tk_list tklist = new tk_list();
+            tklist.readAccountListFromFile();
+            for (taikhoan tk : tklist.getListAccountArr()) {
+                if (tk.getMakhOrNv().equalsIgnoreCase(manv)) {
+                    tklist.getListAccountArr().remove(tk);
+
+                    System.out.println("Xoa tai khoan thanh cong !");
+                    break;
+                }
+            }
+            tklist.writeAccountListToFile();
         } else
             System.out.println("Khong tim thay nhan vien !");
     }
@@ -225,7 +237,6 @@ public class DANHSACHNHANVIEN {
         } else
             System.out.println("Khong tim thay nhan vien !");
     }
-
 
     public void MenuDanhSachNhanVien() throws IOException {
         docfile();
