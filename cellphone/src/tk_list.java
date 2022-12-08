@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.swing.text.StyledEditorKit.BoldAction;
 
 public class tk_list {
   private ArrayList<taikhoan> listAccount = new ArrayList<taikhoan>();
@@ -22,9 +21,14 @@ public class tk_list {
 
     kh.docfile(); // đọc file dskh
     // tạo khách hàng
-
+    int max = Integer.parseInt(kh.getArray().get(0).getMakh());
+    for(KHACHHANG tmp : kh.getArray()) {
+      if(Integer.parseInt(tmp.getMakh()) > max) {
+        max = Integer.parseInt(tmp.getMakh());
+      }
+    }
     String makhtmp;
-    makhtmp = "KH" + kh.getArray().size();
+    makhtmp = "" + (max + 1);
     kh.ThemKhachHangDangKi(makhtmp);
 
     // tạo tài khoản khách hàng
@@ -43,7 +47,14 @@ public class tk_list {
       }
 
     } while (matchFlag == true);
-    tktmp.setMatk("TK" + this.listAccount.size());
+
+    int max1 = Integer.parseInt(this.listAccount.get(0).getMatk());
+    for(taikhoan tmp : this.listAccount) {
+      if(Integer.parseInt(tmp.getMatk()) > max1) {
+        max1 = Integer.parseInt(tmp.getMatk());
+      }
+    }
+    tktmp.setMatk("" + (max1 + 1));
 
     listAccount.add(tktmp);
     this.writeAccountListToFile();
@@ -97,6 +108,29 @@ public class tk_list {
     }
   }
 
+  public taikhoan TimKiemTaiKhoanTheoMa(String matk) {
+    taikhoan tk = null;
+    for (taikhoan obj : this.listAccount) {
+        if (obj.getMatk().equalsIgnoreCase(matk)) {
+            tk = obj;
+            return tk;
+        }
+    }
+    return null;
+}
+
+public void TimKiemTaiKhoan() {
+    System.out.print("Nhap ma tai khoan can tim: ");
+    sc.nextLine();
+    String matk = sc.nextLine();
+    taikhoan tk = null;
+    tk = TimKiemTaiKhoanTheoMa(matk);
+    if (tk != null)
+        tk.xuatThongTinTaiKhoan_1();
+    else
+        System.out.println("Khong tim thay tai khoan !");
+}
+
   public void writeAccountListToFile() {
     File newWriterAdmin1 = new File("adminAccount.txt");
     File newWriterAdmin2 = new File("userAccount.txt");
@@ -140,6 +174,7 @@ public class tk_list {
   }
 
   public void readAccountListFromFile() {
+    this.listAccount.clear();
     String line;
     taikhoan tmp = null;
     BufferedReader readerAdmin = null;
@@ -287,14 +322,15 @@ public class tk_list {
     int mode;
     while (true) {
       System.out.println("\n");
-      System.out.println("------------------------------------");
-      System.out.println("==========    * MENU *    ==========");
-      System.out.println("------------------------------------");
+      System.out.println("----------------------------------------------");
+      System.out.println("==========    * MENU TAI KHOAN *    ==========");
+      System.out.println("----------------------------------------------");
       System.out.println("1.Hien thi danh sach tai khoan");
       System.out.println("2.Chinh sua tai khoan");
       System.out.println("3.Xoa tai khoan");
-      System.out.println("4.Thoat");
-      System.out.println("------------------------------------");
+      System.out.println("4.Tim kiem tai khoan");
+      System.out.println("5.Thoat");
+      System.out.println("----------------------------------------------");
       System.out.println("Vui long chon: ");
       mode = sc.nextInt();
       switch (mode) {
@@ -308,9 +344,12 @@ public class tk_list {
           sc.nextLine();
           this.xoaTaiKhoan();
           break;
+        case 4:
+          this.TimKiemTaiKhoan();
+          break;
       }
 
-      if (mode == 4) {
+      if (mode == 5) {
         this.writeAccountListToFile();
         break;
       }

@@ -1,12 +1,12 @@
-sp1231,Samsung Galaxy Z Flip4,Samsung,20900000,3,12 th�ng,Dynamic AMOLED 2X,Snapdragon 8+ Gen 1,10 MP,3700 mAh,128 GB
-sp1232,iPhone 11,Iphone,11900000,5,12 th�ng,IPS LCD6.1"Liquid Retina,Apple A13 Bionic,12 MP,3110 mAh,64 GB
-sp1233,Xiaomi Redmi Note 11,Xiaomi,4490000,6,12 th�ng,AMOLED6.43"Full HD+,Snapdragon 680,13 MP,5000 mAh,64 GB
-sp1234,Samsung Galaxy Z,Samsung,10900000,2,12 th�ng, Dynamic AMOLED 2X6.8"Quad HD+,Snapdragon 8 Gen 1,Chính 108 MP & Phụ 12 MP,5000 mAh,128 GB
-sp1235,iPhone 14, Iphone,30500000,3,12 th�ng,OLED6.1"Super Retina XDR,Apple A16 Bionic,Chính 48 MP & Phụ 12 MP,3200 mAh,128 GB
-sp1236,Xiaomi Redmi Note 9,Xiaomi,4000000,12,12 th�ng,IPS LCD6.53"HD+,MediaTek Helio G25,13 MP,5000 mAh,32 GB
-sp1237,Vivo Y15s,Vivo,21000000,6,12 th�ng,IPS LCD6.51"HD+,MediaTek Helio P35,Chính 13 MP & Phụ 2 MP,5000 mAh,32 GB
-sp1238,OPPO A55,Oppo,13900000,9,6 th�ng,IPS LCD6.5"HD+,MediaTek Helio G35,Chính 50 MP & Phụ 2 MP,5000 mAh,64 GB
-sp1239,OPPO Reno8 Pro 5G,Oppo,14490000,13,24 th�ng,AMOLED6.7"Full HD+,MediaTek Dimensity 8100 Max 8 nhân,Chính 50 MP & Phụ 8 MP,4500 mAh,256 GB
-sp12310,Realme 9 Pro+ 5G,Realme,10900000,10,12 th�ng,Super AMOLED6.4"Full HD+,MediaTek Dimensity 920 5G,Chính 50 MP & Phụ 8 MP,4500 mAh,128 GB
-sp12311,iPhone 13,Iphone,19000000,6,12 th�ng,OLED6.1"Super Retina XDR,Apple A15 Bionic,2 camera 12 MP,3240 mAh,64 GB
-sp12312,Realme 9i,Realme,5999000,14,12 th�ng ,IPS LCD6.6"Full HD+,Snapdragon 680,Chính 50 MP & Phụ 2 MP,5000 mAh,64 GB
+sp1231,Samsung Galaxy Z Flip4,Samsung,20900000,13,12 thang,Dynamic AMOLED 2X,Snapdragon 8+ Gen 1,10 MP,3700 mAh,128 GB
+sp1232,iPhone 11,Iphone,11900000,15,12 thang,IPS LCD6.1"Liquid Retina,Apple A13 Bionic,12 MP,3110 mAh,64 GB
+sp1233,Xiaomi Redmi Note 11,Xiaomi,4490000,16,12 thang,AMOLED6.43"Full HD+,Snapdragon 680,13 MP,5000 mAh,64 GB
+sp1234,Samsung Galaxy Z,Samsung,10900000,2,12 thang, Dynamic AMOLED 2X6.8"Quad HD+,Snapdragon 8 Gen 1,Chính 108 MP & Phụ 12 MP,5000 mAh,128 GB
+sp1235,iPhone 14, Iphone,30500000,3,12 thang,OLED6.1"Super Retina XDR,Apple A16 Bionic,Chính 48 MP & Phụ 12 MP,3200 mAh,128 GB
+sp1236,Xiaomi Redmi Note 9,Xiaomi,4000000,12,12 thang,IPS LCD6.53"HD+,MediaTek Helio G25,13 MP,5000 mAh,32 GB
+sp1237,Vivo Y15s,Vivo,21000000,6,12 thang,IPS LCD6.51"HD+,MediaTek Helio P35,Chính 13 MP & Phụ 2 MP,5000 mAh,32 GB
+sp1238,OPPO A55,Oppo,13900000,9,6 thang,IPS LCD6.5"HD+,MediaTek Helio G35,Chính 50 MP & Phụ 2 MP,5000 mAh,64 GB
+sp1239,OPPO Reno8 Pro 5G,Oppo,14490000,13,24 thang,AMOLED6.7"Full HD+,MediaTek Dimensity 8100 Max 8 nhân,Chính 50 MP & Phụ 8 MP,4500 mAh,256 GB
+sp12310,Realme 9 Pro+ 5G,Realme,10900000,10,12 thang,Super AMOLED6.4"Full HD+,MediaTek Dimensity 920 5G,Chính 50 MP & Phụ 8 MP,4500 mAh,128 GB
+sp12311,iPhone 13,Iphone,19000000,6,12 thang,OLED6.1"Super Retina XDR,Apple A15 Bionic,2 camera 12 MP,3240 mAh,64 GB
+sp12312,Realme 9i,Realme,5999000,14,12 thang ,IPS LCD6.6"Full HD+,Snapdragon 680,Chính 50 MP & Phụ 2 MP,5000 mAh,64 GB

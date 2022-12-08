@@ -241,6 +241,9 @@ public class DanhSachDoiTac {
                 }
                 case 5:
                 {
+                    String s1,s2,s3,s4;
+                    s1="Ma DT";s2="Ten DT";s3="SDT";s4="Mail";
+                    System.out.printf("%-10s%-20s%-15s%-30s\n",s1,s2,s3,s4);
                     this.xuatDanhSach();
                     break;
                 }

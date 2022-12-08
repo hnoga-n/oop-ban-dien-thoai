@@ -1,7 +1,4 @@
 import java.util.Scanner;
-
-import javax.lang.model.util.ElementScanner14;
-
 import java.io.IOException;
 
 public class menuchucnang implements interface_menuchucnang {
@@ -39,8 +36,6 @@ public class menuchucnang implements interface_menuchucnang {
                         break;
                     case "2":
                         tk = listtk.dangNhap();
-                        if(tk instanceof tkAdmin) {
-                        tk = listtk.dangNhap();
                         if (tk instanceof tkAdmin) {
                             Menuchucnangadmin();
                         } else if (tk instanceof tkKhachHang) {
@@ -52,8 +47,7 @@ public class menuchucnang implements interface_menuchucnang {
                             System.out.println("Tai khoan khong ton tai !");
                         }
                         break;
-                }
-            }
+                } 
             if (Integer.parseInt(key) == 3) {
                 break;
             }
@@ -74,12 +68,13 @@ public class menuchucnang implements interface_menuchucnang {
             System.out.println("4. Quan li doi tac");
             System.out.println("5. Quan li hoa don");
             System.out.println("6. Quan li tai khoan");
-            System.out.println("7. Dang xuat");
+            System.out.println("7. Nhap hang");
+            System.out.println("8. Dang xuat");
             System.out.println("------------------------------------------");
             System.out.print("Chon: ");
             key = sc.next();
-            if (key.matches("[1-7]{1}") == false) {
-                System.out.println("Vui long chon so tu 1 den 7 !");
+            if (key.matches("[1-8]{1}") == false) {
+                System.out.println("Vui long chon so tu 1 den 8 !");
                 continue;
             } else {
                 switch (key) {
@@ -96,6 +91,7 @@ public class menuchucnang implements interface_menuchucnang {
                         listdt.menuDoiTac();
                         break;
                     case "5":
+                        sc.nextLine();
                         while (true) {
                             System.out.println("\n");
                             System.out.println("--------------------------------------------");
@@ -125,11 +121,16 @@ public class menuchucnang implements interface_menuchucnang {
                         }
                         break;
                     case "6":
+                        listtk.readAccountListFromFile();
                         listtk.MenuDanhSachTaiKhoan();
+                        break;
+                    case "7":
+                        QuanLiSanPham qlsp = new QuanLiSanPham();
+                        qlsp.Menuchucnangnhaphang();
                         break;
                 }
             }
-            if (Integer.parseInt(key) == 7) {
+            if (Integer.parseInt(key) == 8) {
                 break;
             }
         }
@@ -137,8 +138,10 @@ public class menuchucnang implements interface_menuchucnang {
 
     
     public void Menuchucnangnhanvien(tkNhanvien tknv) throws IOException {
+        sc.nextLine();
         listnv.docfile();
         listtk.readAccountListFromFile();
+        listbh.docDuLieuTuFile();
         NHANVIEN nv = listnv.TimKiemNhanVienTheoMaNV(tknv.getMakhOrNv());
         while (true) {
             System.out.println("\n");
@@ -182,6 +185,7 @@ public class menuchucnang implements interface_menuchucnang {
                         break;
 
                     case "5":
+                        nv.Xuathoadonbanhang(listbh.getlistHDBH());
                         break;
                         
                     case "6":
@@ -200,9 +204,9 @@ public class menuchucnang implements interface_menuchucnang {
             while (true) {
                 // key = "";
                 System.out.println("\n");
-                System.out.println("------------------------------------");
-                System.out.println("==========    * MENU *    ==========");
-                System.out.println("------------------------------------");
+                System.out.println("-----------------------------------------------");
+                System.out.println("==========    * MENU KHACH HANG *    ==========");
+                System.out.println("-----------------------------------------------");
                 System.out.println("1. Xem danh sach san pham");
                 System.out.println("2. Them san pham vao gio hang");
                 System.out.println("3. Xem gio hang");
@@ -210,7 +214,7 @@ public class menuchucnang implements interface_menuchucnang {
                 System.out.println("5. Xoa toan bo san pham khoi gio hang");
                 System.out.println("6. Thanh toan");
                 System.out.println("7. Dang xuat");
-                System.out.println("------------------------------------");
+                System.out.println("-----------------------------------------------");
                 System.out.print("Chon: ");
                 key = sc.next();
                 if (key.matches("[1-7]{1}") == false) {
@@ -271,6 +275,7 @@ public class menuchucnang implements interface_menuchucnang {
 
     public static void main(String[] args) throws IOException {
         menuchucnang menu = new menuchucnang();
-        menu.Menuchucnangadmin();
+        tkNhanvien tknv = new tkNhanvien("4", "sonnguyen", "789", "1");
+        menu.Menuchucnangnhanvien(tknv);
     }
 }
