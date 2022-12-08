@@ -241,6 +241,7 @@ public class DanhSachDoiTac {
                 }
                 case 5:
                 {
+                    System.out.printf("%-10s%-20s%-15s%-30s\n","Ma DT","Ten Doi Tac","SDT","Mail");
                     this.xuatDanhSach();
                     break;
                 }

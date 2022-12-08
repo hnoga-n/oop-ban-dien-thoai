@@ -3,11 +3,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.chrono.IsoChronology;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import javax.swing.ListCellRenderer;
 
 public class tk_list {
   private ArrayList<taikhoan> listAccount = new ArrayList<taikhoan>();

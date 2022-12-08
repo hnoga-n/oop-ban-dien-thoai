@@ -103,12 +103,12 @@ public class DoiTac {
     }
 
     public void parseDT(String line) {
-        String[] params = line.split(",");
+        String[] txt = line.split(",");
         try {
-            this.MADT = params[0];
-            this.tenDoiTac = params[1];
-            this.Tel = params[2];
-            this.Mail = params[3];
+            this.MADT = txt[0];
+            this.tenDoiTac = txt[1];
+            this.Tel = txt[2];
+            this.Mail = txt[3];
         } catch (ArrayIndexOutOfBoundsException ex) {
             System.out.println(ex.toString());
         }

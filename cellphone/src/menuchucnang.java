@@ -89,7 +89,7 @@ public class menuchucnang implements interface_menuchucnang {
                         listnv.MenuDanhSachNhanVien();
                         break;
                     case "3":
-                        listsp.chucNang();
+                        listsp.menuSanPham();
                         break;
                     case "4":
                         listdt.menuDoiTac();

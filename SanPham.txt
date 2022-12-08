@@ -1,12 +1,30 @@
-sp1231,Samsung Galaxy Z Flip4,Samsung,20900000,1,12 th�ng,Dynamic AMOLED 2X,Snapdragon 8+ Gen 1,10 MP,3700 mAh,128 GB
-sp1232,iPhone 11,Iphone,11900000,5,12 th�ng,IPS LCD6.1"Liquid Retina,Apple A13 Bionic,12 MP,3110 mAh,64 GB
-sp1233,Xiaomi Redmi Note 11,Xiaomi,4490000,1,12 th�ng,AMOLED6.43"Full HD+,Snapdragon 680,13 MP,5000 mAh,64 GB
-sp1234,Samsung Galaxy Z,Samsung,10900000,1,12 th�ng, Dynamic AMOLED 2X6.8"Quad HD+,Snapdragon 8 Gen 1,Chính 108 MP & Phụ 12 MP,5000 mAh,128 GB
-sp1235,iPhone 14, Iphone,30500000,3,12 th�ng,OLED6.1"Super Retina XDR,Apple A16 Bionic,Chính 48 MP & Phụ 12 MP,3200 mAh,128 GB
-sp1236,Xiaomi Redmi Note 9,Xiaomi,4000000,1,12 th�ng,IPS LCD6.53"HD+,MediaTek Helio G25,13 MP,5000 mAh,32 GB
-sp1237,Vivo Y15s,Vivo,21000000,6,12 th�ng,IPS LCD6.51"HD+,MediaTek Helio P35,Chính 13 MP & Phụ 2 MP,5000 mAh,32 GB
-sp1238,OPPO A55,Oppo,13900000,0,6 th�ng,IPS LCD6.5"HD+,MediaTek Helio G35,Chính 50 MP & Phụ 2 MP,5000 mAh,64 GB
-sp1239,OPPO Reno8 Pro 5G,Oppo,14490000,3,24 th�ng,AMOLED6.7"Full HD+,MediaTek Dimensity 8100 Max 8 nhân,Chính 50 MP & Phụ 8 MP,4500 mAh,256 GB
-sp12310,Realme 9 Pro+ 5G,Realme,10900000,3,12 th�ng,Super AMOLED6.4"Full HD+,MediaTek Dimensity 920 5G,Chính 50 MP & Phụ 8 MP,4500 mAh,128 GB
-sp12311,iPhone 13,Iphone,19000000,1,12 th�ng,OLED6.1"Super Retina XDR,Apple A15 Bionic,2 camera 12 MP,3240 mAh,64 GB
-sp12312,Realme 9i,Realme,5999000,2,12 th�ng ,IPS LCD6.6"Full HD+,Snapdragon 680,Chính 50 MP & Phụ 2 MP,5000 mAh,64 GB
+s1,Samsung Galaxy Z Flip4,Samsung,20900000,3,12 thang,Dynamic AMOLED 2X,Snapdragon 8+ Gen 1,10 MP,3700 mAh,7 GB,128 GB
+s2,Samsung Galaxy Z,Samsung,10900000,2,12 thang, Dynamic AMOLED 2X6.8"Quad HD+,Snapdragon 8 Gen 1,Chinh 108 MP & Phu 12 MP,5000 mAh,6 GB,128 GB
+s3,Samsung Galaxy A23,Samsung,5690000,4,12 thang,PLS TFT LCD6.6"Full HD+,Snapdragon 680,Chinh 50 MP & Phu 5 MP,5000 mAh,4 GB,128 GB
+s4,Samsung Galaxy S22 Ultra,Samsung,18490000,4,12 thang,Dynamic AMOLED 2X,Snapdragon 8 Gen 1,12 MP,3700 mAh,8 GB,256 GB
+s5,Samsung Galaxy S21 FE,Samsung,12490000,1,12 thang,Dynamic AMOLED 2X6.4"Full HD+,Exynos 2100,32 MP,4500 mAh,8 GB,128 GB
+s6,Samsung Galaxy A03,Samsung,2490000,6,12 thang,PLS LCD6.5"HD+,Unisoc T606,5 MP,5000 mAh,3 GB,32 GB
+s7,Samsung Galaxy M33,Samsung,7690000,10,12 thang,TFT LCD6.6"Full HD+,Exynos 1280,8 MP,5000 mAh,6 GB,128 GB
+s8,Samsung Galaxy A32,Samsung,6490000,8,12 thang,Super AMOLED6.4"Full HD+,MediaTek Helio G80,20 MP,5000 mAh,6 GB,128 GB
+i1,iPhone 11,Iphone,11900000,5,12 thang,IPS LCD6.1"Liquid Retina,Apple A13 Bionic,12 MP,3110 mAh,4 GB,64 GB
+i2,iPhone 14, Iphone,30500000,3,12 thang,OLED6.1"Super Retina XDR,Apple A16 Bionic,Chinh 48 MP & Phu 12 MP,3200 mAh,4 GB,128 GB
+i3,iPhone 13,Iphone,19000000,6,12 thang,OLED6.1"Super Retina XDR,Apple A15 Bionic,2 camera 12 MP,3240 mAh,4 GB,64 GB
+i4,iPhone 12,Iphone,16990000,7,12 thang,OLED6.1"Super Retina XDR,Apple A14 Bionic,2 camera 12 MP,2815 mAh,4 GB,64 GB
+i5,iPhone SE,Iphone,10990000,11,12 thang,IPS LCD4.7"Retina HD,Apple A15 Bionic,12 MP,2018 mAh,4 GB,64 GB
+i6,iPhone 6 Plus,Iphone,3290000,9,12 thang,LED-backlit IPS LCD5.5"Retina HD,Apple A8,8 MP,2915 mAh,1 GB,16 GB
+i7,iPhone 7,Iphone,4690000,4,12 thang,LED-backlit IPS LCD4.7"Retina HD,Apple A10 Fusion,12 MP,1960 mAh,2 GB,32 GB
+x1,Xiaomi Redmi Note 11,Xiaomi,4490000,6,12 thang,AMOLED6.43"Full HD+,Snapdragon 680,13 MP,5000 mAh,6 GB,64 GB
+x2,Xiaomi Redmi Note 9,Xiaomi,4000000,12,12 thang,IPS LCD6.53"HD+,MediaTek Helio G25,13 MP,5000 mAh,4 GB,32 GB
+x3,Xiaomi 12T,Xiaomi,12990000,10,12 thang,AMOLED6.67"1.5K,MediaTek Dimensity 8100 Ultra,20 MP,5000 mAh,8 GB,256 GB
+x4,Xiaomi 11 Life,Xiaomi,8990000,3,12 thang,AMOLED6.55"Full HD+,Snapdragon 778G,20 MP,4250 mAh,8 GB,128 GB
+x5,Xiaomi Redmi 9C,Xiaomi,3290000,5,12 thang,IPS LCD6.53"HD+,MediaTek Helio G35,5 MP,5000 mAh,4 GB,128 GB
+x6,Xiaomi Redmi 10,Xiaomi,4690000,9,12 thang,IPS LCD6.5"Full HD+,MediaTek Helio G88,8 MP,5000 mAh,6 GB,128 GB
+x7,Xiaomi Redmi note 10,Xiaomi,5390000,2,12 thang,IPS LCD6.5"Full HD+,MediaTek Dimensity 700,8 MP,5000 mAh,8 GB,128 GB
+x8,Xiaomi POCO C40,Xiaomi,2990000,4,12 thang,IPS LCD6.71"HD+,JLQ JR510,5 MP,6000 mAh,4 GB,64 GB
+x9,Xiaomi Redmi 10C,Xiaomi,3490000,3,12 thang,S LCD6.71"HD+,Snapdragon 680,5 MP,5000 mAh,4 GB,64 GB
+x10,Xiaomi POCO M3,Xiaomi,3690000,7,12 thang,IPS LCD6.53"Full HD+,Snapdragon 662,8 MP,6000 mAh,4 GB,128 GB
+v1,Vivo Y15s,Vivo,2100000,6,12 thang,IPS LCD6.51"HD+,MediaTek Helio P35,Chinh 13 MP & Phu 2 MP,5000 mAh,3 GB,32 GB
+v2,Vivo X80,Vivo,18390000,3,12 thang,AMOLED6.78"Full HD+,MediaTek Dimensity 9000,32 MP,4500 mAh,12 GB,256 GB
+v3,Vivo V25,Vivo,10090000,15,12 thang,AMOLED6.44"Full HD+,MediaTek Dimensity 900,50 MP,4500 mAh,8 GB, 128 GB
+v4,Vivo T1,Vivo,8090000,7,12 thang,AMOLED6.44"Full HD+,Snapdragon 778G,Chinh 64 MP & Phu 8 MP,4700 mAh,8 GB, 128 GB
+v5,Vivo Y21,Vivo,3699000,5,12 thang,IPS LCD6.51"HD+,MediaTek Helio P35,13 MP,5000 mAh,4 GB,64GB
