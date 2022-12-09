@@ -7,13 +7,18 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class DanhSachHoaDonBanHang {
     Scanner sc = new Scanner(System.in);
     private static final String NULL = null;
     private ArrayList<HoaDonBanHang> danhSach;
+    DecimalFormat formatter = new DecimalFormat("###,###,###");
 
     public DanhSachHoaDonBanHang() {
         this.danhSach = new ArrayList<HoaDonBanHang>();
@@ -138,7 +143,7 @@ public class DanhSachHoaDonBanHang {
     }
 
 
-    // đọc file
+    // đỞc file
 
     public void docDuLieuTuFile() throws IOException {
         this.danhSach.clear();
@@ -424,37 +429,42 @@ public class DanhSachHoaDonBanHang {
             // TODO: handle exception
             System.out.println(e);
         }
-        ArrayList<SanPham> thongKeSp = new ArrayList<SanPham>();
-        for (HoaDonBanHang hd : this.danhSach) {
-            try {
-                date2 = format.parse(hd.getNgay().toString());
-                if (date1.before(date2) && date3.after(date2)) {
-                    for (SanPham sp : hd.getdssp().getList()) {
-                        for (SanPham spThongKe : thongKeSp) {
-                            if (spThongKe.getMasp().equalsIgnoreCase(sp.getMasp())) {
-                                spThongKe.setSoluong(spThongKe.getSoluong() + sp.getSoluong());
-                                existedFlag = true;
-                                break;
+        if(date1.compareTo(date3) > 0) {
+            System.out.println("Nhap sai thu tu ngay!");
+        }
+        else {
+                ArrayList<SanPham> thongKeSp = new ArrayList<SanPham>();
+            for (HoaDonBanHang hd : this.danhSach) {
+                try {
+                    date2 = format.parse(hd.getNgay().toString());
+                    if (date1.before(date2) && date3.after(date2)) {
+                        for (SanPham sp : hd.getdssp().getList()) {
+                            for (SanPham spThongKe : thongKeSp) {
+                                if (spThongKe.getMasp().equalsIgnoreCase(sp.getMasp())) {
+                                    spThongKe.setSoluong_1(spThongKe.getSoluong() + sp.getSoluong());
+                                    existedFlag = true;
+                                    break;
+                                }
                             }
+                            if (existedFlag == false) {
+                                thongKeSp.add(sp);
+                            }
+                            existedFlag = false;
                         }
-                        if (existedFlag == false) {
-                            thongKeSp.add(sp);
-                        }
-                        existedFlag = false;
                     }
+                } catch (java.text.ParseException e) {
+                    // TODO: handle exception
+                    System.out.println(e);
                 }
-            } catch (java.text.ParseException e) {
-                // TODO: handle exception
-                System.out.println(e);
             }
-        }
 
-        if (thongKeSp.size() <= 0) {
-            System.out.println("Khong co san pham nao duoc ban ra trong khoang thoi gian da chon !");
+            if (thongKeSp.size() <= 0) {
+                System.out.println("Khong co san pham nao duoc ban ra trong khoang thoi gian da chon !");
+            }
+            QuanLiSanPham danhSachThongKe = new QuanLiSanPham(thongKeSp);
+            danhSachThongKe.xuatDanhSach();
+            System.out.println("Tong doanh thu: " + formatter.format(danhSachThongKe.tongGia())+" VND");
         }
-        QuanLiSanPham danhSachThongKe = new QuanLiSanPham(thongKeSp);
-        danhSachThongKe.xuatDanhSach();
-        System.out.println("Tong doanh thu: " + danhSachThongKe.tongGia());
     }
 
     public static void main(String[] args) throws IOException {

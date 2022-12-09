@@ -1,5 +1,6 @@
 
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class HoaDon {
@@ -13,6 +14,8 @@ public class HoaDon {
     private String matk;
     private Ngay ngay;
     private QuanLiSanPham dssp;
+
+    DecimalFormat formatter = new DecimalFormat("###,###,###");
 
     public HoaDon() {
     }
@@ -86,7 +89,7 @@ public class HoaDon {
                 + "\nMa tai khoan: " + matk + "\n--------------------------------------------------------------------------------------------------------------------------" + "\nNgay: "
                 + ngay);
         dssp.xuatDanhSach();
-        System.out.println("\nTong gia: " + dssp.tongGia());
+        System.out.println("\nTong gia: " + formatter.format(dssp.tongGia())+" VND" );
         System.out.println("--------------------------------------------------------------------------------------------------------------------------\n");
     }
 

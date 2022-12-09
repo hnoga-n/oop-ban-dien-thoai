@@ -16,7 +16,7 @@ public class giohang {
     spcart = new ArrayList<SanPham>();
   }
 
-  // Check giỏ hàng có rỗng?
+  // Check giỞ hàng có rỗng?
   public boolean cartIsEmpty() {
     if (spcart.size() <= 0) {
       return true;
@@ -24,7 +24,7 @@ public class giohang {
     return false;
   }
 
-  // TODO: THÊM VÀO GIỎ HÀNG
+  // TODO: THÞM VÀO GIỞ HÀNG
 
   public int themSp() throws IOException {
     String masptmp;
@@ -35,7 +35,7 @@ public class giohang {
     System.out.println("Nhap ma san pham can them: ");
     masptmp = sc.next();
 
-    // kiểm tra xem giỏ hàng đã có sản phẩm chưa, nếu rồi thì ngắt hàm
+    // kiểm tra xem giỞ hàng đã có sản phẩm chưa, nếu rồi thì ngắt hàm
     for (SanPham sptmp : spcart) {
       if (sptmp.getMasp().equalsIgnoreCase(masptmp)) {
         System.out
@@ -70,11 +70,11 @@ public class giohang {
         } while (sp.getSoluong() < Integer.parseInt(soLuongMua));
 
         SanPham tmp = new SanPham(sp);
-        tmp.setSoluong(Integer.parseInt(soLuongMua));
+        tmp.setSoluong_1(Integer.parseInt(soLuongMua));
         spcart.add(tmp); // add sp mới vào gio hàng
 
         int newQuantity = sp.getSoluong() - Integer.parseInt(soLuongMua);
-        sp.setSoluong(newQuantity); // trừ đi số lượng trong kho
+        sp.setSoluong_1(newQuantity); // trừ đi số lượng trong kho
         dssp.ghiDuLieuVaoFile();
 
         System.out.println("Them san pham thanh cong !");
@@ -85,7 +85,7 @@ public class giohang {
     return -1;
   }
 
-  // Chỉnh sửa giỏ hàng
+  // Chỉnh sửa giỞ hàng
   public int chinhSuaSoLuongSanPham() throws IOException {
     String masptmp;
     String soLuongMoi;
@@ -126,11 +126,11 @@ public class giohang {
         // chỉnh sửa sản phẩm trong kho
         for (SanPham spKho : dssp.getList()) {
           if (spKho.getMasp().equalsIgnoreCase(masptmp)) {
-            spKho.setSoluong(spKho.getSoluong() + sp.getSoluong() - Integer.parseInt(soLuongMoi));
+            spKho.setSoluong_1(spKho.getSoluong() + sp.getSoluong() - Integer.parseInt(soLuongMoi));
           }
 
         }
-        sp.setSoluong(Integer.parseInt(soLuongMoi));
+        sp.setSoluong_1(Integer.parseInt(soLuongMoi));
 
         dssp.ghiDuLieuVaoFile();
         System.out.println("Chinh sua so luong thanh cong !");
@@ -141,7 +141,7 @@ public class giohang {
     return -1;
   }
 
-  // TODO: GÕ SP KHỎI GIỎ HÀNG
+  // TODO: GÕ SP KHỞI GIỞ HÀNG
   public int goSpKhoiGiohang() {
     String masptmp;
     System.out.println("Nhap ma san pham can go: ");
@@ -157,13 +157,13 @@ public class giohang {
     return 1;
   }
 
-  // TODO: XÓA TẤT CẢ SP KHỎI GIỎ HÀNG
+  // TODO: XÓA TẤT CẢ SP KHỞI GIỞ HÀNG
   public void goAllSanphamKhoiGiohang() {
     spcart.clear();
     System.out.println("Clear gio hang thanh cong !");
   }
 
-  // TODO: XEM GIỎ HÀNG
+  // TODO: XEM GIỞ HÀNG
 
   public int xemGiohang() {
     if (spcart.size() == 0) {
@@ -172,7 +172,7 @@ public class giohang {
     }
     System.out.println("Danh sach san pham trong gio hang :");
     System.out.printf("%-15s%-15s%-45s%-15s%-15s%-25s\n", "mã sản phẩm", "hãng", "tên sản phẩm", "giá",
-        "số lượng", "Thời gian bảo hành");
+        "số lượng", "ThỞi gian bảo hành");
     for (SanPham sp : spcart) {
       System.out.printf("%-15s%-15s%-45s%-15s%-15s%-25s\n", sp.getMasp(), sp.getHang(), sp.getTensp(),
           sp.getGia(), sp.getSoluong(), sp.getThoiGianBaoHanh());
@@ -233,7 +233,7 @@ public class giohang {
    * }
    */
 
-  // TODO: THANH TOÁN
+  // TODO: THANH TOÞN
   public void thanhToan(tkNhanvien tknv) throws IOException {
     DanhSachHoaDonBanHang dsbh = new DanhSachHoaDonBanHang();
     dsbh.docDuLieuTuFile();

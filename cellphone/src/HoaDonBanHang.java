@@ -42,7 +42,7 @@ public class HoaDonBanHang extends HoaDon {
         } while (true);
     }
 
-    public String getmanv() {
+    public String getManv() {
         return manv;
     }
 

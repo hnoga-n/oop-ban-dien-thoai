@@ -40,6 +40,15 @@ public class SanPham implements Comparable<SanPham> {
         this.thoiGianBaoHanh = thoiGianBaoHanh;
     }
 
+    public SanPham(SanPham sp) {
+        this.masp = sp.masp;
+        this.tensp = sp.tensp;
+        this.hang = sp.hang;
+        this.gia = sp.gia;
+        this.soluong = sp.soluong;
+        this.thoiGianBaoHanh = sp.thoiGianBaoHanh;
+    }
+
     public String getMasp() {
         return masp;
     }
@@ -103,6 +112,10 @@ public class SanPham implements Comparable<SanPham> {
 
     public int getSoluong() {
         return soluong;
+    }
+
+    public void setSoluong_1 (int soluong) {
+        this.soluong = soluong;
     }
 
     public void setSoluong() {
