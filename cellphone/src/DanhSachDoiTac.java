@@ -33,9 +33,11 @@ public class DanhSachDoiTac {
 
     public void xoa(String Ma) {
         for (DoiTac dt : arrDT) {
-            if (dt.getMADT().equals(Ma))
+            if (dt.getMADT().equalsIgnoreCase(Ma)) {
                 arrDT.remove(dt);
-            break;
+                break;
+            }
+
         }
     }
 
@@ -56,20 +58,23 @@ public class DanhSachDoiTac {
                         case 1: {
                             System.out.print("Nhap ma Doi Tac moi: ");
                             String s = sc.nextLine();
-                            for(DoiTac d : arrDT)
-                            {
-                                if(s.equalsIgnoreCase(d.getMADT())) System.out.println("Ma Doi tac nay da ton tai");
-                                else dt.setMADT(s);
+                            for (DoiTac d : arrDT) {
+                                if (s.equalsIgnoreCase(d.getMADT()))
+                                    System.out.println("Ma Doi tac nay da ton tai");
+                                else
+                                    dt.setMADT(s);
                             }
+
                             break;
                         }
                         case 2: {
                             System.out.print("Nhap ten Doi Tac moi: ");
                             String s = sc.nextLine();
-                            for(DoiTac d : arrDT)
-                            {
-                                if(s.equalsIgnoreCase(d.getTenDoiTac())) System.out.println("Ten Doi tac nay da ton tai");
-                                else dt.setTenDoiTac(s);
+                            for (DoiTac d : arrDT) {
+                                if (s.equalsIgnoreCase(d.getTenDoiTac()))
+                                    System.out.println("Ten Doi tac nay da ton tai");
+                                else
+                                    dt.setTenDoiTac(s);
                             }
                             break;
                         }
@@ -102,9 +107,9 @@ public class DanhSachDoiTac {
     }
 
     public boolean checkDT(DoiTac dt) {
-        for (DoiTac d : arrDT)
-        {
-            if(d.getMADT().equalsIgnoreCase(dt.getMADT()) || d.getTenDoiTac().equalsIgnoreCase(dt.getTenDoiTac())) return false;
+        for (DoiTac d : arrDT) {
+            if (d.getMADT().equalsIgnoreCase(dt.getMADT()) || d.getTenDoiTac().equalsIgnoreCase(dt.getTenDoiTac()))
+                return false;
         }
         return true;
     }
@@ -181,90 +186,89 @@ public class DanhSachDoiTac {
     }
 
     // MENU
-    public void menuDoiTac() throws IOException
-    {
+    public void menuDoiTac() throws IOException {
         this.docFile();
-        System.out.println("1.Them Doi Tac");
-        System.out.println("2.Tim Doi Tac theo ma");
-        System.out.println("3.Xoa Doi Tac theo ma");
-        System.out.println("4.Chinh sua thong tin Doi Tac");
-        System.out.println("5.Xuat danh sach Doi Tac");
-        System.out.println("6.Xuat so luong Doi tac");
-        System.out.println("0.Thoat");
-        int chon;
-        do
-        {
+        String chon;
+        do {
+
+            System.out.println("1.Them Doi Tac");
+            System.out.println("2.Tim Doi Tac theo ma");
+            System.out.println("3.Xoa Doi Tac theo ma");
+            System.out.println("4.Chinh sua thong tin Doi Tac");
+            System.out.println("5.Xuat danh sach Doi Tac");
+            System.out.println("6.Xuat so luong Doi tac");
+            System.out.println("0.Thoat");
             System.out.print("Chon: ");
-            chon=Integer.parseInt(sc.nextLine());
-            switch(chon)
-            {
-                case 1:
-                {
+            chon = sc.next();
+            sc.nextLine();
+            if (chon.matches("[0-6]{1}") == false) {
+                System.out.println("Vui long nhap so tu 0 - 6 !");
+                continue;
+            }
+            switch (chon) {
+                case "1": {
                     System.out.print("Nhap ma Doi Tac: ");
-                    String ma=sc.nextLine();
+                    String ma = sc.nextLine();
                     System.out.print("Nhap ten Doi Tac: ");
-                    String ten=sc.nextLine();
+                    String ten = sc.nextLine();
                     System.out.print("Nhap so dien thoai: ");
-                    String sdt=sc.nextLine();
+                    String sdt = sc.nextLine();
                     System.out.print("Nhap mail Doi Tac: ");
-                    String mail=sc.nextLine();
-                    DoiTac dt=new DoiTac(ma,ten,sdt,mail);
-                    if(checkDT(dt)) {
+                    String mail = sc.nextLine();
+                    DoiTac dt = new DoiTac(ma, ten, sdt, mail);
+                    if (checkDT(dt)) {
                         this.them(dt);
-                    }
-                    else{
+                    } else {
                         System.out.println("Doi tac da ton tai");
-                    } 
+                    }
                     break;
                 }
-                case 2:
-                {
+                case "2": {
                     System.out.print("Nhap ma cua Doi Tac can tim: ");
-                    String ma=sc.nextLine();
+                    String ma = sc.nextLine();
                     this.tim(ma).xuatDoiTac();
+
                     break;
                 }
-                case 3:
-                {
+                case "3": {
                     System.out.print("Nhap ma cua Doi Tac can xoa: ");
-                    String ma=sc.nextLine();
+                    String ma = sc.nextLine();
                     this.xoa(ma);
                     System.out.println("Da xoa Doi Tac " + ma);
                     break;
                 }
-                case 4:
-                {
+                case "4": {
                     System.out.print("Nhap ma cua Doi Tac can sua: ");
-                    String ma=sc.nextLine();
+                    String ma = sc.nextLine();
                     this.sua(ma);
                     break;
                 }
-                case 5:
-                {
-                    String s1,s2,s3,s4;
-                    s1="Ma DT";s2="Ten DT";s3="SDT";s4="Mail";
-                    System.out.printf("%-10s%-20s%-15s%-30s\n",s1,s2,s3,s4);
+                case "5": {
+                    String s1, s2, s3, s4;
+                    s1 = "Ma DT";
+                    s2 = "Ten DT";
+                    s3 = "SDT";
+                    s4 = "Mail";
+                    System.out.printf("%-10s%-20s%-15s%-30s\n", s1, s2, s3, s4);
+
                     this.xuatDanhSach();
                     break;
                 }
-                case 6:
-                {
+                case "6": {
                     System.out.println("So luong Doi Tac: " + this.soluongDT());
                     break;
                 }
-                case 0:
-                {
+                case "0": {
                     this.ghiFile();
                     break;
                 }
-            }         
-        }
-        while(chon!=0);
+            }
+        } while (chon.matches("0") == false);
     }
 
     public static void main(String[] args) throws IOException {
         DanhSachDoiTac dsdt = new DanhSachDoiTac();
         dsdt.menuDoiTac();
-        
+
     }
 }

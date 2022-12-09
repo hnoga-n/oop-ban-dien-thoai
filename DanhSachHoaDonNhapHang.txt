@@ -1,50 +1,76 @@
-hd1
-dt1235
+HD5
+DT1
 1235
-tk1235
+5
 10/7/2022
 395350000
-sp1231,Samsung Galaxy Z Flip4,Samsung,20900000,10,12 thang
-sp1232,iPhone 11,Iphone,11900000,10,12 thang
-sp1233,Xiaomi Redmi Note 11,Xiaomi,4490000,15,12 thang 
+s1,Samsung Galaxy Z Flip4,Samsung,20900000,10,12 thang
+i1,iPhone 11,Iphone,11900000,10,12 thang
+x1,Xiaomi Redmi Note 11,Xiaomi,4490000,15,12 thang 
 --------------------------------------------------------
-hd2
-dt1236
+HD6
+DT2
 1236
-tk1236
-10/8/2022
+6
+10/9/2022
 605640000
-sp1231,Samsung Galaxy Z Flip4,Samsung,20900000,17,12 thang
-sp1232,iPhone 11,Iphone,11900000,15,12 thang
-sp1233,Xiaomi Redmi Note 11,Xiaomi,4490000,16,12 thang 
+s1,Samsung Galaxy Z Flip4,Samsung,20900000,17,12 thang
+i1,iPhone 11,Iphone,11900000,15,12 thang
+x1,Xiaomi Redmi Note 11,Xiaomi,4490000,16,12 thang 
 --------------------------------------------------------
-hd3
-dt1237
+HD7
+DT3
 1237
-tk1237
+7
 18/9/2022
 668400000
-sp1231,Vivo Y15s,Vivo,21000000,15,12 thang
-sp1232,OPPO A55,OPP0,13900000,15,6 thang
-sp1233,OPPO Reno8 Pro 5G,OPP0,14490000,10,24 thang 
+v1,Vivo Y15s,Vivo,21000000,15,12 thang
+x1,Xiaomi Redmi Note 11S 5G,Xiaomi,13900000,15,6 thang
+v3,Vivo V25 5G,Vivo,14490000,10,24 thang 
 --------------------------------------------------------
-hd4
-dt1238
+HD8
+DT4
 1238
-tk1238
+8
 28/11/2022
 413490000
-sp1231,Realme 9 Pro+ 5G,Realme,10900000,15,12 thang
-sp1232,iPhone 13,Iphone,19000000,10,12 thang
-sp1233,Realme 9i,Realme,5999000,10,12 thang 
+x3,Xiaomi 12T Pro 5G,Xiaomi,10900000,15,12 thang
+i3,iPhone 13,Iphone,19000000,10,12 thang
+s3,Samsung Galaxy A23,Samsung,5999000,10,12 thang 
 --------------------------------------------------------
-hd5
+hd6
 DT1
 0
 null
-7/12/2022
-372900000
-sp1231,Samsung Galaxy Z Flip4,Samsung,20900000,10,12 thang
-sp1232,iPhone 11,Iphone,11900000,10,12 thang
-sp1233,Xiaomi Redmi Note 11,Xiaomi,4490000,10,12 thang
+8/12/2022
+1391900000
+v4,Vivo T1,Vivo,8090000,10,12 thang
+i3,iPhone 13,Iphone,19000000,69,12 thang
+--------------------------------------------------------
+hd7
+DT2
+0
+null
+8/12/2022
+989246000
+v5,Vivo Y21,Vivo,3699000,24,12 thang
+i4,iPhone 12,Iphone,16990000,53,12 thang
+--------------------------------------------------------
+hd8
+DT5
+0
+null
+8/12/2022
+429900000
+i2,iPhone 14, Iphone,30500000,10,12 thang
+s5,Samsung Galaxy S21 FE,Samsung,12490000,10,12 thang
+--------------------------------------------------------
+hd9
+DT5
+0
+null
+8/12/2022
+325800000
+s2,Samsung Galaxy Z,Samsung,10900000,20,12 thang
+x7,Xiaomi Redmi note 10,Xiaomi,5390000,20,12 thang
 --------------------------------------------------------

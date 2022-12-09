@@ -1,4 +1,5 @@
 
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -10,7 +11,6 @@ import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -28,7 +28,8 @@ public class DanhSachHoaDonBanHang {
         this.danhSach = danhSach;
     }
 
-    public ArrayList<HoaDonBanHang> getlistHDBH () {
+
+    public ArrayList<HoaDonBanHang> getlistHDBH() {
         return this.danhSach;
     }
 
@@ -36,13 +37,16 @@ public class DanhSachHoaDonBanHang {
         return this.danhSach;
     }
 
-    // thêm
+    // thĂªm
+
     public void them(HoaDonBanHang hd) {
         this.danhSach.add(hd);
 
     }
 
-    // xóa
+
+    // Xoa
+
     public void xoa(String mahd) {
         HoaDonBanHang hdbh = new HoaDonBanHang();
         for (HoaDonBanHang hoaDonBanHang : danhSach) {
@@ -54,51 +58,43 @@ public class DanhSachHoaDonBanHang {
         this.danhSach.remove(hdbh);
     }
 
-    // sửa
+
+    // Sua
     public void sua(String mahd) {
         for (HoaDonBanHang hoaDon : danhSach) {
             if (hoaDon.getMahd().equals(mahd)) {
                 int luaChon = 0;
                 do {
                     System.out.println("MENU ----------");
-                    System.out.println("Lựa chỞn: ");
+
+                    System.out.println("Lua chon: ");
                     System.out.println(
-                            "1. Sửa mã hóa đơn.\n"
-                                    + "2. Sửa mã tài khoản.\n"
-                                    + "3. Sửa mã khách hàng.\n"
-                                    + "4. Sửa mã nhân viên.\n"
-                                    + "5. Sửa điểm khách hàng.\n"
-                                    + "6. Sửa danh sách sản phẩm.\n"
-                                    + "0. Thoát.\n");
+                            "1. Sua ma hoa don.\n"
+                                    + "2. Sua ma tai khoan.\n"
+                                    + "3. Sua ma khach hang.\n"
+                                    + "4. Sua ma nhan vien.\n"
+                                    + "5. Sua danh sach san pham.\n"
+                                    + "0. Thoat.\n");
                     luaChon = sc.nextInt();
                     sc.nextLine();
                     if (luaChon == 1) {
-                        System.out.println("Nhập mã hóa đơn mới: ");
-                        String newMaHd = sc.nextLine();
-                        hoaDon.setMahd(newMaHd);
+                        hoaDon.setMahd();
                     }
                     if (luaChon == 2) {
-                        System.out.println("Nhập mã tài khoản mới: ");
-                        String newMaTk = sc.nextLine();
-                        hoaDon.setmatk(newMaTk);
+                        hoaDon.setmatk();
                     }
                     if (luaChon == 3) {
-                        System.out.println("Nhập mã khách hàng mới: ");
-                        String newMaKh = sc.nextLine();
-                        hoaDon.setMakh(newMaKh);
+                        hoaDon.setMakh();
                     }
                     if (luaChon == 4) {
-                        System.out.println("Nhập mã nhân viên mới: ");
-                        String newMaNv = sc.nextLine();
-                        hoaDon.setmanv(newMaNv);
+                        hoaDon.setmanv();
+
                     }
+
                     if (luaChon == 5) {
-                        System.out.println("Nhập điểm khách hàng mới: ");
-                        int newDiem = sc.nextInt();
-                        hoaDon.setDiemkh(newDiem);
-                    }
-                    if (luaChon == 6) {
-                        System.out.println("Nhập mã sản phẩm cần sửa: ");
+
+                        System.out.println("Nhap ma san pham can sua: ");
+
                         String masp = sc.nextLine();
                         hoaDon.getdssp().sua(masp);
                     }
@@ -108,22 +104,22 @@ public class DanhSachHoaDonBanHang {
         }
     }
 
-    // xuất danh sách hóa đơn
+
+    // xuất danh sach hoa don
+
     public void xuatDanhSach() {
         int i = 1;
         for (HoaDonBanHang hoaDonBanHang : danhSach) {
-            System.out
-                    .println(
-                            "-------------------------------------------------------------------------------");
-            System.out.println("Hóa đơn " + i + ": ");
+            System.out.println("--------------------------------------------------");
+            System.out.println("Hoa don " + i + ": ");
+
             i = i + 1;
             hoaDonBanHang.xuatHoaDonBanHang();
-            System.out.println(
-                    "--------------------------------------------------------------------------------------");
+            System.out.println("--------------------------------------------------");
         }
     }
 
-    // ghi vào file
+    // ghi vĂ o file
     public void ghiDuLieuVaoFile() throws IOException {
         File file = new File("DanhSachHoaDonBanHang.txt");
         try {
@@ -146,7 +142,9 @@ public class DanhSachHoaDonBanHang {
 
     }
 
+
     // đỞc file
+
     public void docDuLieuTuFile() throws IOException {
         this.danhSach.clear();
         File file = new File("DanhSachHoaDonBanHang.txt");
@@ -167,8 +165,6 @@ public class DanhSachHoaDonBanHang {
                         line = br.readLine();
                         String makh = line;
                         line = br.readLine();
-                        int diemkh = Integer.parseInt(line);
-                        line = br.readLine();
                         String matk = line;
                         line = br.readLine();
                         String manv = line;
@@ -185,12 +181,12 @@ public class DanhSachHoaDonBanHang {
                             String txt1[] = line.split(",");
                             int gia = Integer.parseInt(txt1[3]);
                             int soluong = Integer.parseInt(txt1[4]);
-                            SanPham sp = new SanPham(txt1[0], txt1[1], txt1[2], gia, txt1[5], soluong, null);
+                            SanPham sp = new SanPham(txt1[0], txt1[1], txt1[2], gia, txt1[5],soluong, null);
                             dssp.them(sp);
                             line = br.readLine();
                         }
 
-                        HoaDonBanHang hdbh = new HoaDonBanHang(mahd, matk, ngay, dssp, makh, manv, diemkh);
+                        HoaDonBanHang hdbh = new HoaDonBanHang(mahd, matk, ngay, dssp, makh, manv);
                         this.danhSach.add(hdbh);
                     }
                 }
@@ -212,6 +208,7 @@ public class DanhSachHoaDonBanHang {
 
     // Menu
     public void Menu() throws IOException {
+
         this.danhSach.clear();
         File file = new File("DanhSachHoaDonBanHang.txt");
         try {
@@ -230,8 +227,6 @@ public class DanhSachHoaDonBanHang {
                         String mahd = line;
                         line = br.readLine();
                         String makh = line;
-                        line = br.readLine();
-                        int diemkh = Integer.parseInt(line);
                         line = br.readLine();
                         String matk = line;
                         line = br.readLine();
@@ -254,7 +249,7 @@ public class DanhSachHoaDonBanHang {
                             line = br.readLine();
                         }
 
-                        HoaDonBanHang hdbh = new HoaDonBanHang(mahd, matk, ngay, dssp, makh, manv, diemkh);
+                        HoaDonBanHang hdbh = new HoaDonBanHang(mahd, matk, ngay, dssp, makh, manv);
                         this.danhSach.add(hdbh);
 
                     }
@@ -273,79 +268,86 @@ public class DanhSachHoaDonBanHang {
             e.printStackTrace();
         }
 
+       this.docDuLieuTuFile();
+
+
         int luaChon0 = -1;
         do {
             System.out.println("MENU ----------");
-            System.out.println("Lựa chỞn: ");
+
+            System.out.println("Lua chon: ");
             System.out.println(
-                    "1. In danh sách hóa đơn bán hàng.\n"
-                            + "2. Thêm hóa đơn.\n"
-                            + "3. Xóa hóa đơn.\n"
-                            + "4. Sửa hóa đơn.\n"
-                            + "0. Thoát.\n");
-            System.out.println("Vui lòng nhập lựa chỞn của bạn: ");
+                    "1. In danh sach hoa don ban hang.\n"
+                            + "2. Them hoa don.\n"
+                            + "3. Xoa hoa don.\n"
+                            + "4. Sua hoa don.\n"
+                            + "0. Thoat.\n");
+            System.out.println("Vui long Nhap lua chon cua ban: ");
+
             luaChon0 = sc.nextInt();
             sc.nextLine();
             if (luaChon0 == 1) {
                 int i = 1;
                 for (HoaDonBanHang hoaDonBanHang : danhSach) {
                     System.out.println(
-                            "--------------------------------------------------------------------------------------------------------------------------------------------------");
-                    System.out.println("Hóa đơn " + i + ": ");
+
+                            "--------------------------------------------------");
+                    System.out.println("Hoa don " + i + ": ");
                     i = i + 1;
                     hoaDonBanHang.xuatHoaDonBanHang();
-                    System.out.println(
-                            "--------------------------------------------------------------------------------------------------------------------------------------------------");
+                    System.out.println("--------------------------------------------------");
                 }
             } else if (luaChon0 == 2) {
-                System.out.println("Nhập mã hóa đơn: ");
+                System.out.println("Nhap ma hoa don: ");
                 String Mahd = sc.nextLine();
-                System.out.println("Nhập mã khách hàng: ");
+                System.out.println("Nhap ma khach hang: ");
                 String Makh = sc.nextLine();
-                System.out.println("Nhập mã tài khoản: ");
+                System.out.println("Nhap ma tai khoan: ");
                 String Matk = sc.nextLine();
-                System.out.println("Nhập mã nhân viên: ");
+                System.out.println("Nhap ma nhan vien: ");
                 String Manv = sc.nextLine();
-                System.out.println("Nhập điểm khách hàng: ");
-                int Diemkh = sc.nextInt();
                 sc.nextLine();
-                System.out.println("Nhập ngày: ");
+                System.out.println("Nhap ngay: ");
                 int day = sc.nextInt();
                 sc.nextLine();
-                System.out.println("Nhập tháng: ");
+                System.out.println("Nhap thang: ");
                 int month = sc.nextInt();
                 sc.nextLine();
-                System.out.println("Nhập năm: ");
+                System.out.println("Nhap nam: ");
                 int year = sc.nextInt();
                 sc.nextLine();
                 Ngay ngay = new Ngay(day, month, year);
-                System.out.println("Nhập số lượng sản phẩm khác nhau: ");
+                System.out.println("Nhap so luong san pham khac nhau: ");
+
                 int sl = sc.nextInt();
                 sc.nextLine();
                 QuanLiSanPham dssp = new QuanLiSanPham();
                 for (int i = 1; i <= sl; i++) {
-                    System.out.println("Nhập mã sản phẩm thứ " + i + ": ");
+
+                    System.out.println("Nhap ma san pham thu " + i + ": ");
                     String Masp = sc.nextLine();
-                    System.out.println("Nhập tên sản phẩm: ");
+                    System.out.println("Nhap ten san pham: ");
                     String Tensp = sc.nextLine();
-                    System.out.println("Nhập hãng sản phẩm: ");
+                    System.out.println("Nhap hang san pham: ");
                     String Hangsp = sc.nextLine();
-                    System.out.println("Nhập giá: ");
+                    System.out.println("Nhap gia: ");
                     int gia = sc.nextInt();
                     sc.nextLine();
-                    System.out.println("Nhập thỞi gian bảo hành: ");
+                    System.out.println("Nhap thoi gian bao hanh: ");
                     String ThoiGianBaoHanh = sc.nextLine();
-                    System.out.println("Nhập số lượng: ");
+                    System.out.println("Nhap so luong: ");
                     int soLuong = sc.nextInt();
                     sc.nextLine();
-                    SanPham sp = new SanPham(Masp, Tensp, Hangsp, gia, soLuong, ThoiGianBaoHanh);
+                    SanPham sp = new SanPham(Masp, Tensp, Hangsp, gia,soLuong, ThoiGianBaoHanh);
                     dssp.them(sp);
                 }
-                HoaDonBanHang hdbh = new HoaDonBanHang(Mahd, Matk, ngay, dssp, Makh, Manv, Diemkh);
+                HoaDonBanHang hdbh = new HoaDonBanHang(Mahd, Matk, ngay, dssp, Makh, Manv);
                 this.danhSach.add(hdbh);
 
             } else if (luaChon0 == 3) {
-                System.out.println("Nhập mã hóa đơn muốn xóa: ");
+
+                System.out.println("Nhap ma hoa don muon xoa: ");
+
                 String Mahd = sc.nextLine();
                 HoaDonBanHang hdbh = new HoaDonBanHang();
                 for (HoaDonBanHang hoaDonBanHang : danhSach) {
@@ -357,51 +359,40 @@ public class DanhSachHoaDonBanHang {
                 this.danhSach.remove(hdbh);
 
             } else if (luaChon0 == 4) {
-                System.out.println("Nhập mã hóa đơn muốn sửa: ");
+
+                System.out.println("Nhap ma hoa don muon sua: ");
                 String Mahd = sc.nextLine();
                 for (HoaDonBanHang hoaDon : danhSach) {
                     if (hoaDon.getMahd().equals(Mahd)) {
                         int luaChon1 = 0;
                         do {
                             System.out.println("MENU ----------");
-                            System.out.println("Lựa chỞn: ");
+
+                            System.out.println("Lua chon: ");
                             System.out.println(
-                                    "1. Sửa mã hóa đơn.\n"
-                                            + "2. Sửa mã tài khoản.\n"
-                                            + "3. Sửa mã khách hàng.\n"
-                                            + "4. Sửa mã nhân viên.\n"
-                                            + "5. Sửa điểm khách hàng.\n"
-                                            + "6. Sửa danh sách sản phẩm.\n"
-                                            + "0. Thoát.\n");
+                                    "1. Sua ma hoa don.\n"
+                                            + "2. Sua ma tai khoan.\n"
+                                            + "3. Sua ma khach hang.\n"
+                                            + "4. Sua ma nhan vien.\n"
+                                            + "5. Sua danh sach san pham.\n"
+                                            + "0. Thoat.\n");
                             luaChon1 = sc.nextInt();
                             sc.nextLine();
                             if (luaChon1 == 1) {
-                                System.out.println("Nhập mã hóa đơn mới: ");
-                                String newMaHd = sc.nextLine();
-                                hoaDon.setMahd(newMaHd);
+                                hoaDon.setMahd();
                             }
                             if (luaChon1 == 2) {
-                                System.out.println("Nhập mã tài khoản mới: ");
-                                String newMaTk = sc.nextLine();
-                                hoaDon.setmatk(newMaTk);
+                                hoaDon.setmatk();
                             }
                             if (luaChon1 == 3) {
-                                System.out.println("Nhập mã khách hàng mới: ");
-                                String newMaKh = sc.nextLine();
-                                hoaDon.setMakh(newMaKh);
+                                hoaDon.setMakh();
                             }
                             if (luaChon1 == 4) {
-                                System.out.println("Nhập mã nhân viên mới: ");
-                                String newMaNv = sc.nextLine();
-                                hoaDon.setmanv(newMaNv);
+                                hoaDon.setmanv();
                             }
                             if (luaChon1 == 5) {
-                                System.out.println("Nhập điểm khách hàng mới: ");
-                                int newDiem = sc.nextInt();
-                                hoaDon.setDiemkh(newDiem);
-                            }
-                            if (luaChon1 == 6) {
-                                System.out.println("Nhập mã sản phẩm cần sửa: ");
+                                System.out.println("Nhap ma san pham can sua: ");
+
                                 String masp = sc.nextLine();
                                 hoaDon.getdssp().sua(masp);
                             }
@@ -410,30 +401,13 @@ public class DanhSachHoaDonBanHang {
                 }
 
             } else if (luaChon0 == 0) {
-                try {
-                    FileWriter fw = new FileWriter(file);
-                    try (BufferedWriter bw = new BufferedWriter(fw)) {
-                        for (HoaDonBanHang hoaDonBanHang : danhSach) {
-                            bw.write(hoaDonBanHang.dinhDangGhiVaoFile()
-                                    + "\n--------------------------------------------------------");
-                            bw.newLine();
-                        }
-                        bw.flush();
-                        bw.close();
-                    }
-                    fw.close();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    // TODO: handle exception
-                }
+                this.ghiDuLieuVaoFile();
                 break;
-
             }
         } while (true);
     }
 
-    // thống kê
+    // thá»‘ng kĂª
     public void thongKeBanHang() throws IOException {
         kiemtra kt = new kiemtra();
         this.docDuLieuTuFile();
@@ -455,37 +429,42 @@ public class DanhSachHoaDonBanHang {
             // TODO: handle exception
             System.out.println(e);
         }
-        ArrayList<SanPham> thongKeSp = new ArrayList<SanPham>();
-        for (HoaDonBanHang hd : this.danhSach) {
-            try {
-                date2 = format.parse(hd.getNgay().toString());
-                if (date1.before(date2) && date3.after(date2)) {
-                    for (SanPham sp : hd.getdssp().getList()) {
-                        for (SanPham spThongKe : thongKeSp) {
-                            if (spThongKe.getMasp().equalsIgnoreCase(sp.getMasp())) {
-                                spThongKe.setSoluong(spThongKe.getSoluong() + sp.getSoluong());
-                                existedFlag = true;
-                                break;
+        if(date1.compareTo(date3) > 0) {
+            System.out.println("Nhap sai thu tu ngay!");
+        }
+        else {
+                ArrayList<SanPham> thongKeSp = new ArrayList<SanPham>();
+            for (HoaDonBanHang hd : this.danhSach) {
+                try {
+                    date2 = format.parse(hd.getNgay().toString());
+                    if (date1.before(date2) && date3.after(date2)) {
+                        for (SanPham sp : hd.getdssp().getList()) {
+                            for (SanPham spThongKe : thongKeSp) {
+                                if (spThongKe.getMasp().equalsIgnoreCase(sp.getMasp())) {
+                                    spThongKe.setSoluong_1(spThongKe.getSoluong() + sp.getSoluong());
+                                    existedFlag = true;
+                                    break;
+                                }
                             }
+                            if (existedFlag == false) {
+                                thongKeSp.add(sp);
+                            }
+                            existedFlag = false;
                         }
-                        if (existedFlag == false) {
-                            thongKeSp.add(sp);
-                        }
-                        existedFlag = false;
                     }
+                } catch (java.text.ParseException e) {
+                    // TODO: handle exception
+                    System.out.println(e);
                 }
-            } catch (java.text.ParseException e) {
-                // TODO: handle exception
-                System.out.println(e);
             }
-        }
 
-        if (thongKeSp.size() <= 0) {
-            System.out.println("Khong co san pham nao duoc ban ra trong khoang thoi gian da chon !");
+            if (thongKeSp.size() <= 0) {
+                System.out.println("Khong co san pham nao duoc ban ra trong khoang thoi gian da chon !");
+            }
+            QuanLiSanPham danhSachThongKe = new QuanLiSanPham(thongKeSp);
+            danhSachThongKe.xuatDanhSach();
+            System.out.println("Tong doanh thu: " + formatter.format(danhSachThongKe.tongGia())+" VND");
         }
-        QuanLiSanPham danhSachThongKe = new QuanLiSanPham(thongKeSp);
-        danhSachThongKe.xuatDanhSach();
-        System.out.println("Tong doanh thu: " + formatter.format(danhSachThongKe.tongGia())+" VND");
     }
 
     public static void main(String[] args) throws IOException {
@@ -493,4 +472,5 @@ public class DanhSachHoaDonBanHang {
         dsbh.docDuLieuTuFile();
         dsbh.xuatDanhSach();
     }
+
 }

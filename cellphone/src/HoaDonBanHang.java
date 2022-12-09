@@ -1,85 +1,82 @@
 
+
 import java.util.Scanner;
 
 public class HoaDonBanHang extends HoaDon {
-
+    Scanner sc = new Scanner(System.in);
     private String makh;
     private String manv;
-    private int diemkh;
 
     public HoaDonBanHang() {
     }
 
-    public HoaDonBanHang(String makh, String manv, int diemkh) {
+    public HoaDonBanHang(String makh, String manv) {
         this.makh = makh;
         this.manv = manv;
-        this.diemkh = diemkh;
     }
 
     public HoaDonBanHang(String mahd, String matk, Ngay ngay, QuanLiSanPham dssp,
-            String makh, String manv, int diemkh) {
+            String makh, String manv) {
         super(mahd, matk, ngay, dssp);
         this.makh = makh;
         this.manv = manv;
-        this.diemkh = diemkh;
     }
 
     public String getMakh() {
         return makh;
     }
 
-    public void setMakh(String makh) {
-        this.makh = makh;
-    }
-
-    public String getmanv() {
-        return manv;
-    }
-
-    public void setmanv(String manv) {
-        this.manv = manv;
-    }
-
-    public int getDiemkh() {
-        return diemkh;
-    }
-
-    public void setDiemkh(int diemkh) {
-        this.diemkh = diemkh;
+    public void setMakh() {
+        System.out.print("Nhap ma san pham moi: ");
+        String newMaKh = sc.nextLine();
+        do {
+            if(newMaKh.matches("[0-9]{1,}")==true){
+                this.makh=newMaKh;
+                break;
+            }
+            else{
+                System.out.println("Ma khanh hang la mot so!");
+                System.out.print("Nhap ma khach hang moi: ");
+                newMaKh = sc.nextLine();
+            }
+        } while (true);
     }
 
     public String getManv() {
         return manv;
     }
 
-    public void setManv(String manv) {
-        this.manv = manv;
+
+    public void setmanv() {
+        System.out.print("Nhap ma nhan vien moi: ");
+        String newMaNv = sc.nextLine();
+        do {
+            if(newMaNv.matches("[0-9]{1,}")==true){
+                this.manv=newMaNv;
+                break;
+            }
+            else{
+                System.out.println("Ma nhan vien la mot so!");
+                System.out.print("Nhap ma nhan vien moi: ");
+                newMaNv = sc.nextLine();
+            }
+        } while (true);
     }
 
     public void xuatHoaDonBanHang() {
         System.out.println(
-                "--------------------------------------------------------------------------------------------------------------------------------------------------"
-                        + "\nMã khách hàng: " + makh
-                        + "\n--------------------------------------------------------------------------------------------------------------------------------------------------"
-                        + "\nMã nhân viên: " + manv
-                        + "\n--------------------------------------------------------------------------------------------------------------------------------------------------"
-                        + "\nĐiểm khách hàng: " + diemkh);
+
+                "--------------------------------------------------------------------------------------------------------------------------"
+                        + "\nMa khach hang: " + makh
+                        + "\n--------------------------------------------------------------------------------------------------------------------------"
+                        + "\nMa nhan vien: " + manv);
         super.xuatHoaDon();
     }
 
     public String dinhDangGhiVaoFile() {
-        return this.getMahd() + "\n" + makh + "\n" + diemkh + "\n"
+        return this.getMahd() + "\n" + makh + "\n"
                 + this.getmatk() + "\n" + manv + "\n" + this.getNgay()
                 + "\n" + this.getdssp().tongGia() + this.getdssp().dinhDangFileHoaDon();
-    }
-
-    public void suaDanhSachSanPham() {
-        try (Scanner sc = new Scanner(System.in)) {
-            System.out.println("Nhập mã sản phẩm cần sửa: ");
-            String masp = sc.nextLine();
-            this.getdssp().sua(masp);
-
-        }
     }
 
 }

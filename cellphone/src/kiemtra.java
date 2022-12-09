@@ -16,6 +16,19 @@ public class kiemtra {
             System.out.print("Moi nhap lai: ");
         }
     }
+    public String KiemTraNhapMaDT() {
+        String DauVao;
+        while (true) {
+            DauVao=sc.nextLine();
+            if(DauVao.matches("DT" + "[0-9]{1,2}")){
+                return DauVao;
+            }
+            else{
+                System.out.println("Sai dinh dang ma! vd:'DT1'");
+            }
+            System.out.print("Moi nhap lai: ");
+        }
+    }
     public String KiemTraNhapMaSP(){
         String DauVao;
         while (true) {

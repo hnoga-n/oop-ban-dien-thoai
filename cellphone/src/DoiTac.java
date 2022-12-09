@@ -29,7 +29,21 @@ public class DoiTac {
     public void setMADT(String MADT) {
         this.MADT = MADT;
     }
-
+    public void setMADT() {
+        System.out.print("Nhap ma doi tac moi: ");
+        String s = sc.nextLine();
+        do {
+            if(s.matches("^DT[0-9]{1,}")==true){
+                this.MADT=s;
+                break;
+            }
+            else{
+                System.out.println("CU PHAP: DT+so!");
+                System.out.print("Nhap ma doi tac moi: ");
+                s = sc.nextLine();
+            }
+        } while (true);
+    }
     public void setTenDoiTac(String tenDoiTac) {
         this.tenDoiTac = tenDoiTac;
     }
